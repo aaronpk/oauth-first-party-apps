@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-11-16T01:09:43.319987+00:00",
+  "timestamp": "2023-11-19T01:13:53.457028+00:00",
   "repo": "aaronpk/oauth-first-party-apps",
   "labels": [
     {
@@ -1184,6 +1184,72 @@
       "body": "[I tried to articulate this at IETF 117 but maybe didn't do a good job so want to try again here \"on record\"]\r\n\r\nIt seems quite reasonable to have the initial Authorization Challenge Request be `application/x-www-form-urlencoded` as it is consistent with OAuth 2.x in general. But I worry that it'll be too limiting for the in-between follow-up requests to the challenge endpoint. That part is effectively facilitating an AS defined authn/z API (which I do think is appropriate rather than attempting to define something here) but I suspect folks will really not want the requests on such an API to have to be `application/x-www-form-urlencoded`. And probably/maybe will want more flexibility on the content of the JSON responses too. ",
       "createdAt": "2023-11-06T23:00:04Z",
       "updatedAt": "2023-11-06T23:00:04Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 51,
+      "id": "I_kwDOJbxyLc53LmHe",
+      "title": "Send email to list about Device Flow / PAR / First Party apps commonality",
+      "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/51",
+      "state": "OPEN",
+      "author": "aaronpk",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "aaronpk"
+      ],
+      "labels": [],
+      "body": "Send email to list about defining a new \"OAuth POST Request Framework\" that First Party Apps would extend. The framework defines:\r\n\r\n* `request_type`=`{extension-defined}`\r\n* OAuth input parameters (copy language from PAR)\r\n* Client authentication, etc\r\n* Response is defined by extensions\r\n\r\nRegistry of:\r\n* `request_type`\r\n* Input parameters\r\n* Response body parameters\r\n\r\nWhy not extend PAR?\r\n* PAR explicitly defines the response body, we need to change that.\r\n* PAR also defines using the `request_uri` at the authorize endpoint, we don't need that.",
+      "createdAt": "2023-11-17T16:44:14Z",
+      "updatedAt": "2023-11-17T16:47:07Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 52,
+      "id": "I_kwDOJbxyLc53Lmgd",
+      "title": "Write FIDO extension to First-Party Apps",
+      "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/52",
+      "state": "OPEN",
+      "author": "aaronpk",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Look at https://github.com/jaredhanson/id-oauth-fido2/blob/main/draft.txt for WebAuthn parameters",
+      "createdAt": "2023-11-17T16:45:17Z",
+      "updatedAt": "2023-11-17T16:45:17Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 53,
+      "id": "I_kwDOJbxyLc53LmpW",
+      "title": "Update First-Party Apps to extend POST Request Framework",
+      "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/53",
+      "state": "OPEN",
+      "author": "aaronpk",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "After #54",
+      "createdAt": "2023-11-17T16:45:38Z",
+      "updatedAt": "2023-11-17T16:46:07Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 54,
+      "id": "I_kwDOJbxyLc53Lmw7",
+      "title": "Write draft of POST Request Framework",
+      "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/54",
+      "state": "OPEN",
+      "author": "aaronpk",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "See #51",
+      "createdAt": "2023-11-17T16:45:56Z",
+      "updatedAt": "2023-11-17T16:45:56Z",
       "closedAt": null,
       "comments": []
     }
