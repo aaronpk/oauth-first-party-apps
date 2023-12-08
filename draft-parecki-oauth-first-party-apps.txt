@@ -5,10 +5,10 @@
 Web Authorization Protocol                                    A. Parecki
 Internet-Draft                                                      Okta
 Intended status: Standards Track                             G. Fletcher
-Expires: 12 May 2024                               Capital One Financial
+Expires: 10 June 2024                              Capital One Financial
                                                             P. Kasselman
                                                                Microsoft
-                                                         9 November 2023
+                                                         8 December 2023
 
 
                  OAuth 2.0 for First-Party Applications
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 12 May 2024.
+   This Internet-Draft will expire on 10 June 2024.
 
 Copyright Notice
 
@@ -501,6 +501,10 @@ Table of Contents
       "invalid_scope":  The requested scope is invalid, unknown,
          malformed, or exceeds the scope granted by the resource owner.
 
+      "insufficient_authorization":  The presented authorization is
+         insufficient, and the authorization server is requesting the
+         client take additional steps to complete the authorization.
+
       Values for the error parameter MUST NOT include characters outside
       the set %x20-21 / %x23-5B / %x5D-7E.
 
@@ -621,9 +625,9 @@ Table of Contents
    error response as defined in Section 5.2 of OAuth 2.0 [RFC6749] where
    the error code is set to the following value:
 
-   "error": "authorization_required":  The authorization grant is
-      insufficiently authorized, but another access token request may
-      succeed if an additional authorization grant is presented.
+   "error": "insufficient_authorization":  The presented authorization
+      is insufficient, and the authorization server is requesting the
+      client take additional steps to complete the authorization.
 
    Additionally, the response MAY contain an auth_session parameter
    which the client is expected to include on a subsequent request to
@@ -643,7 +647,7 @@ Table of Contents
    Cache-Control: no-store
 
    {
-     "error": "authorization_required",
+     "error": "insufficient_authorization",
      "auth_session": "uY29tL2F1dGhlbnRpY"
    }
 
@@ -1156,8 +1160,8 @@ A.4.  E-Mail Confirmation Code
 
    *  The Authorization Server sends a verification code to the e-mail
       address and returns an Error Response (Section 5.2.3) including
-      "error": "authorization_required", "auth_session" and a custom
-      error code indicating that an e-mail verification code must be
+      "error": "insufficient_authorization", "auth_session" and a custom
+      property indicating that an e-mail verification code must be
       entered.
 
    *  The Client presents a user experience guiding the user to copy the
@@ -1194,9 +1198,8 @@ A.5.  SMS Confirmation Code
 
    *  The Authorization Server sends a confirmation code to the phone
       number and returns an Error Response (Section 5.2.3) including
-      "error": "authorization_required", "auth_session" and a custom
-      error code indicating that a SMS confirmation code must be
-      entered.
+      "error": "insufficient_authorization", "auth_session" and a custom
+      property indicating that a SMS confirmation code must be entered.
 
    *  The Client presents a user experience guiding the user to enter
       the SMS confirmation code.  Once the SMS verification code is
@@ -1294,8 +1297,8 @@ A.7.  Step-up Authentication using Confirmation SMS
    *  The Authorization Server verifies the auth_session and determines
       which authentication methods must be satisfied based on the
       acr_values, and responds with an Error Response (Section 5.2.3)
-      including "error": "authorization_required" and a custom error
-      code indicating that an OTP must be entered.
+      including "error": "insufficient_authorization" and a custom
+      property indicating that an OTP must be entered.
 
    *  The Client prompts the user for an OTP, which the user obtains and
       enters.
@@ -1334,8 +1337,8 @@ A.8.  Registration
       the username.
 
    *  The Authorization Server returns an Error Response (Section 5.2.3)
-      including "error": "authorization_required", "auth_session", and a
-      custom error code indicating that an e-mail address must be
+      including "error": "insufficient_authorization", "auth_session",
+      and a custom property indicating that an e-mail address must be
       collected.
 
    *  The Client collects an e-mail address from the user.
@@ -1346,7 +1349,7 @@ A.8.  Registration
 
    *  The Authorization Server sends a verification code to the e-mail
       address and returns an Error Response including "error":
-      "authorization_required", "auth_session" and a custom error code
+      "insufficient_authorization", "auth_session" and a custom property
       indicating that an e-mail verification code must be entered.
 
    *  The Client presents a user experience guiding the user to copy the
@@ -1360,7 +1363,7 @@ A.8.  Registration
       session context, and verifies the e-mail verification code.  It
       determines that it also needs a phone number for account recovery
       purposes and returns an Error Response including "error":
-      "authorization_required", "auth_session" and a custom error code
+      "insufficient_authorization", "auth_session" and a custom property
       indicating that a phone number must be collected.
 
    *  The Client collects a mobile phone number from the user.
@@ -1372,7 +1375,7 @@ A.8.  Registration
    *  The Authorization Server uses the auth_session parameter to link
       the previous requests.  It sends a confirmation code to the phone
       number and returns an Error Response including "error":
-      "authorization_required", "auth_session" and a custom error code
+      "insufficient_authorization", "auth_session" and a custom property
       indicating that a SMS confirmation code must be entered.
 
    *  The Client presents a user experience guiding the user to enter
@@ -1531,6 +1534,13 @@ Appendix C.  Design Goals
    support this specification.
 
 Appendix D.  Document History
+
+   -01
+
+   *  Renamed authorization_required to insufficient_authorization
+
+   *  Defined insufficient_authorization on the Authorization Challenge
+      Endpoint
 
    -00
 

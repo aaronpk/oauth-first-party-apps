@@ -28,13 +28,13 @@ applications, only delegating to the browser in unexpected, high risk, or error 
     intervaltree 3.1.0
     Jinja2 3.1.2
     lxml 4.9.3
-    platformdirs 3.11.0
+    platformdirs 4.1.0
     pycountry 22.3.5
     PyYAML 6.0
     requests 2.31.0
     setuptools 67.7.2
     six 1.16.0
-    wcwidth 0.2.9
+    wcwidth 0.2.12
 -->
 <link href="draft-parecki-oauth-first-party-apps.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1033,11 +1033,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">OAuth for First-Party Apps</td>
-<td class="right">November 2023</td>
+<td class="right">December 2023</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Parecki, et al.</td>
-<td class="center">Expires 12 May 2024</td>
+<td class="center">Expires 10 June 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1050,12 +1050,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-parecki-oauth-first-party-apps-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-11-09" class="published">9 November 2023</time>
+<time datetime="2023-12-08" class="published">8 December 2023</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-05-12">12 May 2024</time></dd>
+<dd class="expires"><time datetime="2024-06-10">10 June 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1117,7 +1117,7 @@ applications, only delegating to the browser in unexpected, high risk, or error 
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 12 May 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 10 June 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1736,6 +1736,13 @@ authorization grant type.<a href="#section-5.2.3-2.2.2.8.1" class="pilcrow">¶</
                   <p id="section-5.2.3-2.2.2.10.1">The requested scope is invalid, unknown, malformed, or
 exceeds the scope granted by the resource owner.<a href="#section-5.2.3-2.2.2.10.1" class="pilcrow">¶</a></p>
 </dd>
+                <dd class="break"></dd>
+<dt id="section-5.2.3-2.2.2.11">"insufficient_authorization":</dt>
+                <dd style="margin-left: 1.5em" id="section-5.2.3-2.2.2.12">
+                  <p id="section-5.2.3-2.2.2.12.1">The presented authorization is insufficient, and the authorization
+server is requesting the client take additional steps to
+complete the authorization.<a href="#section-5.2.3-2.2.2.12.1" class="pilcrow">¶</a></p>
+</dd>
               <dd class="break"></dd>
 </dl>
 <p id="section-5.2.3-2.2.3">Values for the <code>error</code> parameter <span class="bcp14">MUST NOT</span> include characters
@@ -1851,11 +1858,11 @@ the authorization server can respond with an authorization challenge instead of 
 error response as defined in Section 5.2 of OAuth 2.0 <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span> where
 the error code is set to the following value:<a href="#section-6.2-2" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-6.2-3">
-          <dt id="section-6.2-3.1">"error": "authorization_required":</dt>
+          <dt id="section-6.2-3.1">"error": "insufficient_authorization":</dt>
           <dd style="margin-left: 1.5em" id="section-6.2-3.2">
-            <p id="section-6.2-3.2.1">The authorization grant is insufficiently authorized, but another
-access token request may succeed if an additional authorization
-grant is presented.<a href="#section-6.2-3.2.1" class="pilcrow">¶</a></p>
+            <p id="section-6.2-3.2.1">The presented authorization is insufficient, and the authorization
+server is requesting the client take additional steps to
+complete the authorization.<a href="#section-6.2-3.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -1879,7 +1886,7 @@ Content-Type: application/json
 Cache-Control: no-store
 
 {
-  "error": "authorization_required",
+  "error": "insufficient_authorization",
   "auth_session": "uY29tL2F1dGhlbnRpY"
 }
 </pre><a href="#section-6.2-7" class="pilcrow">¶</a>
@@ -2334,7 +2341,7 @@ an authorization request and eventually obtain an authorization code.<a href="#s
             <p id="appendix-A.4-2.2.1">The Client sends the e-mail address in an Authorization Challenge Request (<a href="#challenge-request" class="auto internal xref">Section 5.1</a>) to the Authorization Challenge Endpoint (<a href="#authorization-challenge-endpoint" class="auto internal xref">Section 4.1</a>).<a href="#appendix-A.4-2.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.4-2.3">
-            <p id="appendix-A.4-2.3.1">The Authorization Server sends a verification code to the e-mail address and returns an Error Response (<a href="#challenge-error-response" class="auto internal xref">Section 5.2.3</a>) including <code>"error": "authorization_required"</code>, <code>"auth_session"</code> and a custom error code indicating that an e-mail verification code must be entered.<a href="#appendix-A.4-2.3.1" class="pilcrow">¶</a></p>
+            <p id="appendix-A.4-2.3.1">The Authorization Server sends a verification code to the e-mail address and returns an Error Response (<a href="#challenge-error-response" class="auto internal xref">Section 5.2.3</a>) including <code>"error": "insufficient_authorization"</code>, <code>"auth_session"</code> and a custom property indicating that an e-mail verification code must be entered.<a href="#appendix-A.4-2.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.4-2.4">
             <p id="appendix-A.4-2.4.1">The Client presents a user experience guiding the user to copy the e-mail verification code to the Client. Once the e-mail verification code is entered, the Client sends an Authorization Challenge Request to the Authorization Challenge Endpoint, including the e-mail verification code as well as the <code>auth_session</code> parameter returned in the previous Error Response.<a href="#appendix-A.4-2.4.1" class="pilcrow">¶</a></p>
@@ -2365,7 +2372,7 @@ an authorization request and eventually obtain an authorization code.<a href="#s
             <p id="appendix-A.5-2.2.1">The Client sends the phone number in an Authorization Challenge Request (<a href="#challenge-request" class="auto internal xref">Section 5.1</a>) to the Authorization Challenge Endpoint (<a href="#authorization-challenge-endpoint" class="auto internal xref">Section 4.1</a>).<a href="#appendix-A.5-2.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.5-2.3">
-            <p id="appendix-A.5-2.3.1">The Authorization Server sends a confirmation code to the phone number and returns an Error Response (<a href="#challenge-error-response" class="auto internal xref">Section 5.2.3</a>) including <code>"error": "authorization_required"</code>, <code>"auth_session"</code> and a custom error code indicating that a SMS confirmation code must be entered.<a href="#appendix-A.5-2.3.1" class="pilcrow">¶</a></p>
+            <p id="appendix-A.5-2.3.1">The Authorization Server sends a confirmation code to the phone number and returns an Error Response (<a href="#challenge-error-response" class="auto internal xref">Section 5.2.3</a>) including <code>"error": "insufficient_authorization"</code>, <code>"auth_session"</code> and a custom property indicating that a SMS confirmation code must be entered.<a href="#appendix-A.5-2.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.5-2.4">
             <p id="appendix-A.5-2.4.1">The Client presents a user experience guiding the user to enter the SMS confirmation code. Once the SMS verification code is entered, the Client sends an Authorization Challenge Request to the Authorization Challenge Endpoint, including the confirmation code as well as the <code>auth_session</code> parameter returned in the previous Error Response.<a href="#appendix-A.5-2.4.1" class="pilcrow">¶</a></p>
@@ -2442,7 +2449,7 @@ an authorization request and eventually obtain an authorization code.<a href="#s
             <p id="appendix-A.7-2.3.1">The Client sends an Authorization Challenge Request (<a href="#challenge-request" class="auto internal xref">Section 5.1</a>) to the Authorization Challenge Endpoint (<a href="#authorization-challenge-endpoint" class="auto internal xref">Section 4.1</a>) including the <code>auth_session</code>, <code>acr_values</code> and <code>max_age</code> parameters.<a href="#appendix-A.7-2.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.7-2.4">
-            <p id="appendix-A.7-2.4.1">The Authorization Server verifies the <code>auth_session</code> and determines which authentication methods must be satisfied based on the <code>acr_values</code>, and responds with an Error Response (<a href="#challenge-error-response" class="auto internal xref">Section 5.2.3</a>) including <code>"error": "authorization_required"</code> and a custom error code indicating that an OTP must be entered.<a href="#appendix-A.7-2.4.1" class="pilcrow">¶</a></p>
+            <p id="appendix-A.7-2.4.1">The Authorization Server verifies the <code>auth_session</code> and determines which authentication methods must be satisfied based on the <code>acr_values</code>, and responds with an Error Response (<a href="#challenge-error-response" class="auto internal xref">Section 5.2.3</a>) including <code>"error": "insufficient_authorization"</code> and a custom property indicating that an OTP must be entered.<a href="#appendix-A.7-2.4.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.7-2.5">
             <p id="appendix-A.7-2.5.1">The Client prompts the user for an OTP, which the user obtains and enters.<a href="#appendix-A.7-2.5.1" class="pilcrow">¶</a></p>
@@ -2479,7 +2486,7 @@ an authorization request and eventually obtain an authorization code.<a href="#s
             <p id="appendix-A.8-2.2.1">The Client sends an Authorization Challenge Request (<a href="#challenge-request" class="auto internal xref">Section 5.1</a>) to the Authorization Challenge Endpoint (<a href="#authorization-challenge-endpoint" class="auto internal xref">Section 4.1</a>) including the username.<a href="#appendix-A.8-2.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.8-2.3">
-            <p id="appendix-A.8-2.3.1">The Authorization Server returns an Error Response (<a href="#challenge-error-response" class="auto internal xref">Section 5.2.3</a>) including <code>"error": "authorization_required"</code>, <code>"auth_session"</code>, and a custom error code indicating that an e-mail address must be collected.<a href="#appendix-A.8-2.3.1" class="pilcrow">¶</a></p>
+            <p id="appendix-A.8-2.3.1">The Authorization Server returns an Error Response (<a href="#challenge-error-response" class="auto internal xref">Section 5.2.3</a>) including <code>"error": "insufficient_authorization"</code>, <code>"auth_session"</code>, and a custom property indicating that an e-mail address must be collected.<a href="#appendix-A.8-2.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.8-2.4">
             <p id="appendix-A.8-2.4.1">The Client collects an e-mail address from the user.<a href="#appendix-A.8-2.4.1" class="pilcrow">¶</a></p>
@@ -2488,13 +2495,13 @@ an authorization request and eventually obtain an authorization code.<a href="#s
             <p id="appendix-A.8-2.5.1">The Client sends the e-mail address as part of a second Authorization Challenge Request to the Authorization Challenge Endpoint, along with the <code>auth_session</code> parameter.<a href="#appendix-A.8-2.5.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.8-2.6">
-            <p id="appendix-A.8-2.6.1">The Authorization Server sends a verification code to the e-mail address and returns an Error Response including <code>"error": "authorization_required"</code>, <code>"auth_session"</code> and a custom error code indicating that an e-mail verification code must be entered.<a href="#appendix-A.8-2.6.1" class="pilcrow">¶</a></p>
+            <p id="appendix-A.8-2.6.1">The Authorization Server sends a verification code to the e-mail address and returns an Error Response including <code>"error": "insufficient_authorization"</code>, <code>"auth_session"</code> and a custom property indicating that an e-mail verification code must be entered.<a href="#appendix-A.8-2.6.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.8-2.7">
             <p id="appendix-A.8-2.7.1">The Client presents a user experience guiding the user to copy the e-mail verification code to the Client. Once the e-mail verification code is entered, the Client sends an Authorization Challenge Request to the Authorization Challenge Endpoint, including the e-mail verification code as well as the <code>auth_session</code> parameter returned in the previous Error Response.<a href="#appendix-A.8-2.7.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.8-2.8">
-            <p id="appendix-A.8-2.8.1">The Authorization Server uses the <code>auth_session</code> to maintain the session context, and verifies the e-mail verification code. It determines that it also needs a phone number for account recovery purposes and returns an Error Response including <code>"error": "authorization_required"</code>, <code>"auth_session"</code> and a custom error code indicating that a phone number must be collected.<a href="#appendix-A.8-2.8.1" class="pilcrow">¶</a></p>
+            <p id="appendix-A.8-2.8.1">The Authorization Server uses the <code>auth_session</code> to maintain the session context, and verifies the e-mail verification code. It determines that it also needs a phone number for account recovery purposes and returns an Error Response including <code>"error": "insufficient_authorization"</code>, <code>"auth_session"</code> and a custom property indicating that a phone number must be collected.<a href="#appendix-A.8-2.8.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.8-2.9">
             <p id="appendix-A.8-2.9.1">The Client collects a mobile phone number from the user.<a href="#appendix-A.8-2.9.1" class="pilcrow">¶</a></p>
@@ -2503,7 +2510,7 @@ an authorization request and eventually obtain an authorization code.<a href="#s
             <p id="appendix-A.8-2.10.1">The Client sends the phone number in an Authorization Challenge Request to the Authorization Challenge Endpoint, along with the <code>auth_session</code>.<a href="#appendix-A.8-2.10.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.8-2.11">
-            <p id="appendix-A.8-2.11.1">The Authorization Server uses the <code>auth_session</code> parameter to link the previous requests. It sends a confirmation code to the phone number and returns an Error Response including <code>"error": "authorization_required"</code>, <code>"auth_session"</code> and a custom error code indicating that a SMS confirmation code must be entered.<a href="#appendix-A.8-2.11.1" class="pilcrow">¶</a></p>
+            <p id="appendix-A.8-2.11.1">The Authorization Server uses the <code>auth_session</code> parameter to link the previous requests. It sends a confirmation code to the phone number and returns an Error Response including <code>"error": "insufficient_authorization"</code>, <code>"auth_session"</code> and a custom property indicating that a SMS confirmation code must be entered.<a href="#appendix-A.8-2.11.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.8-2.12">
             <p id="appendix-A.8-2.12.1">The Client presents a user experience guiding the user to enter the SMS confirmation code. Once the SMS verification code is entered, the Client sends an Authorization Challenge Request to the Authorization Challenge Endpoint, including the confirmation code as well as the <code>auth_session</code> parameter returned in the previous Error Response.<a href="#appendix-A.8-2.12.1" class="pilcrow">¶</a></p>
@@ -2666,16 +2673,25 @@ Cache-Control: no-store
       <h2 id="name-document-history">
 <a href="#appendix-D" class="section-number selfRef">Appendix D. </a><a href="#name-document-history" class="section-name selfRef">Document History</a>
       </h2>
-<p id="appendix-D-1">-00<a href="#appendix-D-1" class="pilcrow">¶</a></p>
+<p id="appendix-D-1">-01<a href="#appendix-D-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-2.1">
-          <p id="appendix-D-2.1.1">Renamed <code>device_session</code> to <code>auth_session</code><a href="#appendix-D-2.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-2.1.1">Renamed <code>authorization_required</code> to <code>insufficient_authorization</code><a href="#appendix-D-2.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-D-2.2">
-          <p id="appendix-D-2.2.1">Added explicit method to indicate the client should restart the flow in a browser<a href="#appendix-D-2.2.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-2.2.1">Defined <code>insufficient_authorization</code> on the Authorization Challenge Endpoint<a href="#appendix-D-2.2.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-D-2.3">
-          <p id="appendix-D-2.3.1">Described how to use DPoP in conjunction with this spec<a href="#appendix-D-2.3.1" class="pilcrow">¶</a></p>
+      </ul>
+<p id="appendix-D-3">-00<a href="#appendix-D-3" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-D-4.1">
+          <p id="appendix-D-4.1.1">Renamed <code>device_session</code> to <code>auth_session</code><a href="#appendix-D-4.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-4.2">
+          <p id="appendix-D-4.2.1">Added explicit method to indicate the client should restart the flow in a browser<a href="#appendix-D-4.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-4.3">
+          <p id="appendix-D-4.3.1">Described how to use DPoP in conjunction with this spec<a href="#appendix-D-4.3.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>
