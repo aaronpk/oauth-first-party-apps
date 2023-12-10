@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-12-07T01:09:48.934164+00:00",
+  "timestamp": "2023-12-10T01:14:03.487526+00:00",
   "repo": "aaronpk/oauth-first-party-apps",
   "labels": [
     {
@@ -1088,9 +1088,24 @@
       "labels": [],
       "body": "There are a few places with text like: \r\n\r\n> The Authorization Server returns an Error Response ... including \"error\": \"authorization_required\", \"auth_session\", and a custom error code indicating that ...\r\n\r\nbut that `\"error\": \"authorization_required\"` is the error code so the text kinda contradicts itself. Doesn't it? Maybe I'm confused but I think (esp after looking at the example https://www.ietf.org/archive/id/draft-parecki-oauth-first-party-apps-00.html#appendix-B.2) it should just say something like \"including an `auth_session` and a custom error code indicating that ...\"\r\n\r\nAlso `authorization_required` seems to be defined as a [token endpoint error ](https://www.ietf.org/archive/id/draft-parecki-oauth-first-party-apps-00.html#name-token-endpoint-error-respon) while most/all instances of that kind of text are in response to an Authorization Challenge Request.",
       "createdAt": "2023-11-03T22:27:21Z",
-      "updatedAt": "2023-11-03T22:27:21Z",
+      "updatedAt": "2023-12-08T18:44:41Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "body": "Thanks, we've addressed the two points here.\r\n\r\nThat should have been \"custom property\" instead of \"custom error code\".\r\n\r\nWe've renamed `authorization_required` to `insufficient_authorization` and defined it on both endpoints. Can you let me know if this clears it up?",
+          "createdAt": "2023-12-08T16:29:53Z",
+          "updatedAt": "2023-12-08T16:29:53Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "NONE",
+          "body": "> Can you let me know if this clears it up?\r\n\r\nI think so, yeah. ",
+          "createdAt": "2023-12-08T18:44:40Z",
+          "updatedAt": "2023-12-08T18:44:40Z"
+        }
+      ]
     },
     {
       "number": 46,
@@ -1104,7 +1119,7 @@
       "labels": [],
       "body": "PAR https://www.rfc-editor.org/rfc/rfc9126.html#section-4 in conjunction with JAR https://www.rfc-editor.org/rfc/rfc9101.html#section-6.3 and https://www.rfc-editor.org/rfc/rfc9101.html#section-5-9 defines things such that all the authz request parameters have to be in the original PAR request referenced by the request_uri. The AS only uses request_uri and client_id parameters from the request to the authorization endpoint. \r\n\r\nSo on a [Redirect Response](https://www.ietf.org/archive/id/draft-parecki-oauth-first-party-apps-00.html#name-redirect-response) a client could start an authorization code flow with the request_uri received but PKCE parameters added at that point will be ignored by the AS.\r\n\r\nAll of which is a kind of awkward way of saying that https://www.ietf.org/archive/id/draft-parecki-oauth-first-party-apps-00.html#name-redirect-response doesn't quite work as written.\r\n\r\n\r\n\r\n\r\n",
       "createdAt": "2023-11-06T22:02:27Z",
-      "updatedAt": "2023-11-07T17:40:23Z",
+      "updatedAt": "2023-12-08T17:06:44Z",
       "closedAt": null,
       "comments": [
         {
@@ -1120,6 +1135,20 @@
           "body": "> I think this is why we originally had a note to possibly add the PKCE code challenge to the initial request, even though it wouldn't do anything unless bounced out to the web. But it seems weird to require it on every request when most of them will not result in a redirect response.\r\n\r\nYeah, I had a similar thought but agree that it's weird. Especially since the redirect response will probably be the significantly more uncommon case. \r\n\r\n> \r\n> I was trying to take a shortcut here but maybe the answer is to just return an error message and have the client start a new flow with whatever it wants (PAR, plain auth code) itself. We'd just need to add a new parameter to the request to carry the auth_session.\r\n\r\nProbably but need to be careful about passing auth_session in the front channel where it's much more prone to leakage. That could be problematic if an auth_session value could be used by another party at  the authz challenge endpoint to take over the session. \r\n\r\n",
           "createdAt": "2023-11-07T17:40:22Z",
           "updatedAt": "2023-11-07T17:40:22Z"
+        },
+        {
+          "author": "gffletch",
+          "authorAssociation": "COLLABORATOR",
+          "body": "On the other hand, is implementing PKCE in the client sufficiently difficult that it's worth not passing it to the challenge endpoint.",
+          "createdAt": "2023-12-08T16:30:28Z",
+          "updatedAt": "2023-12-08T16:30:28Z"
+        },
+        {
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "body": "We discussed this today and came up with the following solution:\r\n\r\n* Define a new error code in 5.2.3 `redirect_to_web`\r\n* Add `request_uri` parameter to error response section (like PAR)\r\n* Normative: Only return `request_uri` if the original authorization request contained PKCE code challenge\r\n* Security Consideration: If you return auth_session and redirect_to_web then you SHOULD support PAR",
+          "createdAt": "2023-12-08T17:06:42Z",
+          "updatedAt": "2023-12-08T17:06:42Z"
         }
       ]
     },
@@ -1245,11 +1274,13 @@
       "state": "OPEN",
       "author": "aaronpk",
       "authorAssociation": "OWNER",
-      "assignees": [],
+      "assignees": [
+        "aaronpk"
+      ],
       "labels": [],
       "body": "See #51",
       "createdAt": "2023-11-17T16:45:56Z",
-      "updatedAt": "2023-11-17T16:45:56Z",
+      "updatedAt": "2023-12-08T14:40:09Z",
       "closedAt": null,
       "comments": []
     }
