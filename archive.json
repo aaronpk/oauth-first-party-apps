@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-12-14T01:08:57.959506+00:00",
+  "timestamp": "2023-12-17T01:14:06.936047+00:00",
   "repo": "aaronpk/oauth-first-party-apps",
   "labels": [
     {
@@ -57,7 +57,7 @@
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/1",
       "state": "CLOSED",
       "author": "PieterKas",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Do we need a new name for the challenge endpoint?",
@@ -81,7 +81,7 @@
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/2",
       "state": "CLOSED",
       "author": "PieterKas",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "What profiling would we need to make to ensure that the new endpoint accepts any parameter the authorization end-point. The goal is to allow layering and use of other OAuth capabilities. Do we borrow from PAR?",
@@ -105,7 +105,7 @@
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/3",
       "state": "CLOSED",
       "author": "PieterKas",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Would we need a second profile to use this with OpenID Connect? How do we expect an AS that supports both OAuth and OIDC to implement this endpoint.\r\n\r\nAaron - make sure this is possible without breaking anything.\r\n\r\nGeorge - provide some guidance on what behaviour we want. Get AS behaviour consistent to simplify native implementations (no AS specific code needed). One idea - use examples from OIDC in a non-normative way.\r\n\r\nOmniAuth - maintains a list of providers their library supports. \r\n\r\nAaron- 2 classes of implementors. (1) proprietary (2) those using OIDC ",
@@ -129,7 +129,7 @@
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/5",
       "state": "CLOSED",
       "author": "PieterKas",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "When falling back to the web give a PAR-like response",
@@ -153,7 +153,7 @@
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/6",
       "state": "CLOSED",
       "author": "PieterKas",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
@@ -177,7 +177,7 @@
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/7",
       "state": "CLOSED",
       "author": "PieterKas",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "If client authentication is used, don't ship client secrets in the binary. e.g. use dynamic client registration instead. Look at what PAR and ensure it can be used here. ",
@@ -208,7 +208,7 @@
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/8",
       "state": "CLOSED",
       "author": "PieterKas",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [
         "PieterKas"
       ],
@@ -300,7 +300,7 @@
       "comments": [
         {
           "author": "PieterKas",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "Do we need the same for DPoP if you need Authorization Code binding capabilities (may need that even if you don't go to web).",
           "createdAt": "2023-05-19T15:12:50Z",
           "updatedAt": "2023-05-19T15:12:50Z"
@@ -314,7 +314,7 @@
         },
         {
           "author": "PieterKas",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "Aaron and I discussed this and concluded it may be a good topic for the IETF 117 meeting.",
           "createdAt": "2023-06-30T15:25:19Z",
           "updatedAt": "2023-06-30T15:25:28Z"
@@ -420,7 +420,7 @@
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/15",
       "state": "CLOSED",
       "author": "PieterKas",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [
         "PieterKas"
       ],
@@ -465,7 +465,7 @@
         },
         {
           "author": "PieterKas",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "Aaron's suggestion - describe how it should be done, and then point out this is compatible with PAR.",
           "createdAt": "2023-07-07T15:24:09Z",
           "updatedAt": "2023-07-07T15:24:09Z"
@@ -510,7 +510,7 @@
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/20",
       "state": "CLOSED",
       "author": "PieterKas",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Add user scenarios (from original draft)",
@@ -520,7 +520,7 @@
       "comments": [
         {
           "author": "PieterKas",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "Dube of #15 ",
           "createdAt": "2023-06-30T15:10:33Z",
           "updatedAt": "2023-06-30T15:10:33Z"
@@ -552,7 +552,7 @@
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/22",
       "state": "CLOSED",
       "author": "PieterKas",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "TODO - section - short introduction before publications",
@@ -613,7 +613,7 @@
         },
         {
           "author": "PieterKas",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "DPoP Section 4.2 defines the extension mechanism.",
           "createdAt": "2023-07-07T15:31:42Z",
           "updatedAt": "2023-07-07T15:31:42Z"
@@ -685,7 +685,7 @@
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/29",
       "state": "CLOSED",
       "author": "PieterKas",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [
         "aaronpk"
       ],
@@ -732,7 +732,7 @@
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/30",
       "state": "CLOSED",
       "author": "PieterKas",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [
         "PieterKas"
       ],
@@ -765,7 +765,7 @@
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/31",
       "state": "CLOSED",
       "author": "PieterKas",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [
         "gffletch"
       ],
@@ -791,7 +791,7 @@
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/32",
       "state": "CLOSED",
       "author": "PieterKas",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [
         "aaronpk"
       ],
@@ -809,7 +809,7 @@
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/33",
       "state": "CLOSED",
       "author": "PieterKas",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [
         "gffletch"
       ],
@@ -828,7 +828,7 @@
         },
         {
           "author": "PieterKas",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "@gffletch to update First-Party Applications section",
           "createdAt": "2023-09-08T15:15:10Z",
           "updatedAt": "2023-09-08T15:15:10Z"
@@ -886,7 +886,7 @@
       "comments": [
         {
           "author": "PieterKas",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "Can device_session effectively provide this capability? Should we require DPoP for all step-up cases (the public key becomes the indicator).\r\n\r\nIf we use device_session, what are the security considerations?\r\n\r\nDecisions:\r\n\r\nWe will use device_session and update security considerations to discuss how to sender constrain the device_session parameter.",
           "createdAt": "2023-10-06T15:53:06Z",
           "updatedAt": "2023-10-06T15:57:15Z"
@@ -900,14 +900,14 @@
         },
         {
           "author": "PieterKas",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "We are trying to compensate for the lack of session management (no cookies). We want something that behaves like a browser cookie.\r\n\r\nEnumerating use cases:\r\n\r\n1. You have a token, but need to step up\r\n2. Token expired and need a new one.\r\n3. Stable identifier that does not las beyond the authorization code being issued.\r\n\r\nCan this be solved by a Refresh token or DPoP instead? \r\n\r\nDecision: Rename device_session to auth_session",
           "createdAt": "2023-10-13T15:30:15Z",
           "updatedAt": "2023-10-13T15:30:15Z"
         },
         {
           "author": "PieterKas",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "Add guidance to store it even after the auth code expired\r\n\r\nExtend the token endpoint response to include the auth_session as well.\r\n\r\nSecurity considerations on protecting the auth_session parameter.",
           "createdAt": "2023-10-20T15:35:57Z",
           "updatedAt": "2023-10-20T15:35:57Z"
@@ -961,7 +961,7 @@
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/37",
       "state": "OPEN",
       "author": "PieterKas",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "First item to add is guidance on limited input devices.",
@@ -971,7 +971,7 @@
       "comments": [
         {
           "author": "PieterKas",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "@gffletch I recall we discussed this, but unable to recall the details of the concern on what guidance we had in mind.",
           "createdAt": "2023-10-20T15:26:00Z",
           "updatedAt": "2023-10-20T15:26:00Z"
@@ -1160,13 +1160,23 @@
       "state": "OPEN",
       "author": "bc-pi",
       "authorAssociation": "NONE",
-      "assignees": [],
+      "assignees": [
+        "PieterKas"
+      ],
       "labels": [],
       "body": "Because the client interacts directly with the Authorization Challenge Endpoint the authorization code binding can and probably should be done via the DPoP proof rather than the dpop_jkt parameter. This is similar to what [DPoP says to do w/ PAR](https://www.rfc-editor.org/rfc/rfc9449.html#name-dpop-with-pushed-authorizat) but here you could probably get away with just using the DPoP proof. ",
       "createdAt": "2023-11-06T22:11:46Z",
-      "updatedAt": "2023-11-06T22:11:46Z",
+      "updatedAt": "2023-12-15T16:26:42Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "body": "That makes sense, we should do it the same way that's recommended for PAR.",
+          "createdAt": "2023-12-15T16:25:15Z",
+          "updatedAt": "2023-12-15T16:25:15Z"
+        }
+      ]
     },
     {
       "number": 48,
@@ -1176,28 +1186,38 @@
       "state": "OPEN",
       "author": "bc-pi",
       "authorAssociation": "NONE",
-      "assignees": [],
+      "assignees": [
+        "PieterKas"
+      ],
       "labels": [],
       "body": "I do love \"ash\" as a claim name but (as DPoP co-author and a DE on the JWT Claims registry) I'd strongly suggest that the binding be done the other way around. Basically just say that the AS binds the auth_session value to the the public key from the DPoP proof and checks the binding whenever the client sends the auth_session. Binding that way is simpler (from the spec perspective anyway) and provides more protections. It's also how most of the binding in DPoP works (\"ath\" is kind of an outlier and provides somewhat questionable value). \r\n\r\n\r\nhttps://www.ietf.org/archive/id/draft-parecki-oauth-first-party-apps-00.html#name-auth-session-dpop-binding\r\nhttps://www.ietf.org/archive/id/draft-parecki-oauth-first-party-apps-00.html#name-json-web-token-claims-regis",
       "createdAt": "2023-11-06T22:31:14Z",
-      "updatedAt": "2023-11-06T22:31:14Z",
+      "updatedAt": "2023-12-15T16:44:52Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Suggestion: also require a unique DPoP key per session to avoid risks around session binding.",
+          "createdAt": "2023-12-15T16:43:59Z",
+          "updatedAt": "2023-12-15T16:43:59Z"
+        }
+      ]
     },
     {
       "number": 49,
       "id": "I_kwDOJbxyLc52B3ey",
       "title": "no charset w/ JSON media type ",
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/49",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "bc-pi",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "charset shouldn't be in the content-type of this example: \r\nhttps://www.ietf.org/archive/id/draft-parecki-oauth-first-party-apps-00.html#section-5.2.1-3",
       "createdAt": "2023-11-06T22:39:35Z",
-      "updatedAt": "2023-11-06T22:39:35Z",
-      "closedAt": null,
+      "updatedAt": "2023-12-15T16:46:32Z",
+      "closedAt": "2023-12-15T16:46:32Z",
       "comments": []
     },
     {
@@ -1212,9 +1232,17 @@
       "labels": [],
       "body": "[I tried to articulate this at IETF 117 but maybe didn't do a good job so want to try again here \"on record\"]\r\n\r\nIt seems quite reasonable to have the initial Authorization Challenge Request be `application/x-www-form-urlencoded` as it is consistent with OAuth 2.x in general. But I worry that it'll be too limiting for the in-between follow-up requests to the challenge endpoint. That part is effectively facilitating an AS defined authn/z API (which I do think is appropriate rather than attempting to define something here) but I suspect folks will really not want the requests on such an API to have to be `application/x-www-form-urlencoded`. And probably/maybe will want more flexibility on the content of the JSON responses too. ",
       "createdAt": "2023-11-06T23:00:04Z",
-      "updatedAt": "2023-11-06T23:00:04Z",
+      "updatedAt": "2023-12-15T16:54:31Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "body": "We agree, Section 5.1 should mention that future requests to the endpoint are defined by the authorization server, not by this specification, and may be in formats other than `application/x-www-form-urlencoded`",
+          "createdAt": "2023-12-15T16:54:30Z",
+          "updatedAt": "2023-12-15T16:54:30Z"
+        }
+      ]
     },
     {
       "number": 51,
@@ -1293,7 +1321,7 @@
       "url": "https://github.com/aaronpk/oauth-first-party-apps/pull/4",
       "state": "MERGED",
       "author": "PieterKas",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Added a figure outlining the back and forth between the native client and the authorization server.",
@@ -1321,7 +1349,7 @@
       "url": "https://github.com/aaronpk/oauth-first-party-apps/pull/18",
       "state": "MERGED",
       "author": "PieterKas",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Described how to use DPoP as part of the security considerations.",
@@ -1505,7 +1533,7 @@
       "url": "https://github.com/aaronpk/oauth-first-party-apps/pull/26",
       "state": "MERGED",
       "author": "PieterKas",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Included use cases for OTP, e-mail, SMS confirmation, step-up authentication and registration.\r\n\r\nAlso see #14 and #15",
@@ -1679,7 +1707,7 @@
             "abbreviatedOid": "b6c4743"
           },
           "author": "PieterKas",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2023-09-08T15:12:24Z",
@@ -1702,7 +1730,7 @@
       "url": "https://github.com/aaronpk/oauth-first-party-apps/pull/38",
       "state": "MERGED",
       "author": "PieterKas",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Added option for redirecting to the web.\r\n\r\nNotes: \r\n\r\n1. Re-using the PAR response - feels strange to have the \"request_uri\" parameter as the redirect URI - is that OK?\r\n2. Added and example of redirecting to the web. Not entirely sure how control gets passed back to the \"native\" app/client or how much detail we should provide.",
