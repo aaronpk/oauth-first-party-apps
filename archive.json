@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-01-02T01:07:21.200713+00:00",
+  "timestamp": "2024-01-04T01:09:13.571557+00:00",
   "repo": "aaronpk/oauth-first-party-apps",
   "labels": [
     {
@@ -1309,6 +1309,22 @@
       "body": "See #51",
       "createdAt": "2023-11-17T16:45:56Z",
       "updatedAt": "2023-12-08T14:40:09Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 55,
+      "id": "I_kwDOJbxyLc57DLS_",
+      "title": "Support authorization challenge endpoint on a different domain than the AS ?",
+      "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/55",
+      "state": "OPEN",
+      "author": "gffletch",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Like other endpoints, there is no current requirement that the `authorization_challenge_endpoint` is on the same domain as the `authorization_endpoint` or `token_endpoint`. Given that the sequence is really an authentication sequence, is it ok for the flow to  occur at a different endpoint (like an Authorization Server redirecting the browser to a different IDP for authentication). Do we need to support such a concept?",
+      "createdAt": "2024-01-03T17:53:37Z",
+      "updatedAt": "2024-01-03T17:53:37Z",
       "closedAt": null,
       "comments": []
     }
