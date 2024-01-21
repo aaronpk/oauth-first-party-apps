@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-01-18T01:10:26.274591+00:00",
+  "timestamp": "2024-01-21T01:16:01.231659+00:00",
   "repo": "aaronpk/oauth-first-party-apps",
   "labels": [
     {
@@ -962,11 +962,13 @@
       "state": "OPEN",
       "author": "PieterKas",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
+      "assignees": [
+        "gffletch"
+      ],
       "labels": [],
       "body": "First item to add is guidance on limited input devices.",
       "createdAt": "2023-09-22T15:22:42Z",
-      "updatedAt": "2023-10-27T15:24:54Z",
+      "updatedAt": "2024-01-19T16:45:01Z",
       "closedAt": null,
       "comments": [
         {
@@ -1081,15 +1083,15 @@
       "id": "I_kwDOJbxyLc511rxI",
       "title": "error code vs error code ",
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/45",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "bc-pi",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "There are a few places with text like: \r\n\r\n> The Authorization Server returns an Error Response ... including \"error\": \"authorization_required\", \"auth_session\", and a custom error code indicating that ...\r\n\r\nbut that `\"error\": \"authorization_required\"` is the error code so the text kinda contradicts itself. Doesn't it? Maybe I'm confused but I think (esp after looking at the example https://www.ietf.org/archive/id/draft-parecki-oauth-first-party-apps-00.html#appendix-B.2) it should just say something like \"including an `auth_session` and a custom error code indicating that ...\"\r\n\r\nAlso `authorization_required` seems to be defined as a [token endpoint error ](https://www.ietf.org/archive/id/draft-parecki-oauth-first-party-apps-00.html#name-token-endpoint-error-respon) while most/all instances of that kind of text are in response to an Authorization Challenge Request.",
       "createdAt": "2023-11-03T22:27:21Z",
-      "updatedAt": "2023-12-08T18:44:41Z",
-      "closedAt": null,
+      "updatedAt": "2024-01-19T16:44:38Z",
+      "closedAt": "2024-01-19T16:44:38Z",
       "comments": [
         {
           "author": "aaronpk",
@@ -1336,13 +1338,30 @@
       "state": "OPEN",
       "author": "PieterKas",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
+      "assignees": [
+        "PieterKas"
+      ],
       "labels": [],
       "body": "Should we prohibit the auth_session from moving off-device to avoid resumption of the session on another device (avoid risks of session theft or session take-over).",
       "createdAt": "2024-01-05T16:36:26Z",
-      "updatedAt": "2024-01-05T16:36:26Z",
+      "updatedAt": "2024-01-19T16:47:04Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "body": "auth_session is expected to be device bound",
+          "createdAt": "2024-01-19T16:46:40Z",
+          "updatedAt": "2024-01-19T16:46:40Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Discussion \r\n\r\n1. Add statement that authorization sessions are device bounds.\r\n2. Make it Normative in spec.",
+          "createdAt": "2024-01-19T16:46:49Z",
+          "updatedAt": "2024-01-19T16:46:49Z"
+        }
+      ]
     }
   ],
   "pulls": [
