@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-01T01:09:04.928736+00:00",
+  "timestamp": "2024-02-04T01:09:56.392618+00:00",
   "repo": "aaronpk/oauth-first-party-apps",
   "labels": [
     {
@@ -1251,7 +1251,7 @@
       "id": "I_kwDOJbxyLc53LmHe",
       "title": "Send email to list about Device Flow / PAR / First Party apps commonality",
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/51",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "aaronpk",
       "authorAssociation": "OWNER",
       "assignees": [
@@ -1260,9 +1260,17 @@
       "labels": [],
       "body": "Send email to list about defining a new \"OAuth POST Request Framework\" that First Party Apps would extend. The framework defines:\r\n\r\n* `request_type`=`{extension-defined}`\r\n* OAuth input parameters (copy language from PAR)\r\n* Client authentication, etc\r\n* Response is defined by extensions\r\n\r\nRegistry of:\r\n* `request_type`\r\n* Input parameters\r\n* Response body parameters\r\n\r\nWhy not extend PAR?\r\n* PAR explicitly defines the response body, we need to change that.\r\n* PAR also defines using the `request_uri` at the authorize endpoint, we don't need that.",
       "createdAt": "2023-11-17T16:44:14Z",
-      "updatedAt": "2023-11-17T16:47:07Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-02-02T16:56:55Z",
+      "closedAt": "2024-02-02T16:56:54Z",
+      "comments": [
+        {
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "body": "Sent: https://mailarchive.ietf.org/arch/msg/oauth/Q8O7ITOyAsx_wlgVctsltcheaNM/",
+          "createdAt": "2024-02-02T16:56:54Z",
+          "updatedAt": "2024-02-02T16:56:54Z"
+        }
+      ]
     },
     {
       "number": 52,
@@ -1978,6 +1986,32 @@
       "mergeCommit": {
         "oid": "30f9dde18c19595a1a9aa97bb11ae48e404cb109"
       },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 57,
+      "id": "PR_kwDOJbxyLc5l2pn_",
+      "title": "Require device binding for auth sessions",
+      "url": "https://github.com/aaronpk/oauth-first-party-apps/pull/57",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Issue #56 \r\n\r\nAdd normative requirement for device binding of auth session and require the authorization server to enforce it.",
+      "createdAt": "2024-02-02T16:54:32Z",
+      "updatedAt": "2024-02-02T16:54:32Z",
+      "baseRepository": "aaronpk/oauth-first-party-apps",
+      "baseRefName": "main",
+      "baseRefOid": "a99fef02bbe19d9be5991e9f9f2dfc366d8a51b4",
+      "headRepository": "aaronpk/oauth-first-party-apps",
+      "headRefName": "PieterKas-patch-1",
+      "headRefOid": "a95bf369cf4f31f3c1ab00a273a70b8594dcbebf",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
       "comments": [],
       "reviews": []
     }
