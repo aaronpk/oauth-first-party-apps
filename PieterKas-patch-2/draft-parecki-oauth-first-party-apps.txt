@@ -1523,6 +1523,11 @@ Appendix C.  Design Goals
 
 Appendix D.  Document History
 
+   -latest
+
+   *  Removed ash claim to simplify DPoP binding with auth_session
+      value.
+
    -01
 
    *  Renamed authorization_required to insufficient_authorization
