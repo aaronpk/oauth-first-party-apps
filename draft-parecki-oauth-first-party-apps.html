@@ -2003,16 +2003,8 @@ an authorization request and eventually obtain an authorization code.<a href="#s
           <h4 id="name-auth-session-dpop-binding">
 <a href="#section-9.6.1" class="section-number selfRef">9.6.1. </a><a href="#name-auth-session-dpop-binding" class="section-name selfRef">Auth Session DPoP Binding</a>
           </h4>
-<p id="section-9.6.1-1">If the client and authorization server are using DPoP binding of access tokens and/or authorization codes, then they <span class="bcp14">SHOULD</span> also require DPoP binding of the <code>auth_session</code> value as well.<a href="#section-9.6.1-1" class="pilcrow">¶</a></p>
+<p id="section-9.6.1-1">If the client and authorization server are using DPoP binding of access tokens and/or authorization codes, then the <code>auth_session</code> value <span class="bcp14">SHOULD</span> be protected by the DPoP binding as well. The authorization server <span class="bcp14">SHOULD</span> bind the <code>auth_session</code> value to the DPoP public key. If the authorization server is binding the <code>auth_session</code> value to the DPoP public key, it <span class="bcp14">MUST</span> check that the same DPoP public key is being used and <span class="bcp14">MUST</span> verify the DPoP proof to ensure the client controls the corresponding private key whenever the client includes the <code>auth_session</code> in an Authorization Challenge Request as described in <a href="#challenge-request" class="auto internal xref">Section 5.1</a>.<a href="#section-9.6.1-1" class="pilcrow">¶</a></p>
 <p id="section-9.6.1-2">DPoP binding of the <code>auth_session</code> value ensures that the context referenced by the <code>auth_session</code> cannot be stolen and reused by another device.<a href="#section-9.6.1-2" class="pilcrow">¶</a></p>
-<p id="section-9.6.1-3">This specification defines an additional claim in the DPoP Proof JWT Syntax defined in Section 4.2 of <span>[<a href="#RFC9449" class="cite xref">RFC9449</a>]</span>:<a href="#section-9.6.1-3" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlParallel" id="section-9.6.1-4">
-            <dt id="section-9.6.1-4.1">"ash":</dt>
-            <dd style="margin-left: 1.5em" id="section-9.6.1-4.2">
-              <p id="section-9.6.1-4.2.1">The hash of the <code>auth_session</code>. The value <span class="bcp14">MUST</span> be the result of a base64url encoding (as defined in Section 2 of <span>[<a href="#RFC7515" class="cite xref">RFC7515</a>]</span>) the SHA-256 <span>[<a href="#SHS" class="cite xref">SHS</a>]</span> hash of the ASCII encoding of the <code>auth_session</code> value.<a href="#section-9.6.1-4.2.1" class="pilcrow">¶</a></p>
-</dd>
-          <dd class="break"></dd>
-</dl>
 </section>
 </div>
 <div id="auth-session-lifetime">
@@ -2115,11 +2107,6 @@ an authorization request and eventually obtain an authorization code.<a href="#s
 <a href="#section-10.3" class="section-number selfRef">10.3. </a><a href="#name-json-web-token-claims-regis" class="section-name selfRef">JSON Web Token Claims Registration</a>
         </h3>
 <p id="section-10.3-1">IANA has (TBD) registered the following Claims in the "JSON Web Token Claims" registry <span>[<a href="#IANA.JWT" class="cite xref">IANA.JWT</a>]</span> established by <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span>.<a href="#section-10.3-1" class="pilcrow">¶</a></p>
-<p id="section-10.3-2"><strong>Auth Session Hash</strong><a href="#section-10.3-2" class="pilcrow">¶</a></p>
-<p id="section-10.3-3"><strong>Claim Name</strong>: <code>ash</code><a href="#section-10.3-3" class="pilcrow">¶</a></p>
-<p id="section-10.3-4"><strong>Claim Description</strong>: The base64url-encoded SHA-256 hash of the ASCII encoding of the <code>auth_session</code> value<a href="#section-10.3-4" class="pilcrow">¶</a></p>
-<p id="section-10.3-5"><strong>Change Controller</strong>: IETF<a href="#section-10.3-5" class="pilcrow">¶</a></p>
-<p id="section-10.3-6"><strong>Reference</strong>: Section 9.6.1 of this specification<a href="#section-10.3-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -2674,25 +2661,31 @@ Cache-Control: no-store
       <h2 id="name-document-history">
 <a href="#appendix-D" class="section-number selfRef">Appendix D. </a><a href="#name-document-history" class="section-name selfRef">Document History</a>
       </h2>
-<p id="appendix-D-1">-01<a href="#appendix-D-1" class="pilcrow">¶</a></p>
+<p id="appendix-D-1">-latest<a href="#appendix-D-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-2.1">
-          <p id="appendix-D-2.1.1">Renamed <code>authorization_required</code> to <code>insufficient_authorization</code><a href="#appendix-D-2.1.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-D-2.2">
-          <p id="appendix-D-2.2.1">Defined <code>insufficient_authorization</code> on the Authorization Challenge Endpoint<a href="#appendix-D-2.2.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-2.1.1">Removed ash claim to simplify DPoP binding with auth_session value.<a href="#appendix-D-2.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-D-3">-00<a href="#appendix-D-3" class="pilcrow">¶</a></p>
+<p id="appendix-D-3">-01<a href="#appendix-D-3" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-4.1">
-          <p id="appendix-D-4.1.1">Renamed <code>device_session</code> to <code>auth_session</code><a href="#appendix-D-4.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-4.1.1">Renamed <code>authorization_required</code> to <code>insufficient_authorization</code><a href="#appendix-D-4.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-D-4.2">
-          <p id="appendix-D-4.2.1">Added explicit method to indicate the client should restart the flow in a browser<a href="#appendix-D-4.2.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-4.2.1">Defined <code>insufficient_authorization</code> on the Authorization Challenge Endpoint<a href="#appendix-D-4.2.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-D-4.3">
-          <p id="appendix-D-4.3.1">Described how to use DPoP in conjunction with this spec<a href="#appendix-D-4.3.1" class="pilcrow">¶</a></p>
+      </ul>
+<p id="appendix-D-5">-00<a href="#appendix-D-5" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-D-6.1">
+          <p id="appendix-D-6.1.1">Renamed <code>device_session</code> to <code>auth_session</code><a href="#appendix-D-6.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-6.2">
+          <p id="appendix-D-6.2.1">Added explicit method to indicate the client should restart the flow in a browser<a href="#appendix-D-6.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-6.3">
+          <p id="appendix-D-6.3.1">Described how to use DPoP in conjunction with this spec<a href="#appendix-D-6.3.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>
