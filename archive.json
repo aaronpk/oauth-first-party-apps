@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-18T01:09:03.877635+00:00",
+  "timestamp": "2024-02-20T01:04:04.180380+00:00",
   "repo": "aaronpk/oauth-first-party-apps",
   "labels": [
     {
@@ -1168,7 +1168,7 @@
       "labels": [],
       "body": "Because the client interacts directly with the Authorization Challenge Endpoint the authorization code binding can and probably should be done via the DPoP proof rather than the dpop_jkt parameter. This is similar to what [DPoP says to do w/ PAR](https://www.rfc-editor.org/rfc/rfc9449.html#name-dpop-with-pushed-authorizat) but here you could probably get away with just using the DPoP proof. ",
       "createdAt": "2023-11-06T22:11:46Z",
-      "updatedAt": "2023-12-15T16:26:42Z",
+      "updatedAt": "2024-02-19T11:41:32Z",
       "closedAt": null,
       "comments": [
         {
@@ -1177,6 +1177,13 @@
           "body": "That makes sense, we should do it the same way that's recommended for PAR.",
           "createdAt": "2023-12-15T16:25:15Z",
           "updatedAt": "2023-12-15T16:25:15Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@bc-pi I was reading the rationale for requiring both the dpop_jkt parameter and adding the DPoP header to the PAR request: https://www.rfc-editor.org/rfc/rfc9449.html#name-dpop-with-pushed-authorizat\r\n\r\nIt looks like the goal was to keep client libraries simple so that they don't need to distinguish between PAR or front channel flows. If we remove dpop_jkt, do we make it harder for implementors of client libraries? \r\n\r\nGiven that this is a new end-point (Authorization Challenge Endpoint) and a native client, we may not need to keep support for both and we can be more prescriptive, but I wonder if we might cause confusion for implementors as we have established dpop_jkt as the least common denominator (the reason for allowing it to be used with PAR end points). Perhaps we should have similar guidance to DPoP on supporting both dpop_jkt and allowing the DPoP Header to be added to the Authorization Challenge Response?\r\n\r\nI guess the question is really if we settle dpop_jkt as a the least common denominator in all DPoP impementations?",
+          "createdAt": "2024-02-19T11:41:31Z",
+          "updatedAt": "2024-02-19T11:41:31Z"
         }
       ]
     },
@@ -2008,6 +2015,58 @@
       "headRepository": "aaronpk/oauth-first-party-apps",
       "headRefName": "PieterKas-patch-1",
       "headRefOid": "a95bf369cf4f31f3c1ab00a273a70b8594dcbebf",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 58,
+      "id": "PR_kwDOJbxyLc5nR-C4",
+      "title": "Removed need for new ash claim.",
+      "url": "https://github.com/aaronpk/oauth-first-party-apps/pull/58",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Removed the need for the new ash claim by inverting the way in which binding works by putting responsibility for maintaining the binding on the authorization server (see issue #48).",
+      "createdAt": "2024-02-19T12:11:35Z",
+      "updatedAt": "2024-02-19T14:59:31Z",
+      "baseRepository": "aaronpk/oauth-first-party-apps",
+      "baseRefName": "main",
+      "baseRefOid": "a99fef02bbe19d9be5991e9f9f2dfc366d8a51b4",
+      "headRepository": "aaronpk/oauth-first-party-apps",
+      "headRefName": "PieterKas-patch-2",
+      "headRefOid": "b0e979888f8465f1e19cb52c08ea8da92fd79ce5",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 59,
+      "id": "PR_kwDOJbxyLc5nTHs6",
+      "title": "Update section on authorization code binding",
+      "url": "https://github.com/aaronpk/oauth-first-party-apps/pull/59",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Proposed update based on feedback in issue #47 \r\n\r\nOpen question for reviewers (and @bc_pi) whether we should allow both or only a single method, and if a single methods should we opt for the least common denominator  (dpop_jkt) or an authorization challenge endpoint specific one?",
+      "createdAt": "2024-02-19T14:57:24Z",
+      "updatedAt": "2024-02-19T14:57:24Z",
+      "baseRepository": "aaronpk/oauth-first-party-apps",
+      "baseRefName": "main",
+      "baseRefOid": "a99fef02bbe19d9be5991e9f9f2dfc366d8a51b4",
+      "headRepository": "aaronpk/oauth-first-party-apps",
+      "headRefName": "PieterKas-patch-3",
+      "headRefOid": "8a64ebf95d68cc0369545ae92329dd605b062ce3",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
