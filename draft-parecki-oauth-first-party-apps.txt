@@ -5,10 +5,10 @@
 Web Authorization Protocol                                    A. Parecki
 Internet-Draft                                                      Okta
 Intended status: Standards Track                             G. Fletcher
-Expires: 5 August 2024                             Capital One Financial
+Expires: 23 August 2024                            Capital One Financial
                                                             P. Kasselman
                                                                Microsoft
-                                                         2 February 2024
+                                                        20 February 2024
 
 
                  OAuth 2.0 for First-Party Applications
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 August 2024.
+   This Internet-Draft will expire on 23 August 2024.
 
 Copyright Notice
 
@@ -559,9 +559,10 @@ Table of Contents
    server.
 
    The auth_session value is completely opaque to the client, and as
-   such the AS MUST adequately protect the value from inspection by the
-   client, for example by using a random string or using a JWE if the AS
-   is not maintaining state on the backend.
+   such the authorization server MUST adequately protect the value from
+   inspection by the client, for example by using a random string or
+   using a JWE if the authorization server is not maintaining state on
+   the backend.
 
    If the client has an auth_session, the client MUST include it in
    future requests to the authorization challenge endpoint.  The client
@@ -572,6 +573,11 @@ Table of Contents
    auth_session value.  Clients MUST NOT assume that auth_session values
    are static, and MUST be prepared to update the stored auth_session
    value if one is received in a response.
+
+   To mitigate the risk of session hijacking, the 'auth_session' MUST be
+   bound to the device, and the authorization server MUST reject an
+   'auth_session' if it is presented from a different device than the
+   one it was bound to.
 
    See Section 9.6 for additional security considerations.
 
@@ -1051,9 +1057,9 @@ Table of Contents
    [I-D.ietf-oauth-browser-based-apps]
               Parecki, A., Waite, D., and P. De Ryck, "OAuth 2.0 for
               Browser-Based Apps", Work in Progress, Internet-Draft,
-              draft-ietf-oauth-browser-based-apps-15, 23 October 2023,
+              draft-ietf-oauth-browser-based-apps-16, 16 February 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              browser-based-apps-15>.
+              browser-based-apps-16>.
 
    [RFC8252]  Denniss, W. and J. Bradley, "OAuth 2.0 for Native Apps",
               BCP 212, RFC 8252, DOI 10.17487/RFC8252, October 2017,
