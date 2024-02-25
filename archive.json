@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-22T01:04:23.855587+00:00",
+  "timestamp": "2024-02-25T01:09:04.859311+00:00",
   "repo": "aaronpk/oauth-first-party-apps",
   "labels": [
     {
@@ -2085,7 +2085,7 @@
       "labels": [],
       "body": "Proposed update based on feedback in issue #47 \r\n\r\nOpen question for reviewers (and @bc_pi) whether we should allow both or only a single method, and if a single methods should we opt for the least common denominator  (dpop_jkt) or an authorization challenge endpoint specific one?",
       "createdAt": "2024-02-19T14:57:24Z",
-      "updatedAt": "2024-02-21T12:50:53Z",
+      "updatedAt": "2024-02-23T16:28:50Z",
       "baseRepository": "aaronpk/oauth-first-party-apps",
       "baseRefName": "main",
       "baseRefOid": "a99fef02bbe19d9be5991e9f9f2dfc366d8a51b4",
@@ -2103,6 +2103,20 @@
           "body": "Commented over in https://github.com/aaronpk/oauth-first-party-apps/issues/47 that I think the single method of the DPoP proof header is sufficient and preferred. ",
           "createdAt": "2024-02-20T23:07:31Z",
           "updatedAt": "2024-02-20T23:07:31Z"
+        },
+        {
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "body": "I would tend to agree that we should stick with _only_ the header option for DPoP. ",
+          "createdAt": "2024-02-23T16:24:35Z",
+          "updatedAt": "2024-02-23T16:24:35Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I'm good with that. Will create a PR to reflect this.\r\n\r\nOn Fri 23 Feb 2024, 16:24 Aaron Parecki, ***@***.***> wrote:\r\n\r\n> I would tend to agree that we should stick with *only* the header option\r\n> for DPoP.\r\n>\r\n> \u2014\r\n> Reply to this email directly, view it on GitHub\r\n> <https://github.com/aaronpk/oauth-first-party-apps/pull/59#issuecomment-1961626126>,\r\n> or unsubscribe\r\n> <https://github.com/notifications/unsubscribe-auth/AVT5JWNVDSOA2S7ALO24S2TYVC7FHAVCNFSM6AAAAABDPTPJPGVHI2DSMVQWIX3LMV43OSLTON2WKQ3PNVWWK3TUHMYTSNRRGYZDMMJSGY>\r\n> .\r\n> You are receiving this because you authored the thread.Message ID:\r\n> ***@***.***>\r\n>\r\n",
+          "createdAt": "2024-02-23T16:28:49Z",
+          "updatedAt": "2024-02-23T16:28:49Z"
         }
       ],
       "reviews": [
@@ -2133,13 +2147,13 @@
       "labels": [],
       "body": "Addressing Issue #37\r\n\r\nI did not add anything explicit to the Security Considerations section and instead mentioned the potential security exposure in the text on User Experience",
       "createdAt": "2024-02-21T13:33:24Z",
-      "updatedAt": "2024-02-21T13:35:03Z",
+      "updatedAt": "2024-02-23T16:28:37Z",
       "baseRepository": "aaronpk/oauth-first-party-apps",
       "baseRefName": "main",
       "baseRefOid": "76c8b702116e27fa726a73f2389a4ab6dc03bb21",
       "headRepository": "gffletch/oauth-first-party-native-apps",
       "headRefName": "ux-considerations",
-      "headRefOid": "627dadac047f0ab7528cc25294a38539ec3b0862",
+      "headRefOid": "6a670a03707e4510aad64791bdb0dee396e4fc71",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
