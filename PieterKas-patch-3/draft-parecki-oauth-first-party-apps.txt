@@ -5,10 +5,10 @@
 Web Authorization Protocol                                    A. Parecki
 Internet-Draft                                                      Okta
 Intended status: Standards Track                             G. Fletcher
-Expires: 22 August 2024                            Capital One Financial
+Expires: 29 August 2024                            Capital One Financial
                                                             P. Kasselman
                                                                Microsoft
-                                                        19 February 2024
+                                                        26 February 2024
 
 
                  OAuth 2.0 for First-Party Applications
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 August 2024.
+   This Internet-Draft will expire on 29 August 2024.
 
 Copyright Notice
 
@@ -792,45 +792,24 @@ Table of Contents
    end protection that DPoP provides, so DPoP Authorization Code binding
    SHOULD be used.
 
-   There are two ways in which the DPoP key can be communicated in the
-   authorization challenge request:
+   The mechanism for Authorization Code binding with DPoP is similar as
+   that defined for Pushed Authorization Requests (PARs) in Section 10.1
+   of [RFC9449].  In order to bind the Authorization Code with DPoP, the
+   client MUST add the DPoP header to the Authorization Challenge
+   Request.  The authorization server MUST check the DPoP proof JWT that
+   was included in the DPoP header as defined in Section 4.3 of
+   [RFC9449].  The authorization server must ensure that the same key is
+   used in all subsequent Authorization Challenge Requests, or in the
+   eventual token request.  The authorization server MUST reject
+   subsequent Authorization Challenge Requests, or the eventual token
+   request, unless a DPoP proof for the same key presented in the
+   original Authorization Challenge Request is provided.
 
-   1.  To bind the authorization code using the Authorization Challenge
-       Endpoint, the JWK Thumbprint of the DPoP key MUST be communicated
-       to the authorization server by including the dpop_jkt parameter
-       defined in section 10 of [RFC9449] alongside other authorization
-       request parameters in the POST body of the first authorization
-       challenge request.  If it is included in subsequent authorization
-       challenge requests, the value of this parameter must be the same
-       as in the initial request.  If the JWK Thumbprint in the dpop_jkt
-       differ at any point, the Authorization Server MUST reject the
-       request.  If the dpop_jkt parameter is not included in the first
-       request, but added in subsequent requests, the Authorization
-       Server MUST reject the request (do we need to define a specific
-       error code for that?).
-
-   2.  Alternatively, the DPoP header can be added to the authorization
-       challenge request.  In this case, the authorization server MUST
-       check the provided DPoP proof JWT as defined in Section 4.3 of
-       [RFC9449].  It MUST further behave as if the contained public
-       key's thumbprint was provided using dpop_jkt, i.e., reject
-       subsequent Authroization Challenge Requests or the eventual token
-       request unless a DPoP proof for the same key is provided.  This
-       can help to simplify the implementation of the client, as it can
-       "blindly" attach the DPoP header to all requests to the
-       authorization server regardless of the type of request.
-       Additionally, it provides a stronger binding, as the DPoP header
-       contains a proof of possession of the private key.
-
-   Both mechanisms MUST be supported by an authorization server that
-   supports DPoP and the Authorization Challenge Endpoint.  If both
-   mechanisms are used at the same time, the authorization server MUST
-   reject the request if the JWK Thumbprint in dpop_jkt does not match
-   the public key in the DPoP header.
-
-   Allowing both mechanisms ensures that clients implementing DPoP using
-   dpop_jkt do not need to distinguish between front-channel requests
-   and authorization challenge endpoint requests.
+   The above mechanism simplifies the implementation of the client, as
+   it can attach the DPoP header to all requests to the authorization
+   server regardless of the type of request.  This mechanism provides a
+   stronger binding than using the dpop_jkt parameter, as the DPoP
+   header contains a proof of possession of the private key.
 
 9.5.2.  Other Proof of Possession Mechanisms
 
