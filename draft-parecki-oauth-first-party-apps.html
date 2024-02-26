@@ -1037,7 +1037,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Parecki, et al.</td>
-<td class="center">Expires 23 August 2024</td>
+<td class="center">Expires 29 August 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1050,12 +1050,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-parecki-oauth-first-party-apps-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-02-20" class="published">20 February 2024</time>
+<time datetime="2024-02-26" class="published">26 February 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-08-23">23 August 2024</time></dd>
+<dd class="expires"><time datetime="2024-08-29">29 August 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1117,7 +1117,7 @@ applications, only delegating to the browser in unexpected, high risk, or error 
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 23 August 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 29 August 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1980,7 +1980,8 @@ an authorization request and eventually obtain an authorization code.<a href="#s
           </h4>
 <p id="section-9.5.1-1">DPoP (<span>[<a href="#RFC9449" class="cite xref">RFC9449</a>]</span>) is an application-level mechanism for sender-constraining OAuth <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span> access and refresh tokens. If DPoP is used to sender constrain tokens, the client <span class="bcp14">SHOULD</span> use DPoP for every token request to the Authorization Server and interaction with the Resource Server.<a href="#section-9.5.1-1" class="pilcrow">¶</a></p>
 <p id="section-9.5.1-2">DPoP includes an optional capability to bind the authorization code to the DPoP key to enable end-to-end binding of the entire authorization flow. Given the back-channel nature of this specification, there are far fewer opportunities for an attacker to access the authorization code and PKCE code verifier compared to the redirect-based Authorization Code Flow. In this specification, the Authorization Code is obtained via a back-channel request. Despite this, omitting Authorization Code binding leaves a gap in the end-to-end protection that DPoP provides, so DPoP Authorization Code binding <span class="bcp14">SHOULD</span> be used.<a href="#section-9.5.1-2" class="pilcrow">¶</a></p>
-<p id="section-9.5.1-3">To bind the authorization code using the Authorization Challenge Endpoint, the JWK Thumbprint of the DPoP key <span class="bcp14">MUST</span> be communicated to the Authorization Server by including the <code>dpop_jkt</code> parameter defined in section 10 of <span>[<a href="#RFC9449" class="cite xref">RFC9449</a>]</span> alongside other authorization request parameters in the POST body of the first Authorization Challenge Request. If it is included in subsequent Authorization Challenge Requests, the value of this parameter must be the same as in the initial request. If the JWK Thumbprint in the <code>dpop_jkt</code> differ at any point, the Authorization Server <span class="bcp14">MUST</span> reject the request. If the <code>dpop_jkt</code> parameter is not included in the first request, but added in subsequent requests, the Authorization Server <span class="bcp14">MUST</span> reject the request (do we need to define a specific error code for that?).<a href="#section-9.5.1-3" class="pilcrow">¶</a></p>
+<p id="section-9.5.1-3">The mechanism for Authorization Code binding with DPoP is similar as that defined for Pushed Authorization Requests (PARs) in Section 10.1 of <span>[<a href="#RFC9449" class="cite xref">RFC9449</a>]</span>. In order to bind the Authorization Code with DPoP, the client <span class="bcp14">MUST</span> add the DPoP header to the Authorization Challenge Request. The authorization server <span class="bcp14">MUST</span> check the DPoP proof JWT that was included in the DPoP header as defined in Section 4.3 of <span>[<a href="#RFC9449" class="cite xref">RFC9449</a>]</span>. The authorization server <span class="bcp14">MUST</span> ensure that the same key is used in all subsequent Authorization Challenge Requests, or in the eventual token request. The authorization server <span class="bcp14">MUST</span> reject subsequent Authorization Challenge Requests, or the eventual token request, unless a DPoP proof for the same key presented in the original Authorization Challenge Request is provided.<a href="#section-9.5.1-3" class="pilcrow">¶</a></p>
+<p id="section-9.5.1-4">The above mechanism simplifies the implementation of the client, as it can attach the DPoP header to all requests to the authorization server regardless of the type of request. This mechanism provides a stronger binding than using the <code>dpop_jkt</code> parameter, as the DPoP header contains a proof of possession of the private key.<a href="#section-9.5.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="other-proof-of-possession-mechanisms">
@@ -2664,7 +2665,10 @@ Cache-Control: no-store
 <p id="appendix-D-1">-latest<a href="#appendix-D-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-2.1">
-          <p id="appendix-D-2.1.1">Removed ash claim to simplify DPoP binding with auth_session value.<a href="#appendix-D-2.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-2.1.1">Added clarification on use of authroization code binding when using DPoP with the authorization challenge endpoint.<a href="#appendix-D-2.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-2.2">
+          <p id="appendix-D-2.2.1">Removed ash claim to simplify DPoP binding with auth_session value.<a href="#appendix-D-2.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-D-3">-01<a href="#appendix-D-3" class="pilcrow">¶</a></p>
