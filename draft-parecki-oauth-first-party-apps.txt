@@ -5,10 +5,10 @@
 Web Authorization Protocol                                    A. Parecki
 Internet-Draft                                                      Okta
 Intended status: Standards Track                             G. Fletcher
-Expires: 23 August 2024                            Capital One Financial
+Expires: 29 August 2024                            Capital One Financial
                                                             P. Kasselman
                                                                Microsoft
-                                                        20 February 2024
+                                                        26 February 2024
 
 
                  OAuth 2.0 for First-Party Applications
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 August 2024.
+   This Internet-Draft will expire on 29 August 2024.
 
 Copyright Notice
 
@@ -798,18 +798,24 @@ Table of Contents
    end protection that DPoP provides, so DPoP Authorization Code binding
    SHOULD be used.
 
-   To bind the authorization code using the Authorization Challenge
-   Endpoint, the JWK Thumbprint of the DPoP key MUST be communicated to
-   the Authorization Server by including the dpop_jkt parameter defined
-   in section 10 of [RFC9449] alongside other authorization request
-   parameters in the POST body of the first Authorization Challenge
-   Request.  If it is included in subsequent Authorization Challenge
-   Requests, the value of this parameter must be the same as in the
-   initial request.  If the JWK Thumbprint in the dpop_jkt differ at any
-   point, the Authorization Server MUST reject the request.  If the
-   dpop_jkt parameter is not included in the first request, but added in
-   subsequent requests, the Authorization Server MUST reject the request
-   (do we need to define a specific error code for that?).
+   The mechanism for Authorization Code binding with DPoP is similar as
+   that defined for Pushed Authorization Requests (PARs) in Section 10.1
+   of [RFC9449].  In order to bind the Authorization Code with DPoP, the
+   client MUST add the DPoP header to the Authorization Challenge
+   Request.  The authorization server MUST check the DPoP proof JWT that
+   was included in the DPoP header as defined in Section 4.3 of
+   [RFC9449].  The authorization server MUST ensure that the same key is
+   used in all subsequent Authorization Challenge Requests, or in the
+   eventual token request.  The authorization server MUST reject
+   subsequent Authorization Challenge Requests, or the eventual token
+   request, unless a DPoP proof for the same key presented in the
+   original Authorization Challenge Request is provided.
+
+   The above mechanism simplifies the implementation of the client, as
+   it can attach the DPoP header to all requests to the authorization
+   server regardless of the type of request.  This mechanism provides a
+   stronger binding than using the dpop_jkt parameter, as the DPoP
+   header contains a proof of possession of the private key.
 
 9.5.2.  Other Proof of Possession Mechanisms
 
@@ -1530,6 +1536,9 @@ Appendix C.  Design Goals
 Appendix D.  Document History
 
    -latest
+
+   *  Added clarification on use of authroization code binding when
+      using DPoP with the authorization challenge endpoint.
 
    *  Removed ash claim to simplify DPoP binding with auth_session
       value.
