@@ -78,6 +78,7 @@ Table of Contents
    1.  Introduction
      1.1.  Usage and Applicability
      1.2.  Limitations of this specification
+     1.3.  User Experience Considerations
    2.  Conventions and Definitions
      2.1.  Terminology
    3.  Protocol Overview
@@ -217,6 +218,28 @@ Table of Contents
    acceptable in this case since we intend this specification to be
    deployed in a tightly coupled environment since it is only applicable
    to first-party applications.
+
+1.3.  User Experience Considerations
+
+   It is important to consider the user experience implications of
+   different authentication challenges as well as the device with which
+   the user is attempting to authorize.  For example, requesting a user
+   to enter a password on a limited input device (e.g.  TV) creates a
+   lot of user friction while also exposing the user's password to
+   anyone else in the room.  On the other hand, using a challenge method
+   that involves say a fingerprint reader on the TV remote allowing for
+   a FIDO2 passkey authentication would be a good experience.  The
+   Authorization Server should consider the user's device when
+   presenting authentication challenges and developers should consider
+   whether the device implementing this specification can provide a good
+   experience for the user.  If the combination of user device and
+   authentiation challenge methods creates a lot of friction or security
+   risk, consider using a specification like OAuth 2.0 Device
+   Authorization Grant [RFC8628].  If selecting OAuth 2.0 Device
+   Authorization Grant [RFC8628] which uses a cross-device authorization
+   mechanism, please incorporate the security best practices identified
+   in Cross-Device Flows: Security Best Current Practice
+   [I-D.ietf-oauth-cross-device-security].
 
 2.  Conventions and Definitions
 
@@ -957,6 +980,13 @@ Table of Contents
 
 11.1.  Normative References
 
+   [I-D.ietf-oauth-cross-device-security]
+              Kasselman, P., Fett, D., and F. Skokan, "Cross-Device
+              Flows: Security Best Current Practice", Work in Progress,
+              Internet-Draft, draft-ietf-oauth-cross-device-security-04,
+              22 October 2023, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-oauth-cross-device-security-04>.
+
    [I-D.ietf-oauth-step-up-authn-challenge]
               Bertocci, V. and B. Campbell, "OAuth 2.0 Step Up
               Authentication Challenge Protocol", Work in Progress,
@@ -1023,6 +1053,11 @@ Table of Contents
               Authorization Server Metadata", RFC 8414,
               DOI 10.17487/RFC8414, June 2018,
               <https://www.rfc-editor.org/rfc/rfc8414>.
+
+   [RFC8628]  Denniss, W., Bradley, J., Jones, M., and H. Tschofenig,
+              "OAuth 2.0 Device Authorization Grant", RFC 8628,
+              DOI 10.17487/RFC8628, August 2019,
+              <https://www.rfc-editor.org/rfc/rfc8628>.
 
    [RFC8707]  Campbell, B., Bradley, J., and H. Tschofenig, "Resource
               Indicators for OAuth 2.0", RFC 8707, DOI 10.17487/RFC8707,
