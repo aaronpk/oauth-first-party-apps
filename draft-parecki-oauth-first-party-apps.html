@@ -1147,13 +1147,16 @@ applications, only delegating to the browser in unexpected, high risk, or error 
         </h2>
 <nav class="toc"><ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
-            <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+            <p id="section-toc.1-1.1.1"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-usage-and-applicability" class="internal xref">Usage and Applicability</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.2">
                 <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="auto internal xref">1.2</a>.  <a href="#name-limitations-of-this-specifi" class="internal xref">Limitations of this specification</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.3">
+                <p id="section-toc.1-1.1.2.3.1" class="keepWithNext"><a href="#section-1.3" class="auto internal xref">1.3</a>.  <a href="#name-user-experience-considerati" class="internal xref">User Experience Considerations</a></p>
 </li>
             </ul>
 </li>
@@ -1416,6 +1419,14 @@ concerns with a redirect-based approach, such as for native mobile or desktop ap
 <p id="section-1.2-1">The scope of this specification is limited to first-party applications. Please review the entirety of <a href="#security-considerations" class="auto internal xref">Section 9</a>, and when more than one first-party application is supported, <a href="#multiple-applications" class="auto internal xref">Section 9.7</a>.<a href="#section-1.2-1" class="pilcrow">¶</a></p>
 <p id="section-1.2-2">While this draft provides the framework for a native OAuth experience, each implementation
 will need to define the specific behavior that it expects from OAuth clients interacting with the authorization server. While this lack of clearly defining the details would typically lead to less interoperability, it is acceptable in this case since we intend this specification to be deployed in a tightly coupled environment since it is only applicable to first-party applications.<a href="#section-1.2-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="user-experience-considerations">
+<section id="section-1.3">
+        <h3 id="name-user-experience-considerati">
+<a href="#section-1.3" class="section-number selfRef">1.3. </a><a href="#name-user-experience-considerati" class="section-name selfRef">User Experience Considerations</a>
+        </h3>
+<p id="section-1.3-1">It is important to consider the user experience implications of different authentication challenges as well as the device with which the user is attempting to authorize. For example, requesting a user to enter a password on a limited input device (e.g. TV) creates a lot of user friction while also exposing the user's password to anyone else in the room. On the other hand, using a challenge method that involves say a fingerprint reader on the TV remote allowing for a FIDO2 passkey authentication would be a good experience. The Authorization Server should consider the user's device when presenting authentication challenges and developers should consider whether the device implementing this specification can provide a good experience for the user. If the combination of user device and authentiation challenge methods creates a lot of friction or security risk, consider using a specification like OAuth 2.0 Device Authorization Grant <span>[<a href="#RFC8628" class="cite xref">RFC8628</a>]</span>. If selecting OAuth 2.0 Device Authorization Grant <span>[<a href="#RFC8628" class="cite xref">RFC8628</a>]</span> which uses a cross-device authorization mechanism, please incorporate the security best practices identified in Cross-Device Flows: Security Best Current Practice <span>[<a href="#I-D.ietf-oauth-cross-device-security" class="cite xref">I-D.ietf-oauth-cross-device-security</a>]</span>.<a href="#section-1.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -2122,6 +2133,10 @@ an authorization request and eventually obtain an authorization code.<a href="#s
 <a href="#section-11.1" class="section-number selfRef">11.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
+<dt id="I-D.ietf-oauth-cross-device-security">[I-D.ietf-oauth-cross-device-security]</dt>
+        <dd>
+<span class="refAuthor">Kasselman, P.</span>, <span class="refAuthor">Fett, D.</span>, and <span class="refAuthor">F. Skokan</span>, <span class="refTitle">"Cross-Device Flows: Security Best Current Practice"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-cross-device-security-04</span>, <time datetime="2023-10-22" class="refDate">22 October 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-cross-device-security-04">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-cross-device-security-04</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="I-D.ietf-oauth-step-up-authn-challenge">[I-D.ietf-oauth-step-up-authn-challenge]</dt>
         <dd>
 <span class="refAuthor">Bertocci, V.</span> and <span class="refAuthor">B. Campbell</span>, <span class="refTitle">"OAuth 2.0 Step Up Authentication Challenge Protocol"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-step-up-authn-challenge-17</span>, <time datetime="2023-06-26" class="refDate">26 June 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-step-up-authn-challenge-17">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-step-up-authn-challenge-17</a>&gt;</span>. </dd>
@@ -2181,6 +2196,10 @@ an authorization request and eventually obtain an authorization code.<a href="#s
 <dt id="RFC8414">[RFC8414]</dt>
         <dd>
 <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Sakimura, N.</span>, and <span class="refAuthor">J. Bradley</span>, <span class="refTitle">"OAuth 2.0 Authorization Server Metadata"</span>, <span class="seriesInfo">RFC 8414</span>, <span class="seriesInfo">DOI 10.17487/RFC8414</span>, <time datetime="2018-06" class="refDate">June 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8414">https://www.rfc-editor.org/rfc/rfc8414</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8628">[RFC8628]</dt>
+        <dd>
+<span class="refAuthor">Denniss, W.</span>, <span class="refAuthor">Bradley, J.</span>, <span class="refAuthor">Jones, M.</span>, and <span class="refAuthor">H. Tschofenig</span>, <span class="refTitle">"OAuth 2.0 Device Authorization Grant"</span>, <span class="seriesInfo">RFC 8628</span>, <span class="seriesInfo">DOI 10.17487/RFC8628</span>, <time datetime="2019-08" class="refDate">August 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8628">https://www.rfc-editor.org/rfc/rfc8628</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8707">[RFC8707]</dt>
         <dd>
