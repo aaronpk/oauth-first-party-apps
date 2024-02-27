@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-25T01:09:04.859311+00:00",
+  "timestamp": "2024-02-27T01:04:18.330377+00:00",
   "repo": "aaronpk/oauth-first-party-apps",
   "labels": [
     {
@@ -1307,23 +1307,31 @@
       "id": "I_kwDOJbxyLc53LmpW",
       "title": "Update First-Party Apps to extend POST Request Framework",
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/53",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "aaronpk",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "After #54",
       "createdAt": "2023-11-17T16:45:38Z",
-      "updatedAt": "2023-11-17T16:46:07Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-02-26T22:56:38Z",
+      "closedAt": "2024-02-26T22:56:38Z",
+      "comments": [
+        {
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "body": "Closing for now, as there was no interest for doing this on the mailing list.",
+          "createdAt": "2024-02-26T22:56:38Z",
+          "updatedAt": "2024-02-26T22:56:38Z"
+        }
+      ]
     },
     {
       "number": 54,
       "id": "I_kwDOJbxyLc53Lmw7",
       "title": "Write draft of POST Request Framework",
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/54",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "aaronpk",
       "authorAssociation": "OWNER",
       "assignees": [
@@ -1332,9 +1340,17 @@
       "labels": [],
       "body": "See #51",
       "createdAt": "2023-11-17T16:45:56Z",
-      "updatedAt": "2023-12-08T14:40:09Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-02-26T22:56:30Z",
+      "closedAt": "2024-02-26T22:56:29Z",
+      "comments": [
+        {
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "body": "Closing for now, as there was no interest for doing this on the mailing list.",
+          "createdAt": "2024-02-26T22:56:29Z",
+          "updatedAt": "2024-02-26T22:56:29Z"
+        }
+      ]
     },
     {
       "number": 55,
@@ -2078,24 +2094,26 @@
       "id": "PR_kwDOJbxyLc5nTHs6",
       "title": "Update section on authorization code binding",
       "url": "https://github.com/aaronpk/oauth-first-party-apps/pull/59",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "PieterKas",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Proposed update based on feedback in issue #47 \r\n\r\nOpen question for reviewers (and @bc_pi) whether we should allow both or only a single method, and if a single methods should we opt for the least common denominator  (dpop_jkt) or an authorization challenge endpoint specific one?",
       "createdAt": "2024-02-19T14:57:24Z",
-      "updatedAt": "2024-02-23T16:28:50Z",
+      "updatedAt": "2024-02-26T21:11:05Z",
       "baseRepository": "aaronpk/oauth-first-party-apps",
       "baseRefName": "main",
-      "baseRefOid": "a99fef02bbe19d9be5991e9f9f2dfc366d8a51b4",
+      "baseRefOid": "76c8b702116e27fa726a73f2389a4ab6dc03bb21",
       "headRepository": "aaronpk/oauth-first-party-apps",
       "headRefName": "PieterKas-patch-3",
-      "headRefOid": "8a64ebf95d68cc0369545ae92329dd605b062ce3",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "92edeba4d15ee7b3ff609872941f75c36a867a01",
+      "closedAt": "2024-02-26T21:11:01Z",
+      "mergedAt": "2024-02-26T21:11:01Z",
+      "mergedBy": "aaronpk",
+      "mergeCommit": {
+        "oid": "6f71cb46bd509bfce44b9fc6c1ba8315be3d95e2"
+      },
       "comments": [
         {
           "author": "bc-pi",
@@ -2117,6 +2135,13 @@
           "body": "I'm good with that. Will create a PR to reflect this.\r\n\r\nOn Fri 23 Feb 2024, 16:24 Aaron Parecki, ***@***.***> wrote:\r\n\r\n> I would tend to agree that we should stick with *only* the header option\r\n> for DPoP.\r\n>\r\n> \u2014\r\n> Reply to this email directly, view it on GitHub\r\n> <https://github.com/aaronpk/oauth-first-party-apps/pull/59#issuecomment-1961626126>,\r\n> or unsubscribe\r\n> <https://github.com/notifications/unsubscribe-auth/AVT5JWNVDSOA2S7ALO24S2TYVC7FHAVCNFSM6AAAAABDPTPJPGVHI2DSMVQWIX3LMV43OSLTON2WKQ3PNVWWK3TUHMYTSNRRGYZDMMJSGY>\r\n> .\r\n> You are receiving this because you authored the thread.Message ID:\r\n> ***@***.***>\r\n>\r\n",
           "createdAt": "2024-02-23T16:28:49Z",
           "updatedAt": "2024-02-23T16:28:49Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@bc-pi and @aaronpk, I made the changes. please review and feel free to merge if ready.",
+          "createdAt": "2024-02-26T12:14:02Z",
+          "updatedAt": "2024-02-26T12:14:02Z"
         }
       ],
       "reviews": [
@@ -2132,6 +2157,79 @@
           "createdAt": "2024-02-21T12:50:53Z",
           "updatedAt": "2024-02-21T12:50:53Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbxyLc5xTujP",
+          "commit": {
+            "abbreviatedOid": "1f1f285"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-26T14:16:53Z",
+          "updatedAt": "2024-02-26T14:16:54Z",
+          "comments": [
+            {
+              "originalPosition": 15,
+              "body": "do you want to use `-latest` here? Typically I've seen the coming draft number used, like `-02`, but maybe I don't know about some convention or something...  ",
+              "createdAt": "2024-02-26T14:16:54Z",
+              "updatedAt": "2024-02-26T14:16:54Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbxyLc5xTvP1",
+          "commit": {
+            "abbreviatedOid": "1f1f285"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "looks okay to me (pending conflicts that need to be resolved)",
+          "createdAt": "2024-02-26T14:18:01Z",
+          "updatedAt": "2024-02-26T14:18:01Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbxyLc5xXmYI",
+          "commit": {
+            "abbreviatedOid": "1f1f285"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-26T21:08:46Z",
+          "updatedAt": "2024-02-26T21:08:46Z",
+          "comments": [
+            {
+              "originalPosition": 15,
+              "body": "I'll update that before I publish",
+              "createdAt": "2024-02-26T21:08:46Z",
+              "updatedAt": "2024-02-26T21:08:46Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbxyLc5xXnFl",
+          "commit": {
+            "abbreviatedOid": "87f56f1"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-02-26T21:09:52Z",
+          "updatedAt": "2024-02-26T21:10:24Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\nThe mechanism for Authorization Code binding with DPoP is similar as that defined for Pushed Authorization Requests (PARs) in Section 10.1 of {{RFC9449}}. In order to bind the Authorization Code with DPoP, the client MUST add the DPoP header to the Authorization Challenge Request. The authorization server MUST check the DPoP proof JWT that was included in the DPoP header as defined in Section 4.3 of {{RFC9449}}. The authorization server MUST ensure that the same key is used in all subsequent Authorization Challenge Requests, or in the eventual token request. The authorization server MUST reject subsequent Authorization Challenge Requests, or the eventual token request, unless a DPoP proof for the same key presented in the original Authorization Challenge Request is provided.\r\n```",
+              "createdAt": "2024-02-26T21:09:53Z",
+              "updatedAt": "2024-02-26T21:10:24Z"
+            }
+          ]
         }
       ]
     },
@@ -2140,24 +2238,26 @@
       "id": "PR_kwDOJbxyLc5nhjPW",
       "title": "Update draft-parecki-oauth-first-party-apps.md",
       "url": "https://github.com/aaronpk/oauth-first-party-apps/pull/60",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "gffletch",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Addressing Issue #37\r\n\r\nI did not add anything explicit to the Security Considerations section and instead mentioned the potential security exposure in the text on User Experience",
       "createdAt": "2024-02-21T13:33:24Z",
-      "updatedAt": "2024-02-23T16:28:37Z",
+      "updatedAt": "2024-02-26T21:11:32Z",
       "baseRepository": "aaronpk/oauth-first-party-apps",
       "baseRefName": "main",
       "baseRefOid": "76c8b702116e27fa726a73f2389a4ab6dc03bb21",
       "headRepository": "gffletch/oauth-first-party-native-apps",
       "headRefName": "ux-considerations",
       "headRefOid": "6a670a03707e4510aad64791bdb0dee396e4fc71",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-02-26T21:11:32Z",
+      "mergedAt": "2024-02-26T21:11:32Z",
+      "mergedBy": "aaronpk",
+      "mergeCommit": {
+        "oid": "c4bf8ad711343f7c14b95cf49d77b51bcf747a22"
+      },
       "comments": [],
       "reviews": []
     }
