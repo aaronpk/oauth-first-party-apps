@@ -93,7 +93,8 @@ Table of Contents
      5.2.  Authorization Challenge Response
        5.2.1.  Authorization Code Response
        5.2.2.  Error Response
-     5.3.  Auth Session
+     5.3.  Intermediate Requests
+       5.3.1.  Auth Session
    6.  Token Request
      6.1.  Token Endpoint Successful Response
      6.2.  Token Endpoint Error Response
@@ -427,7 +428,7 @@ Table of Contents
    "acr_values":  OPTIONAL.  The acr_values requested by the client.
 
    "auth_session":  OPTIONAL.  If the client has previously obtained an
-      auth session, described in Section 5.3.
+      auth session, described in Section 5.3.1.
 
    "code_challenge":  OPTIONAL.  The code challenge as defined by
       [RFC7636].  See Section 5.2.2.1 for details.
@@ -596,7 +597,22 @@ Table of Contents
    then uses the request_uri value to build an authorization request as
    defined in [RFC9126] Section 4.
 
-5.3.  Auth Session
+5.3.  Intermediate Requests
+
+   If the authorization server returns an insufficient_authorization
+   error as described above, this is an indication that there is further
+   information the client should request from the user, and continue to
+   make requests to the authorization server until the authorization
+   request is fulfilled and an authorization code returned.
+
+   These intermediate requests are out of scope of this specification,
+   and are expected to be defined by the authorization server.  The
+   format of these requests are not required to conform to the format of
+   the initial authorization challenge requests (e.g. the request format
+   may be application/json rather than application/x-www-form-
+   urlencoded).
+
+5.3.1.  Auth Session
 
    The auth_session is a value that the authorization server issues in
    order to be able to associate subsequent requests from the same
@@ -643,7 +659,7 @@ Table of Contents
 
    This specification extends the OAuth 2.0 [RFC6749] token response
    defined in Section 5.1 with the additional parameter auth_session,
-   defined in Section 5.3.
+   defined in Section 5.3.1.
 
    The response MAY include an auth_session parameter which the client
    is expected to include on a subsequent request to the authorization
@@ -1598,6 +1614,10 @@ Appendix D.  Document History
       value.
 
    *  Fixed how "redirect to web" mechanism works with PKCE.
+
+   *  Added "intermediate requests" section to clarify these requests
+      are out of scope, moved "auth session" description to that
+      section.
 
    -01
 
