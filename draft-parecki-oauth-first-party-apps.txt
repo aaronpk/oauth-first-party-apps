@@ -1175,7 +1175,7 @@ A.2.  Redirect to Authorization Server
       the username.
 
    *  The Authorization Server verifies the username and determines that
-      the account is locked and returns a Redirect message.
+      the account is locked and returns a Redirect error response.
 
    *  The Client parses the redirect message, opens a browser and
       redirects the user to the Authorization Server performing an OAuth
@@ -1184,9 +1184,9 @@ A.2.  Redirect to Authorization Server
    *  The user resets their account by performing a multi-step
       authentication flow with the Authorization Server.
 
-   *  The Authorization Server issues an Authorization Code, which is
-      exchanged for an access and refresh token before returning control
-      to the Client.
+   *  The Authorization Server issues an Authorization Code in a
+      redirect back to the client, which then exchanges it for an access
+      and refresh token.
 
 A.3.  Passwordless One-Time Password (OTP)
 
