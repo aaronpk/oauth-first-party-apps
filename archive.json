@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-27T01:04:18.330377+00:00",
+  "timestamp": "2024-02-29T01:04:04.260955+00:00",
   "repo": "aaronpk/oauth-first-party-apps",
   "labels": [
     {
@@ -959,7 +959,7 @@
       "id": "I_kwDOJbxyLc5xyrEp",
       "title": "Add user experience considerations",
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/37",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -968,8 +968,8 @@
       "labels": [],
       "body": "First item to add is guidance on limited input devices.",
       "createdAt": "2023-09-22T15:22:42Z",
-      "updatedAt": "2024-01-19T16:45:01Z",
-      "closedAt": null,
+      "updatedAt": "2024-02-28T22:50:05Z",
+      "closedAt": "2024-02-28T22:50:05Z",
       "comments": [
         {
           "author": "PieterKas",
@@ -984,6 +984,13 @@
           "body": "Notes from editor's call:\r\n\r\n* \"Not recommended to use this with challenges that require significant user experience challenges, for example entering a password on a TV screen with an on-screen keyboard.\"\r\n* Security consideration around the differences between exposure of credentials on a TV screen in a room vs the risk of a cross-device flow\r\n* We don't want to discourage the possibility of using this flow with a passkey on a TV remote control\r\n* \"If you're on a limited input device, and the authentication method the user must pass requires significant user interaction, e.g. entering a password, then you shouldn't use this method; use the device flow instead.\"\r\n",
           "createdAt": "2023-10-27T15:24:53Z",
           "updatedAt": "2023-10-27T15:24:53Z"
+        },
+        {
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "body": "Completed in #60",
+          "createdAt": "2024-02-28T22:50:05Z",
+          "updatedAt": "2024-02-28T22:50:05Z"
         }
       ]
     },
@@ -1028,15 +1035,15 @@
       "id": "I_kwDOJbxyLc51Wocm",
       "title": "Appendix A.2",
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/43",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "mattjm",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "On the last bullet point in A.2:\r\n\r\n* The Authorization Server issues an Authorization Code, which is exchanged for an access and refresh token before returning control to the Client.\r\n\r\nI was under the impression the browser returns control to the client with the authorization code, and then the client uses the authorization code with the /token endpoint directly.  ",
       "createdAt": "2023-10-30T17:21:28Z",
-      "updatedAt": "2023-11-03T14:34:18Z",
-      "closedAt": null,
+      "updatedAt": "2024-02-28T22:46:59Z",
+      "closedAt": "2024-02-28T22:46:59Z",
       "comments": [
         {
           "author": "aaronpk",
@@ -1114,15 +1121,17 @@
       "id": "I_kwDOJbxyLc52BqBn",
       "title": "PAR response w/ request_uri and PKCE doesn't quite work",
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/46",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "bc-pi",
       "authorAssociation": "NONE",
-      "assignees": [],
+      "assignees": [
+        "aaronpk"
+      ],
       "labels": [],
       "body": "PAR https://www.rfc-editor.org/rfc/rfc9126.html#section-4 in conjunction with JAR https://www.rfc-editor.org/rfc/rfc9101.html#section-6.3 and https://www.rfc-editor.org/rfc/rfc9101.html#section-5-9 defines things such that all the authz request parameters have to be in the original PAR request referenced by the request_uri. The AS only uses request_uri and client_id parameters from the request to the authorization endpoint. \r\n\r\nSo on a [Redirect Response](https://www.ietf.org/archive/id/draft-parecki-oauth-first-party-apps-00.html#name-redirect-response) a client could start an authorization code flow with the request_uri received but PKCE parameters added at that point will be ignored by the AS.\r\n\r\nAll of which is a kind of awkward way of saying that https://www.ietf.org/archive/id/draft-parecki-oauth-first-party-apps-00.html#name-redirect-response doesn't quite work as written.\r\n\r\n\r\n\r\n\r\n",
       "createdAt": "2023-11-06T22:02:27Z",
-      "updatedAt": "2023-12-08T17:06:44Z",
-      "closedAt": null,
+      "updatedAt": "2024-02-28T22:19:43Z",
+      "closedAt": "2024-02-28T22:19:43Z",
       "comments": [
         {
           "author": "aaronpk",
@@ -1151,6 +1160,13 @@
           "body": "We discussed this today and came up with the following solution:\r\n\r\n* Define a new error code in 5.2.3 `redirect_to_web`\r\n* Add `request_uri` parameter to error response section (like PAR)\r\n* Normative: Only return `request_uri` if the original authorization request contained PKCE code challenge\r\n* Security Consideration: If you return auth_session and redirect_to_web then you SHOULD support PAR",
           "createdAt": "2023-12-08T17:06:42Z",
           "updatedAt": "2023-12-08T17:06:42Z"
+        },
+        {
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "body": "I updated this so that the option of the PKCE shortcut for the redirect to web is available. This should all be possible now.",
+          "createdAt": "2024-02-28T22:19:43Z",
+          "updatedAt": "2024-02-28T22:19:43Z"
         }
       ]
     },
@@ -1159,7 +1175,7 @@
       "id": "I_kwDOJbxyLc52BtCI",
       "title": "DPoP Authorization Code Binding",
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/47",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "bc-pi",
       "authorAssociation": "NONE",
       "assignees": [
@@ -1168,8 +1184,8 @@
       "labels": [],
       "body": "Because the client interacts directly with the Authorization Challenge Endpoint the authorization code binding can and probably should be done via the DPoP proof rather than the dpop_jkt parameter. This is similar to what [DPoP says to do w/ PAR](https://www.rfc-editor.org/rfc/rfc9449.html#name-dpop-with-pushed-authorizat) but here you could probably get away with just using the DPoP proof. ",
       "createdAt": "2023-11-06T22:11:46Z",
-      "updatedAt": "2024-02-20T23:13:58Z",
-      "closedAt": null,
+      "updatedAt": "2024-02-28T22:20:58Z",
+      "closedAt": "2024-02-28T22:20:58Z",
       "comments": [
         {
           "author": "aaronpk",
@@ -1191,6 +1207,13 @@
           "body": "I think the `dpop_jkt` in PAR was more about keeping the commonalty of authz request parameters and their treatment on both sides. Not so much about being a least common denominator.  I think this Authorization Challenge Endpoint is different enough that just using the DPoP proof is the way to go. Also, doing DPoP key binding of the `auth_session` needs the DPoP proof - so a client doing DPoP in this context really just should be sending the DPoP proof header.\r\n\r\n",
           "createdAt": "2024-02-20T23:03:46Z",
           "updatedAt": "2024-02-20T23:13:58Z"
+        },
+        {
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "body": "Closing this as it was resolved in #59 ",
+          "createdAt": "2024-02-28T22:20:58Z",
+          "updatedAt": "2024-02-28T22:20:58Z"
         }
       ]
     },
@@ -1199,7 +1222,7 @@
       "id": "I_kwDOJbxyLc52B1F1",
       "title": "DPoP Thoughts",
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/48",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "bc-pi",
       "authorAssociation": "NONE",
       "assignees": [
@@ -1208,8 +1231,8 @@
       "labels": [],
       "body": "I do love \"ash\" as a claim name but (as DPoP co-author and a DE on the JWT Claims registry) I'd strongly suggest that the binding be done the other way around. Basically just say that the AS binds the auth_session value to the the public key from the DPoP proof and checks the binding whenever the client sends the auth_session. Binding that way is simpler (from the spec perspective anyway) and provides more protections. It's also how most of the binding in DPoP works (\"ath\" is kind of an outlier and provides somewhat questionable value). \r\n\r\n\r\nhttps://www.ietf.org/archive/id/draft-parecki-oauth-first-party-apps-00.html#name-auth-session-dpop-binding\r\nhttps://www.ietf.org/archive/id/draft-parecki-oauth-first-party-apps-00.html#name-json-web-token-claims-regis",
       "createdAt": "2023-11-06T22:31:14Z",
-      "updatedAt": "2023-12-15T16:44:52Z",
-      "closedAt": null,
+      "updatedAt": "2024-02-28T22:44:26Z",
+      "closedAt": "2024-02-28T22:44:26Z",
       "comments": [
         {
           "author": "PieterKas",
@@ -1217,6 +1240,13 @@
           "body": "Suggestion: also require a unique DPoP key per session to avoid risks around session binding.",
           "createdAt": "2023-12-15T16:43:59Z",
           "updatedAt": "2023-12-15T16:43:59Z"
+        },
+        {
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "body": "Completed in #58",
+          "createdAt": "2024-02-28T22:44:26Z",
+          "updatedAt": "2024-02-28T22:44:26Z"
         }
       ]
     },
@@ -1241,15 +1271,15 @@
       "id": "I_kwDOJbxyLc52B_Kn",
       "title": "content of follow-up requests to the challenge endpoint",
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/50",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "bc-pi",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "[I tried to articulate this at IETF 117 but maybe didn't do a good job so want to try again here \"on record\"]\r\n\r\nIt seems quite reasonable to have the initial Authorization Challenge Request be `application/x-www-form-urlencoded` as it is consistent with OAuth 2.x in general. But I worry that it'll be too limiting for the in-between follow-up requests to the challenge endpoint. That part is effectively facilitating an AS defined authn/z API (which I do think is appropriate rather than attempting to define something here) but I suspect folks will really not want the requests on such an API to have to be `application/x-www-form-urlencoded`. And probably/maybe will want more flexibility on the content of the JSON responses too. ",
       "createdAt": "2023-11-06T23:00:04Z",
-      "updatedAt": "2023-12-15T16:54:31Z",
-      "closedAt": null,
+      "updatedAt": "2024-02-28T22:44:10Z",
+      "closedAt": "2024-02-28T22:44:10Z",
       "comments": [
         {
           "author": "aaronpk",
@@ -1364,16 +1394,24 @@
       "labels": [],
       "body": "Like other endpoints, there is no current requirement that the `authorization_challenge_endpoint` is on the same domain as the `authorization_endpoint` or `token_endpoint`. Given that the sequence is really an authentication sequence, is it ok for the flow to  occur at a different endpoint (like an Authorization Server redirecting the browser to a different IDP for authentication). Do we need to support such a concept?",
       "createdAt": "2024-01-03T17:53:37Z",
-      "updatedAt": "2024-01-03T17:53:37Z",
+      "updatedAt": "2024-02-28T22:23:13Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "body": "I don't think we need to say anything in particular about this. If the AS wants to redirect the browser to a different IDP, it would have to do its own OIDC flow to that IDP anyway, so a shortcut like this wouldn't work anyway.",
+          "createdAt": "2024-02-28T22:23:12Z",
+          "updatedAt": "2024-02-28T22:23:12Z"
+        }
+      ]
     },
     {
       "number": 56,
       "id": "I_kwDOJbxyLc57Phie",
       "title": "Prohibit moving sessions across devices",
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/56",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -1382,8 +1420,8 @@
       "labels": [],
       "body": "Should we prohibit the auth_session from moving off-device to avoid resumption of the session on another device (avoid risks of session theft or session take-over).",
       "createdAt": "2024-01-05T16:36:26Z",
-      "updatedAt": "2024-01-19T16:47:04Z",
-      "closedAt": null,
+      "updatedAt": "2024-02-28T22:21:29Z",
+      "closedAt": "2024-02-28T22:21:28Z",
       "comments": [
         {
           "author": "aaronpk",
@@ -1398,6 +1436,13 @@
           "body": "Discussion \r\n\r\n1. Add statement that authorization sessions are device bounds.\r\n2. Make it Normative in spec.",
           "createdAt": "2024-01-19T16:46:49Z",
           "updatedAt": "2024-01-19T16:46:49Z"
+        },
+        {
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "body": "Resolved in #57",
+          "createdAt": "2024-02-28T22:21:28Z",
+          "updatedAt": "2024-02-28T22:21:28Z"
         }
       ]
     }
@@ -2031,7 +2076,7 @@
       "labels": [],
       "body": "Issue #56 \r\n\r\nAdd normative requirement for device binding of auth session and require the authorization server to enforce it.",
       "createdAt": "2024-02-02T16:54:32Z",
-      "updatedAt": "2024-02-20T19:39:39Z",
+      "updatedAt": "2024-02-28T22:21:14Z",
       "baseRepository": "aaronpk/oauth-first-party-apps",
       "baseRefName": "main",
       "baseRefOid": "a99fef02bbe19d9be5991e9f9f2dfc366d8a51b4",
