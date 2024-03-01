@@ -1608,7 +1608,7 @@ Appendix C.  Design Goals
 
 Appendix D.  Document History
 
-   -02
+   -01
 
    *  Added clarification on use of authorization code binding when
       using DPoP with the authorization challenge endpoint.
@@ -1622,14 +1622,12 @@ Appendix D.  Document History
       are out of scope, moved "auth session" description to that
       section.
 
-   -01
+   -00
 
    *  Renamed authorization_required to insufficient_authorization
 
    *  Defined insufficient_authorization on the Authorization Challenge
       Endpoint
-
-   -00
 
    *  Renamed device_session to auth_session
 
