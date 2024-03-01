@@ -15,20 +15,20 @@ obtaining authorization from the user using a native experience.
        In many cases, this can provide an entirely browserless OAuth 2.0 experience suited for native
 applications, only delegating to the browser in unexpected, high risk, or error conditions. 
     " name="description">
-<meta content="xml2rfc 3.19.1" name="generator">
+<meta content="xml2rfc 3.19.4" name="generator">
 <meta content="native apps" name="keyword">
 <meta content="first-party" name="keyword">
 <meta content="oauth" name="keyword">
 <meta content="draft-parecki-oauth-first-party-apps-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.19.1
+  xml2rfc 3.19.4
     Python 3.11.6
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
     intervaltree 3.1.0
     Jinja2 3.1.2
     lxml 4.9.3
-    platformdirs 4.1.0
+    platformdirs 4.2.0
     pycountry 22.3.5
     PyYAML 6.0.1
     requests 2.31.0
@@ -1033,11 +1033,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">OAuth for First-Party Apps</td>
-<td class="right">February 2024</td>
+<td class="right">March 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Parecki, et al.</td>
-<td class="center">Expires 5 August 2024</td>
+<td class="center">Expires 2 September 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1050,12 +1050,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-parecki-oauth-first-party-apps-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-02-02" class="published">2 February 2024</time>
+<time datetime="2024-03-01" class="published">1 March 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-08-05">5 August 2024</time></dd>
+<dd class="expires"><time datetime="2024-09-02">2 September 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1117,7 +1117,7 @@ applications, only delegating to the browser in unexpected, high risk, or error 
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 5 August 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 2 September 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1147,13 +1147,16 @@ applications, only delegating to the browser in unexpected, high risk, or error 
         </h2>
 <nav class="toc"><ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
-            <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+            <p id="section-toc.1-1.1.1"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-usage-and-applicability" class="internal xref">Usage and Applicability</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.2">
                 <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="auto internal xref">1.2</a>.  <a href="#name-limitations-of-this-specifi" class="internal xref">Limitations of this specification</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.3">
+                <p id="section-toc.1-1.1.2.3.1" class="keepWithNext"><a href="#section-1.3" class="auto internal xref">1.3</a>.  <a href="#name-user-experience-considerati" class="internal xref">User Experience Considerations</a></p>
 </li>
             </ul>
 </li>
@@ -1203,15 +1206,17 @@ applications, only delegating to the browser in unexpected, high risk, or error 
                     <p id="section-toc.1-1.5.2.2.2.1.1"><a href="#section-5.2.1" class="auto internal xref">5.2.1</a>.  <a href="#name-authorization-code-response" class="internal xref">Authorization Code Response</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2.2.2">
-                    <p id="section-toc.1-1.5.2.2.2.2.1"><a href="#section-5.2.2" class="auto internal xref">5.2.2</a>.  <a href="#name-redirect-response" class="internal xref">Redirect Response</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2.2.3">
-                    <p id="section-toc.1-1.5.2.2.2.3.1"><a href="#section-5.2.3" class="auto internal xref">5.2.3</a>.  <a href="#name-error-response" class="internal xref">Error Response</a></p>
+                    <p id="section-toc.1-1.5.2.2.2.2.1"><a href="#section-5.2.2" class="auto internal xref">5.2.2</a>.  <a href="#name-error-response" class="internal xref">Error Response</a></p>
 </li>
                 </ul>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3">
-                <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-auth-session" class="internal xref">Auth Session</a></p>
+                <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-intermediate-requests" class="internal xref">Intermediate Requests</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3.2.1">
+                    <p id="section-toc.1-1.5.2.3.2.1.1"><a href="#section-5.3.1" class="auto internal xref">5.3.1</a>.  <a href="#name-auth-session" class="internal xref">Auth Session</a></p>
+</li>
+                </ul>
 </li>
             </ul>
 </li>
@@ -1395,7 +1400,7 @@ with the user. This requires a high degree of trust between the authorization se
 and the client, as there typically is for first-party applications.
 It should only be considered when there are usability
 concerns with a redirect-based approach, such as for native mobile or desktop applications.<a href="#section-1-4" class="pilcrow">¶</a></p>
-<p id="section-1-5">This draft also extends the token response (typically for use in response to a refresh token request) and resource server response to allow the authorization server or resource server to indicate that the client should re-request authorization from the user. This can include requesting step-up authentication by including parameters defined in <span>[<a href="#I-D.ietf-oauth-step-up-authn-challenge" class="cite xref">I-D.ietf-oauth-step-up-authn-challenge</a>]</span> as well.<a href="#section-1-5" class="pilcrow">¶</a></p>
+<p id="section-1-5">This draft also extends the token response (typically for use in response to a refresh token request) and resource server response to allow the authorization server or resource server to indicate that the client should re-request authorization from the user. This can include requesting step-up authentication by including parameters defined in <span>[<a href="#RFC9470" class="cite xref">RFC9470</a>]</span> as well.<a href="#section-1-5" class="pilcrow">¶</a></p>
 <div id="usage-and-applicability">
 <section id="section-1.1">
         <h3 id="name-usage-and-applicability">
@@ -1416,6 +1421,16 @@ concerns with a redirect-based approach, such as for native mobile or desktop ap
 <p id="section-1.2-1">The scope of this specification is limited to first-party applications. Please review the entirety of <a href="#security-considerations" class="auto internal xref">Section 9</a>, and when more than one first-party application is supported, <a href="#multiple-applications" class="auto internal xref">Section 9.7</a>.<a href="#section-1.2-1" class="pilcrow">¶</a></p>
 <p id="section-1.2-2">While this draft provides the framework for a native OAuth experience, each implementation
 will need to define the specific behavior that it expects from OAuth clients interacting with the authorization server. While this lack of clearly defining the details would typically lead to less interoperability, it is acceptable in this case since we intend this specification to be deployed in a tightly coupled environment since it is only applicable to first-party applications.<a href="#section-1.2-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="user-experience-considerations">
+<section id="section-1.3">
+        <h3 id="name-user-experience-considerati">
+<a href="#section-1.3" class="section-number selfRef">1.3. </a><a href="#name-user-experience-considerati" class="section-name selfRef">User Experience Considerations</a>
+        </h3>
+<p id="section-1.3-1">It is important to consider the user experience implications of different authentication challenges as well as the device with which the user is attempting to authorize.<a href="#section-1.3-1" class="pilcrow">¶</a></p>
+<p id="section-1.3-2">For example, requesting a user to enter a password on a limited-input device (e.g. TV) creates a lot of user friction while also exposing the user's password to anyone else in the room. On the other hand, using a challenge method that involves, for example, a fingerprint reader on the TV remote allowing for a FIDO2 passkey authentication would be a good experience.<a href="#section-1.3-2" class="pilcrow">¶</a></p>
+<p id="section-1.3-3">The Authorization Server <span class="bcp14">SHOULD</span> consider the user's device when presenting authentication challenges and developers <span class="bcp14">SHOULD</span> consider whether the device implementing this specification can provide a good experience for the user. If the combination of user device and authentication challenge methods creates a lot of friction or security risk, consider using a specification like OAuth 2.0 Device Authorization Grant <span>[<a href="#RFC8628" class="cite xref">RFC8628</a>]</span>. If selecting OAuth 2.0 Device Authorization Grant <span>[<a href="#RFC8628" class="cite xref">RFC8628</a>]</span> which uses a cross-device authorization mechanism, please incorporate the security best practices identified in Cross-Device Flows: Security Best Current Practice <span>[<a href="#I-D.ietf-oauth-cross-device-security" class="cite xref">I-D.ietf-oauth-cross-device-security</a>]</span>.<a href="#section-1.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1527,7 +1542,7 @@ and "Token Endpoint" defined by <span>[<a href="#RFC6749" class="cite xref">RFC6
         <h3 id="name-resource-request">
 <a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-resource-request" class="section-name selfRef">Resource Request</a>
         </h3>
-<p id="section-3.3-1">When making a resource request to a resource server, the resource server <span class="bcp14">MAY</span> respond with an error according to OAuth 2.0 Step-Up Authentication Challenge Protocol <span>[<a href="#I-D.ietf-oauth-step-up-authn-challenge" class="cite xref">I-D.ietf-oauth-step-up-authn-challenge</a>]</span>, indicating that re-authorization of the user is required.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.3-1">When making a resource request to a resource server, the resource server <span class="bcp14">MAY</span> respond with an error according to OAuth 2.0 Step-Up Authentication Challenge Protocol <span>[<a href="#RFC9470" class="cite xref">RFC9470</a>]</span>, indicating that re-authorization of the user is required.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1604,7 +1619,19 @@ authorization server and if no <code>auth_session</code> is included.<a href="#s
           <dd class="break"></dd>
 <dt id="section-5.1-2.7">"auth_session":</dt>
           <dd style="margin-left: 1.5em" id="section-5.1-2.8">
-            <p id="section-5.1-2.8.1"><span class="bcp14">OPTIONAL</span>. If the client has previously obtained an auth session, described in <a href="#auth-session" class="auto internal xref">Section 5.3</a>.<a href="#section-5.1-2.8.1" class="pilcrow">¶</a></p>
+            <p id="section-5.1-2.8.1"><span class="bcp14">OPTIONAL</span>. If the client has previously obtained an auth session, described in <a href="#auth-session" class="auto internal xref">Section 5.3.1</a>.<a href="#section-5.1-2.8.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-5.1-2.9">"code_challenge":</dt>
+          <dd style="margin-left: 1.5em" id="section-5.1-2.10">
+            <p id="section-5.1-2.10.1"><span class="bcp14">OPTIONAL</span>. The code challenge as defined by <span>[<a href="#RFC7636" class="cite xref">RFC7636</a>]</span>.
+See <a href="#redirect-to-web" class="auto internal xref">Section 5.2.2.1</a> for details.<a href="#section-5.1-2.10.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-5.1-2.11">"code_challenge_method":</dt>
+          <dd style="margin-left: 1.5em" id="section-5.1-2.12">
+            <p id="section-5.1-2.12.1"><span class="bcp14">OPTIONAL</span>. The code challenge method as defined by <span>[<a href="#RFC7636" class="cite xref">RFC7636</a>]</span>.
+See <a href="#redirect-to-web" class="auto internal xref">Section 5.2.2.1</a> for details.<a href="#section-5.1-2.12.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -1659,55 +1686,33 @@ Cache-Control: no-store
 </div>
 </section>
 </div>
-<div id="redirect-response">
-<section id="section-5.2.2">
-          <h4 id="name-redirect-response">
-<a href="#section-5.2.2" class="section-number selfRef">5.2.2. </a><a href="#name-redirect-response" class="section-name selfRef">Redirect Response</a>
-          </h4>
-<p id="section-5.2.2-1">In the case where the authorization server wishes to interact with the
-user directly, it can return the <code>redirect</code> response. The authorization
-server may choose to interact directly with the user based on a risk
-assesment, the introduction of a new authentication method not supported
-in the application, or to handle an exception flow like account recovery.
-In this case the client is expected to initiate a traditional OAuth
-Authorization Code flow with PKCE according to <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span> and <span>[<a href="#RFC7636" class="cite xref">RFC7636</a>]</span>.<a href="#section-5.2.2-1" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlParallel" id="section-5.2.2-2">
-            <dt id="section-5.2.2-2.1">"redirect":</dt>
-            <dd style="margin-left: 1.5em" id="section-5.2.2-2.2">
-              <p id="section-5.2.2-2.2.1"><span class="bcp14">REQUIRED</span>. A Pushed Authroization Request (PAR) response as defined in
-Section 2.2 of <span>[<a href="#RFC9126" class="cite xref">RFC9126</a>]</span>. The request_uri parameter contains the URI that
-the client should use in the authorization request.<a href="#section-5.2.2-2.2.1" class="pilcrow">¶</a></p>
-</dd>
-          <dd class="break"></dd>
-</dl>
-</section>
-</div>
 <div id="challenge-error-response">
-<section id="section-5.2.3">
+<section id="section-5.2.2">
           <h4 id="name-error-response">
-<a href="#section-5.2.3" class="section-number selfRef">5.2.3. </a><a href="#name-error-response" class="section-name selfRef">Error Response</a>
+<a href="#section-5.2.2" class="section-number selfRef">5.2.2. </a><a href="#name-error-response" class="section-name selfRef">Error Response</a>
           </h4>
-<p id="section-5.2.3-1">If the request contains invalid parameters or incorrect data,
+<p id="section-5.2.2-1">If the request contains invalid parameters or incorrect data,
+or if the authorization server wishes to interact with the user directly,
 the authorization server responds with an HTTP 400 (Bad Request)
-status code (unless specified otherwise) and includes the following
-parameters with the response:<a href="#section-5.2.3-1" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlParallel" id="section-5.2.3-2">
-            <dt id="section-5.2.3-2.1">"error":</dt>
-            <dd style="margin-left: 1.5em" id="section-5.2.3-2.2">
-              <p id="section-5.2.3-2.2.1"><span class="bcp14">REQUIRED</span>.  A single ASCII <span>[<a href="#USASCII" class="cite xref">USASCII</a>]</span> error code from the following:<a href="#section-5.2.3-2.2.1" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlParallel" id="section-5.2.3-2.2.2">
-                <dt id="section-5.2.3-2.2.2.1">"invalid_request":</dt>
-                <dd style="margin-left: 1.5em" id="section-5.2.3-2.2.2.2">
-                  <p id="section-5.2.3-2.2.2.2.1">The request is missing a required parameter, includes an
+status code (unless specified otherwise below) and includes the following
+parameters with the response:<a href="#section-5.2.2-1" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-5.2.2-2">
+            <dt id="section-5.2.2-2.1">"error":</dt>
+            <dd style="margin-left: 1.5em" id="section-5.2.2-2.2">
+              <p id="section-5.2.2-2.2.1"><span class="bcp14">REQUIRED</span>.  A single ASCII <span>[<a href="#USASCII" class="cite xref">USASCII</a>]</span> error code from the following:<a href="#section-5.2.2-2.2.1" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-5.2.2-2.2.2">
+                <dt id="section-5.2.2-2.2.2.1">"invalid_request":</dt>
+                <dd style="margin-left: 1.5em" id="section-5.2.2-2.2.2.2">
+                  <p id="section-5.2.2-2.2.2.2.1">The request is missing a required parameter, includes an
 unsupported parameter value,
 repeats a parameter, includes multiple credentials,
 utilizes more than one mechanism for authenticating the
-client, or is otherwise malformed.<a href="#section-5.2.3-2.2.2.2.1" class="pilcrow">¶</a></p>
+client, or is otherwise malformed.<a href="#section-5.2.2-2.2.2.2.1" class="pilcrow">¶</a></p>
 </dd>
                 <dd class="break"></dd>
-<dt id="section-5.2.3-2.2.2.3">"invalid_client":</dt>
-                <dd style="margin-left: 1.5em" id="section-5.2.3-2.2.2.4">
-                  <p id="section-5.2.3-2.2.2.4.1">Client authentication failed (e.g., unknown client, no
+<dt id="section-5.2.2-2.2.2.3">"invalid_client":</dt>
+                <dd style="margin-left: 1.5em" id="section-5.2.2-2.2.2.4">
+                  <p id="section-5.2.2-2.2.2.4.1">Client authentication failed (e.g., unknown client, no
 client authentication included, or unsupported
 authentication method).  The authorization server <span class="bcp14">MAY</span>
 return an HTTP 401 (Unauthorized) status code to indicate
@@ -1716,101 +1721,156 @@ client attempted to authenticate via the <code>Authorization</code>
 request header field, the authorization server <span class="bcp14">MUST</span>
 respond with an HTTP 401 (Unauthorized) status code and
 include the <code>WWW-Authenticate</code> response header field
-matching the authentication scheme used by the client.<a href="#section-5.2.3-2.2.2.4.1" class="pilcrow">¶</a></p>
+matching the authentication scheme used by the client.<a href="#section-5.2.2-2.2.2.4.1" class="pilcrow">¶</a></p>
 </dd>
                 <dd class="break"></dd>
-<dt id="section-5.2.3-2.2.2.5">"invalid_grant":</dt>
-                <dd style="margin-left: 1.5em" id="section-5.2.3-2.2.2.6">
-                  <p id="section-5.2.3-2.2.2.6.1">The provided authorization grant or <code>auth_session</code> is
-invalid, expired, revoked, or is otherwise invalid.<a href="#section-5.2.3-2.2.2.6.1" class="pilcrow">¶</a></p>
+<dt id="section-5.2.2-2.2.2.5">"invalid_grant":</dt>
+                <dd style="margin-left: 1.5em" id="section-5.2.2-2.2.2.6">
+                  <p id="section-5.2.2-2.2.2.6.1">The provided authorization grant or <code>auth_session</code> is
+invalid, expired, revoked, or is otherwise invalid.<a href="#section-5.2.2-2.2.2.6.1" class="pilcrow">¶</a></p>
 </dd>
                 <dd class="break"></dd>
-<dt id="section-5.2.3-2.2.2.7">"unauthorized_client":</dt>
-                <dd style="margin-left: 1.5em" id="section-5.2.3-2.2.2.8">
-                  <p id="section-5.2.3-2.2.2.8.1">The authenticated client is not authorized to use this
-authorization grant type.<a href="#section-5.2.3-2.2.2.8.1" class="pilcrow">¶</a></p>
+<dt id="section-5.2.2-2.2.2.7">"unauthorized_client":</dt>
+                <dd style="margin-left: 1.5em" id="section-5.2.2-2.2.2.8">
+                  <p id="section-5.2.2-2.2.2.8.1">The authenticated client is not authorized to use this
+authorization grant type.<a href="#section-5.2.2-2.2.2.8.1" class="pilcrow">¶</a></p>
 </dd>
                 <dd class="break"></dd>
-<dt id="section-5.2.3-2.2.2.9">"invalid_scope":</dt>
-                <dd style="margin-left: 1.5em" id="section-5.2.3-2.2.2.10">
-                  <p id="section-5.2.3-2.2.2.10.1">The requested scope is invalid, unknown, malformed, or
-exceeds the scope granted by the resource owner.<a href="#section-5.2.3-2.2.2.10.1" class="pilcrow">¶</a></p>
+<dt id="section-5.2.2-2.2.2.9">"invalid_scope":</dt>
+                <dd style="margin-left: 1.5em" id="section-5.2.2-2.2.2.10">
+                  <p id="section-5.2.2-2.2.2.10.1">The requested scope is invalid, unknown, malformed, or
+exceeds the scope granted by the resource owner.<a href="#section-5.2.2-2.2.2.10.1" class="pilcrow">¶</a></p>
 </dd>
                 <dd class="break"></dd>
-<dt id="section-5.2.3-2.2.2.11">"insufficient_authorization":</dt>
-                <dd style="margin-left: 1.5em" id="section-5.2.3-2.2.2.12">
-                  <p id="section-5.2.3-2.2.2.12.1">The presented authorization is insufficient, and the authorization
+<dt id="section-5.2.2-2.2.2.11">"insufficient_authorization":</dt>
+                <dd style="margin-left: 1.5em" id="section-5.2.2-2.2.2.12">
+                  <p id="section-5.2.2-2.2.2.12.1">The presented authorization is insufficient, and the authorization
 server is requesting the client take additional steps to
-complete the authorization.<a href="#section-5.2.3-2.2.2.12.1" class="pilcrow">¶</a></p>
+complete the authorization.<a href="#section-5.2.2-2.2.2.12.1" class="pilcrow">¶</a></p>
+</dd>
+                <dd class="break"></dd>
+<dt id="section-5.2.2-2.2.2.13">"redirect_to_web":</dt>
+                <dd style="margin-left: 1.5em" id="section-5.2.2-2.2.2.14">
+                  <p id="section-5.2.2-2.2.2.14.1">The request is not able to be fulfilled with any further
+direct interaction with the user. Instead, the client
+should initiate a new authorization code flow so that the
+user interacts with the authorization server in a web browser.<a href="#section-5.2.2-2.2.2.14.1" class="pilcrow">¶</a></p>
 </dd>
               <dd class="break"></dd>
 </dl>
-<p id="section-5.2.3-2.2.3">Values for the <code>error</code> parameter <span class="bcp14">MUST NOT</span> include characters
-outside the set %x20-21 / %x23-5B / %x5D-7E.<a href="#section-5.2.3-2.2.3" class="pilcrow">¶</a></p>
-<p id="section-5.2.3-2.2.4">The authorization server <span class="bcp14">MAY</span> extend these error codes with custom
-messages based on the requirements of the authorization server.<a href="#section-5.2.3-2.2.4" class="pilcrow">¶</a></p>
+<p id="section-5.2.2-2.2.3">Values for the <code>error</code> parameter <span class="bcp14">MUST NOT</span> include characters
+outside the set %x20-21 / %x23-5B / %x5D-7E.<a href="#section-5.2.2-2.2.3" class="pilcrow">¶</a></p>
+<p id="section-5.2.2-2.2.4">The authorization server <span class="bcp14">MAY</span> extend these error codes with custom
+messages based on the requirements of the authorization server.<a href="#section-5.2.2-2.2.4" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
-<dt id="section-5.2.3-2.3">"error_description":</dt>
-            <dd style="margin-left: 1.5em" id="section-5.2.3-2.4">
-              <p id="section-5.2.3-2.4.1"><span class="bcp14">OPTIONAL</span>.  Human-readable ASCII <span>[<a href="#USASCII" class="cite xref">USASCII</a>]</span> text providing
+<dt id="section-5.2.2-2.3">"error_description":</dt>
+            <dd style="margin-left: 1.5em" id="section-5.2.2-2.4">
+              <p id="section-5.2.2-2.4.1"><span class="bcp14">OPTIONAL</span>.  Human-readable ASCII <span>[<a href="#USASCII" class="cite xref">USASCII</a>]</span> text providing
 additional information, used to assist the client developer in
 understanding the error that occurred.
 Values for the <code>error_description</code> parameter <span class="bcp14">MUST NOT</span> include
-characters outside the set %x20-21 / %x23-5B / %x5D-7E.<a href="#section-5.2.3-2.4.1" class="pilcrow">¶</a></p>
+characters outside the set %x20-21 / %x23-5B / %x5D-7E.<a href="#section-5.2.2-2.4.1" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
-<dt id="section-5.2.3-2.5">"error_uri":</dt>
-            <dd style="margin-left: 1.5em" id="section-5.2.3-2.6">
-              <p id="section-5.2.3-2.6.1"><span class="bcp14">OPTIONAL</span>.  A URI identifying a human-readable web page with
+<dt id="section-5.2.2-2.5">"error_uri":</dt>
+            <dd style="margin-left: 1.5em" id="section-5.2.2-2.6">
+              <p id="section-5.2.2-2.6.1"><span class="bcp14">OPTIONAL</span>.  A URI identifying a human-readable web page with
 information about the error, used to provide the client
 developer with additional information about the error.
 Values for the <code>error_uri</code> parameter <span class="bcp14">MUST</span> conform to the
 URI-reference syntax and thus <span class="bcp14">MUST NOT</span> include characters
-outside the set %x21 / %x23-5B / %x5D-7E.<a href="#section-5.2.3-2.6.1" class="pilcrow">¶</a></p>
+outside the set %x21 / %x23-5B / %x5D-7E.<a href="#section-5.2.2-2.6.1" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
-<dt id="section-5.2.3-2.7">"auth_session":</dt>
-            <dd style="margin-left: 1.5em" id="section-5.2.3-2.8">
-              <p id="section-5.2.3-2.8.1"><span class="bcp14">OPTIONAL</span>.  The auth session allows the authorization server to
+<dt id="section-5.2.2-2.7">"auth_session":</dt>
+            <dd style="margin-left: 1.5em" id="section-5.2.2-2.8">
+              <p id="section-5.2.2-2.8.1"><span class="bcp14">OPTIONAL</span>.  The auth session allows the authorization server to
 associate subsequent requests by this client with an ongoing
 authorization request sequence. The client <span class="bcp14">MUST</span> include
 the <code>auth_session</code> in follow-up requests to the challenge
-endpoint if it receives one along with the error response.<a href="#section-5.2.3-2.8.1" class="pilcrow">¶</a></p>
+endpoint if it receives one along with the error response.<a href="#section-5.2.2-2.8.1" class="pilcrow">¶</a></p>
+</dd>
+            <dd class="break"></dd>
+<dt id="section-5.2.2-2.9">"request_uri":</dt>
+            <dd style="margin-left: 1.5em" id="section-5.2.2-2.10">
+              <p id="section-5.2.2-2.10.1"><span class="bcp14">OPTIONAL</span>.  A request URI as described by <span>[<a href="#RFC9126" class="cite xref">RFC9126</a>]</span> Section 2.2.<a href="#section-5.2.2-2.10.1" class="pilcrow">¶</a></p>
+</dd>
+            <dd class="break"></dd>
+<dt id="section-5.2.2-2.11">"expires_in":</dt>
+            <dd style="margin-left: 1.5em" id="section-5.2.2-2.12">
+              <p id="section-5.2.2-2.12.1"><span class="bcp14">OPTIONAL</span>.  The lifetime of the <code>request_uri</code> in seconds, as
+described by <span>[<a href="#RFC9126" class="cite xref">RFC9126</a>]</span> Section 2.2.<a href="#section-5.2.2-2.12.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 </dl>
-<p id="section-5.2.3-3">This specification requires the authorization server to define new
+<p id="section-5.2.2-3">This specification requires the authorization server to define new
 error codes that relate to the actions the client must take in order
 to properly authenticate the user. These new error codes are specific
 to the authorization server's implementation of this specification and are
-intentionally left out of scope.<a href="#section-5.2.3-3" class="pilcrow">¶</a></p>
-<p id="section-5.2.3-4">The parameters are included in the content of the HTTP response
+intentionally left out of scope.<a href="#section-5.2.2-3" class="pilcrow">¶</a></p>
+<p id="section-5.2.2-4">The parameters are included in the content of the HTTP response
 using the <code>application/json</code> media type as defined by <span>[<a href="#RFC7159" class="cite xref">RFC7159</a>]</span>.  The
 parameters are serialized into a JSON structure by adding each
 parameter at the highest structure level.  Parameter names and string
 values are included as JSON strings.  Numerical values are included
 as JSON numbers.  The order of parameters does not matter and can
-vary.<a href="#section-5.2.3-4" class="pilcrow">¶</a></p>
-<p id="section-5.2.3-5">The authorization server <span class="bcp14">MAY</span> define additional parameters in the response
+vary.<a href="#section-5.2.2-4" class="pilcrow">¶</a></p>
+<p id="section-5.2.2-5">The authorization server <span class="bcp14">MAY</span> define additional parameters in the response
 depending on the implmentation. The authorization server <span class="bcp14">MAY</span> also define
 more specific content types for the error responses as long as the response
-is JSON and conforms to <code>application/&lt;as-defined&gt;+json</code>.<a href="#section-5.2.3-5" class="pilcrow">¶</a></p>
+is JSON and conforms to <code>application/&lt;AS-defined&gt;+json</code>.<a href="#section-5.2.2-5" class="pilcrow">¶</a></p>
+<div id="redirect-to-web">
+<section id="section-5.2.2.1">
+            <h5 id="name-redirect-to-web-error-respo">
+<a href="#section-5.2.2.1" class="section-number selfRef">5.2.2.1. </a><a href="#name-redirect-to-web-error-respo" class="section-name selfRef">Redirect to Web Error Response</a>
+            </h5>
+<p id="section-5.2.2.1-1">The authorization server may choose to interact directly with the user based on a risk
+assesment, the introduction of a new authentication method not supported
+in the application, or to handle an exception flow like account recovery.
+To indicate this error to the client, the authorization server returns an
+error response as defined above with the <code>redirect_to_web</code> error code.<a href="#section-5.2.2.1-1" class="pilcrow">¶</a></p>
+<p id="section-5.2.2.1-2">In this case, the client is expected to initiate a new OAuth
+Authorization Code flow with PKCE according to <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span> and <span>[<a href="#RFC7636" class="cite xref">RFC7636</a>]</span>.<a href="#section-5.2.2.1-2" class="pilcrow">¶</a></p>
+<p id="section-5.2.2.1-3">If the client expects the frequency of this error response to be high,
+the client <span class="bcp14">MAY</span> include a PKCE (<span>[<a href="#RFC7636" class="cite xref">RFC7636</a>]</span>) <code>code_challenge</code> in the initial authorization
+challenge request. This enables the authorization server to essentially treat
+the authorization challenge request as a PAR <span>[<a href="#RFC9126" class="cite xref">RFC9126</a>]</span> request, and
+return the <code>request_uri</code> and <code>expires_in</code> as defined by <span>[<a href="#RFC9126" class="cite xref">RFC9126</a>]</span> in the error response.
+The client then uses the <code>request_uri</code> value to build an authorization request
+as defined in <span>[<a href="#RFC9126" class="cite xref">RFC9126</a>]</span> Section 4.<a href="#section-5.2.2.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
-<div id="auth-session">
+</section>
+</div>
+<div id="intermediate-requests">
 <section id="section-5.3">
-        <h3 id="name-auth-session">
-<a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-auth-session" class="section-name selfRef">Auth Session</a>
+        <h3 id="name-intermediate-requests">
+<a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-intermediate-requests" class="section-name selfRef">Intermediate Requests</a>
         </h3>
-<p id="section-5.3-1">The <code>auth_session</code> is a value that the authorization server issues in order to be able to associate subsequent requests from the same client. It is intended to be analagous to how a browser cookie associates multiple requests by the same browser to the authorization server.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
-<p id="section-5.3-2">The <code>auth_session</code> value is completely opaque to the client, and as such the authorization server <span class="bcp14">MUST</span> adequately protect the value from inspection by the client, for example by using a random string or using a JWE if the authorization server is not maintaining state on the backend.<a href="#section-5.3-2" class="pilcrow">¶</a></p>
-<p id="section-5.3-3">If the client has an <code>auth_session</code>, the client <span class="bcp14">MUST</span> include it in future requests to the authorization challenge endpoint. The client <span class="bcp14">MUST</span> store the <code>auth_session</code> beyond the issuance of the authorization code to be able to use it in future requests.<a href="#section-5.3-3" class="pilcrow">¶</a></p>
-<p id="section-5.3-4">Every response defined by this specification may include a new <code>auth_session</code> value. Clients <span class="bcp14">MUST NOT</span> assume that <code>auth_session</code> values are static, and <span class="bcp14">MUST</span> be prepared to update the stored <code>auth_session</code> value if one is received in a response.<a href="#section-5.3-4" class="pilcrow">¶</a></p>
-<p id="section-5.3-5">To mitigate the risk of session hijacking, the 'auth_session' <span class="bcp14">MUST</span> be bound to the device, and the authorization server <span class="bcp14">MUST</span> reject an 'auth_session' if it is presented from a different device than the one it was bound to.<a href="#section-5.3-5" class="pilcrow">¶</a></p>
-<p id="section-5.3-6">See <a href="#auth-session-security" class="auto internal xref">Section 9.6</a> for additional security considerations.<a href="#section-5.3-6" class="pilcrow">¶</a></p>
+<p id="section-5.3-1">If the authorization server returns an <code>insufficient_authorization</code> error as described
+above, this is an indication that there is further information the client
+should request from the user, and continue to make requests to the authorization
+server until the authorization request is fulfilled and an authorization code returned.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
+<p id="section-5.3-2">These intermediate requests are out of scope of this specification, and are expected
+to be defined by the authorization server. The format of these requests are not required
+to conform to the format of the initial authorization challenge requests
+(e.g. the request format may be <code>application/json</code> rather than <code>application/x-www-form-urlencoded</code>).<a href="#section-5.3-2" class="pilcrow">¶</a></p>
+<div id="auth-session">
+<section id="section-5.3.1">
+          <h4 id="name-auth-session">
+<a href="#section-5.3.1" class="section-number selfRef">5.3.1. </a><a href="#name-auth-session" class="section-name selfRef">Auth Session</a>
+          </h4>
+<p id="section-5.3.1-1">The <code>auth_session</code> is a value that the authorization server issues in order to be able to associate subsequent requests from the same client. It is intended to be analagous to how a browser cookie associates multiple requests by the same browser to the authorization server.<a href="#section-5.3.1-1" class="pilcrow">¶</a></p>
+<p id="section-5.3.1-2">The <code>auth_session</code> value is completely opaque to the client, and as such the authorization server <span class="bcp14">MUST</span> adequately protect the value from inspection by the client, for example by using a random string or using a JWE if the authorization server is not maintaining state on the backend.<a href="#section-5.3.1-2" class="pilcrow">¶</a></p>
+<p id="section-5.3.1-3">If the client has an <code>auth_session</code>, the client <span class="bcp14">MUST</span> include it in future requests to the authorization challenge endpoint. The client <span class="bcp14">MUST</span> store the <code>auth_session</code> beyond the issuance of the authorization code to be able to use it in future requests.<a href="#section-5.3.1-3" class="pilcrow">¶</a></p>
+<p id="section-5.3.1-4">Every response defined by this specification may include a new <code>auth_session</code> value. Clients <span class="bcp14">MUST NOT</span> assume that <code>auth_session</code> values are static, and <span class="bcp14">MUST</span> be prepared to update the stored <code>auth_session</code> value if one is received in a response.<a href="#section-5.3.1-4" class="pilcrow">¶</a></p>
+<p id="section-5.3.1-5">To mitigate the risk of session hijacking, the 'auth_session' <span class="bcp14">MUST</span> be bound to the device, and the authorization server <span class="bcp14">MUST</span> reject an 'auth_session' if it is presented from a different device than the one it was bound to.<a href="#section-5.3.1-5" class="pilcrow">¶</a></p>
+<p id="section-5.3.1-6">See <a href="#auth-session-security" class="auto internal xref">Section 9.6</a> for additional security considerations.<a href="#section-5.3.1-6" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 </section>
@@ -1828,7 +1888,7 @@ is JSON and conforms to <code>application/&lt;as-defined&gt;+json</code>.<a href
 <a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-token-endpoint-successful-r" class="section-name selfRef">Token Endpoint Successful Response</a>
         </h3>
 <p id="section-6.1-1">This specification extends the OAuth 2.0 <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span> token response
-defined in Section 5.1 with the additional parameter <code>auth_session</code>, defined in <a href="#auth-session" class="auto internal xref">Section 5.3</a>.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
+defined in Section 5.1 with the additional parameter <code>auth_session</code>, defined in <a href="#auth-session" class="auto internal xref">Section 5.3.1</a>.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
 <p id="section-6.1-2">The response <span class="bcp14">MAY</span> include an <code>auth_session</code> parameter which the client is expected to include on a subsequent request to the authorization challenge endpoint. The <code>auth_session</code> parameter <span class="bcp14">MAY</span> also be included even if the authorization code was obtained through a traditional OAuth authorization code flow rather than the flow defined by this specification.<a href="#section-6.1-2" class="pilcrow">¶</a></p>
 <p id="section-6.1-3">An example successful token response is below:<a href="#section-6.1-3" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-6.1-4">
@@ -1901,8 +1961,8 @@ Cache-Control: no-store
       <h2 id="name-resource-server-error-respo">
 <a href="#section-7" class="section-number selfRef">7. </a><a href="#name-resource-server-error-respo" class="section-name selfRef">Resource Server Error Response</a>
       </h2>
-<p id="section-7-1">Step-Up Authentication <span>[<a href="#I-D.ietf-oauth-step-up-authn-challenge" class="cite xref">I-D.ietf-oauth-step-up-authn-challenge</a>]</span> defines a mechanism for resource servers to tell the client to start a new authorization request, including <code>acr_values</code> and <code>max_age</code>, and <code>scope</code> from RFC6750. Upon receiving this request, the client starts a new authorization request according to this specification, and includes the <code>acr_values</code>, <code>max_age</code> and <code>scope</code> returned in the error response.<a href="#section-7-1" class="pilcrow">¶</a></p>
-<p id="section-7-2">This specification does not define any new parameters for the resource server error response beyond those defined in <span>[<a href="#I-D.ietf-oauth-step-up-authn-challenge" class="cite xref">I-D.ietf-oauth-step-up-authn-challenge</a>]</span>.<a href="#section-7-2" class="pilcrow">¶</a></p>
+<p id="section-7-1">Step-Up Authentication <span>[<a href="#RFC9470" class="cite xref">RFC9470</a>]</span> defines a mechanism for resource servers to tell the client to start a new authorization request, including <code>acr_values</code> and <code>max_age</code>, and <code>scope</code> from RFC6750. Upon receiving this request, the client starts a new authorization request according to this specification, and includes the <code>acr_values</code>, <code>max_age</code> and <code>scope</code> returned in the error response.<a href="#section-7-1" class="pilcrow">¶</a></p>
+<p id="section-7-2">This specification does not define any new parameters for the resource server error response beyond those defined in <span>[<a href="#RFC9470" class="cite xref">RFC9470</a>]</span>.<a href="#section-7-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authorization-server-metadata">
@@ -1980,7 +2040,8 @@ an authorization request and eventually obtain an authorization code.<a href="#s
           </h4>
 <p id="section-9.5.1-1">DPoP (<span>[<a href="#RFC9449" class="cite xref">RFC9449</a>]</span>) is an application-level mechanism for sender-constraining OAuth <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span> access and refresh tokens. If DPoP is used to sender constrain tokens, the client <span class="bcp14">SHOULD</span> use DPoP for every token request to the Authorization Server and interaction with the Resource Server.<a href="#section-9.5.1-1" class="pilcrow">¶</a></p>
 <p id="section-9.5.1-2">DPoP includes an optional capability to bind the authorization code to the DPoP key to enable end-to-end binding of the entire authorization flow. Given the back-channel nature of this specification, there are far fewer opportunities for an attacker to access the authorization code and PKCE code verifier compared to the redirect-based Authorization Code Flow. In this specification, the Authorization Code is obtained via a back-channel request. Despite this, omitting Authorization Code binding leaves a gap in the end-to-end protection that DPoP provides, so DPoP Authorization Code binding <span class="bcp14">SHOULD</span> be used.<a href="#section-9.5.1-2" class="pilcrow">¶</a></p>
-<p id="section-9.5.1-3">To bind the authorization code using the Authorization Challenge Endpoint, the JWK Thumbprint of the DPoP key <span class="bcp14">MUST</span> be communicated to the Authorization Server by including the <code>dpop_jkt</code> parameter defined in section 10 of <span>[<a href="#RFC9449" class="cite xref">RFC9449</a>]</span> alongside other authorization request parameters in the POST body of the first Authorization Challenge Request. If it is included in subsequent Authorization Challenge Requests, the value of this parameter must be the same as in the initial request. If the JWK Thumbprint in the <code>dpop_jkt</code> differ at any point, the Authorization Server <span class="bcp14">MUST</span> reject the request. If the <code>dpop_jkt</code> parameter is not included in the first request, but added in subsequent requests, the Authorization Server <span class="bcp14">MUST</span> reject the request (do we need to define a specific error code for that?).<a href="#section-9.5.1-3" class="pilcrow">¶</a></p>
+<p id="section-9.5.1-3">The mechanism for Authorization Code binding with DPoP is similar as that defined for Pushed Authorization Requests (PARs) in Section 10.1 of <span>[<a href="#RFC9449" class="cite xref">RFC9449</a>]</span>. In order to bind the Authorization Code with DPoP, the client <span class="bcp14">MUST</span> add the DPoP header to the Authorization Challenge Request. The authorization server <span class="bcp14">MUST</span> check the DPoP proof JWT that was included in the DPoP header as defined in Section 4.3 of <span>[<a href="#RFC9449" class="cite xref">RFC9449</a>]</span>. The authorization server <span class="bcp14">MUST</span> ensure that the same key is used in all subsequent Authorization Challenge Requests, or in the eventual token request. The authorization server <span class="bcp14">MUST</span> reject subsequent Authorization Challenge Requests, or the eventual token request, unless a DPoP proof for the same key presented in the original Authorization Challenge Request is provided.<a href="#section-9.5.1-3" class="pilcrow">¶</a></p>
+<p id="section-9.5.1-4">The above mechanism simplifies the implementation of the client, as it can attach the DPoP header to all requests to the authorization server regardless of the type of request. This mechanism provides a stronger binding than using the <code>dpop_jkt</code> parameter, as the DPoP header contains a proof of possession of the private key.<a href="#section-9.5.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="other-proof-of-possession-mechanisms">
@@ -2003,16 +2064,8 @@ an authorization request and eventually obtain an authorization code.<a href="#s
           <h4 id="name-auth-session-dpop-binding">
 <a href="#section-9.6.1" class="section-number selfRef">9.6.1. </a><a href="#name-auth-session-dpop-binding" class="section-name selfRef">Auth Session DPoP Binding</a>
           </h4>
-<p id="section-9.6.1-1">If the client and authorization server are using DPoP binding of access tokens and/or authorization codes, then they <span class="bcp14">SHOULD</span> also require DPoP binding of the <code>auth_session</code> value as well.<a href="#section-9.6.1-1" class="pilcrow">¶</a></p>
+<p id="section-9.6.1-1">If the client and authorization server are using DPoP binding of access tokens and/or authorization codes, then the <code>auth_session</code> value <span class="bcp14">SHOULD</span> be protected by the DPoP binding as well. The authorization server <span class="bcp14">SHOULD</span> bind the <code>auth_session</code> value to the DPoP public key. If the authorization server is binding the <code>auth_session</code> value to the DPoP public key, it <span class="bcp14">MUST</span> check that the same DPoP public key is being used and <span class="bcp14">MUST</span> verify the DPoP proof to ensure the client controls the corresponding private key whenever the client includes the <code>auth_session</code> in an Authorization Challenge Request as described in <a href="#challenge-request" class="auto internal xref">Section 5.1</a>.<a href="#section-9.6.1-1" class="pilcrow">¶</a></p>
 <p id="section-9.6.1-2">DPoP binding of the <code>auth_session</code> value ensures that the context referenced by the <code>auth_session</code> cannot be stolen and reused by another device.<a href="#section-9.6.1-2" class="pilcrow">¶</a></p>
-<p id="section-9.6.1-3">This specification defines an additional claim in the DPoP Proof JWT Syntax defined in Section 4.2 of <span>[<a href="#RFC9449" class="cite xref">RFC9449</a>]</span>:<a href="#section-9.6.1-3" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlParallel" id="section-9.6.1-4">
-            <dt id="section-9.6.1-4.1">"ash":</dt>
-            <dd style="margin-left: 1.5em" id="section-9.6.1-4.2">
-              <p id="section-9.6.1-4.2.1">The hash of the <code>auth_session</code>. The value <span class="bcp14">MUST</span> be the result of a base64url encoding (as defined in Section 2 of <span>[<a href="#RFC7515" class="cite xref">RFC7515</a>]</span>) the SHA-256 <span>[<a href="#SHS" class="cite xref">SHS</a>]</span> hash of the ASCII encoding of the <code>auth_session</code> value.<a href="#section-9.6.1-4.2.1" class="pilcrow">¶</a></p>
-</dd>
-          <dd class="break"></dd>
-</dl>
 </section>
 </div>
 <div id="auth-session-lifetime">
@@ -2115,11 +2168,6 @@ an authorization request and eventually obtain an authorization code.<a href="#s
 <a href="#section-10.3" class="section-number selfRef">10.3. </a><a href="#name-json-web-token-claims-regis" class="section-name selfRef">JSON Web Token Claims Registration</a>
         </h3>
 <p id="section-10.3-1">IANA has (TBD) registered the following Claims in the "JSON Web Token Claims" registry <span>[<a href="#IANA.JWT" class="cite xref">IANA.JWT</a>]</span> established by <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span>.<a href="#section-10.3-1" class="pilcrow">¶</a></p>
-<p id="section-10.3-2"><strong>Auth Session Hash</strong><a href="#section-10.3-2" class="pilcrow">¶</a></p>
-<p id="section-10.3-3"><strong>Claim Name</strong>: <code>ash</code><a href="#section-10.3-3" class="pilcrow">¶</a></p>
-<p id="section-10.3-4"><strong>Claim Description</strong>: The base64url-encoded SHA-256 hash of the ASCII encoding of the <code>auth_session</code> value<a href="#section-10.3-4" class="pilcrow">¶</a></p>
-<p id="section-10.3-5"><strong>Change Controller</strong>: IETF<a href="#section-10.3-5" class="pilcrow">¶</a></p>
-<p id="section-10.3-6"><strong>Reference</strong>: Section 9.6.1 of this specification<a href="#section-10.3-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -2134,9 +2182,9 @@ an authorization request and eventually obtain an authorization code.<a href="#s
 <a href="#section-11.1" class="section-number selfRef">11.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
-<dt id="I-D.ietf-oauth-step-up-authn-challenge">[I-D.ietf-oauth-step-up-authn-challenge]</dt>
+<dt id="I-D.ietf-oauth-cross-device-security">[I-D.ietf-oauth-cross-device-security]</dt>
         <dd>
-<span class="refAuthor">Bertocci, V.</span> and <span class="refAuthor">B. Campbell</span>, <span class="refTitle">"OAuth 2.0 Step Up Authentication Challenge Protocol"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-step-up-authn-challenge-17</span>, <time datetime="2023-06-26" class="refDate">26 June 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-step-up-authn-challenge-17">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-step-up-authn-challenge-17</a>&gt;</span>. </dd>
+<span class="refAuthor">Kasselman, P.</span>, <span class="refAuthor">Fett, D.</span>, and <span class="refAuthor">F. Skokan</span>, <span class="refTitle">"Cross-Device Flows: Security Best Current Practice"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-cross-device-security-05</span>, <time datetime="2024-03-01" class="refDate">1 March 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-cross-device-security-05">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-cross-device-security-05</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="IANA.JWT">[IANA.JWT]</dt>
         <dd>
@@ -2194,6 +2242,10 @@ an authorization request and eventually obtain an authorization code.<a href="#s
         <dd>
 <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Sakimura, N.</span>, and <span class="refAuthor">J. Bradley</span>, <span class="refTitle">"OAuth 2.0 Authorization Server Metadata"</span>, <span class="seriesInfo">RFC 8414</span>, <span class="seriesInfo">DOI 10.17487/RFC8414</span>, <time datetime="2018-06" class="refDate">June 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8414">https://www.rfc-editor.org/rfc/rfc8414</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC8628">[RFC8628]</dt>
+        <dd>
+<span class="refAuthor">Denniss, W.</span>, <span class="refAuthor">Bradley, J.</span>, <span class="refAuthor">Jones, M.</span>, and <span class="refAuthor">H. Tschofenig</span>, <span class="refTitle">"OAuth 2.0 Device Authorization Grant"</span>, <span class="seriesInfo">RFC 8628</span>, <span class="seriesInfo">DOI 10.17487/RFC8628</span>, <time datetime="2019-08" class="refDate">August 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8628">https://www.rfc-editor.org/rfc/rfc8628</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC8707">[RFC8707]</dt>
         <dd>
 <span class="refAuthor">Campbell, B.</span>, <span class="refAuthor">Bradley, J.</span>, and <span class="refAuthor">H. Tschofenig</span>, <span class="refTitle">"Resource Indicators for OAuth 2.0"</span>, <span class="seriesInfo">RFC 8707</span>, <span class="seriesInfo">DOI 10.17487/RFC8707</span>, <time datetime="2020-02" class="refDate">February 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8707">https://www.rfc-editor.org/rfc/rfc8707</a>&gt;</span>. </dd>
@@ -2205,6 +2257,10 @@ an authorization request and eventually obtain an authorization code.<a href="#s
 <dt id="RFC9449">[RFC9449]</dt>
         <dd>
 <span class="refAuthor">Fett, D.</span>, <span class="refAuthor">Campbell, B.</span>, <span class="refAuthor">Bradley, J.</span>, <span class="refAuthor">Lodderstedt, T.</span>, <span class="refAuthor">Jones, M.</span>, and <span class="refAuthor">D. Waite</span>, <span class="refTitle">"OAuth 2.0 Demonstrating Proof of Possession (DPoP)"</span>, <span class="seriesInfo">RFC 9449</span>, <span class="seriesInfo">DOI 10.17487/RFC9449</span>, <time datetime="2023-09" class="refDate">September 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9449">https://www.rfc-editor.org/rfc/rfc9449</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9470">[RFC9470]</dt>
+        <dd>
+<span class="refAuthor">Bertocci, V.</span> and <span class="refAuthor">B. Campbell</span>, <span class="refTitle">"OAuth 2.0 Step Up Authentication Challenge Protocol"</span>, <span class="seriesInfo">RFC 9470</span>, <span class="seriesInfo">DOI 10.17487/RFC9470</span>, <time datetime="2023-09" class="refDate">September 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9470">https://www.rfc-editor.org/rfc/rfc9470</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="SHS">[SHS]</dt>
         <dd>
@@ -2225,7 +2281,7 @@ an authorization request and eventually obtain an authorization code.<a href="#s
 <dl class="references">
 <dt id="I-D.ietf-oauth-browser-based-apps">[I-D.ietf-oauth-browser-based-apps]</dt>
         <dd>
-<span class="refAuthor">Parecki, A.</span>, <span class="refAuthor">Waite, D.</span>, and <span class="refAuthor">P. De Ryck</span>, <span class="refTitle">"OAuth 2.0 for Browser-Based Apps"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-browser-based-apps-15</span>, <time datetime="2023-10-23" class="refDate">23 October 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-browser-based-apps-15">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-browser-based-apps-15</a>&gt;</span>. </dd>
+<span class="refAuthor">Parecki, A.</span>, <span class="refAuthor">Waite, D.</span>, and <span class="refAuthor">P. De Ryck</span>, <span class="refTitle">"OAuth 2.0 for Browser-Based Apps"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-browser-based-apps-17</span>, <time datetime="2024-02-28" class="refDate">28 February 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-browser-based-apps-17">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-browser-based-apps-17</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8252">[RFC8252]</dt>
       <dd>
@@ -2289,7 +2345,7 @@ an authorization request and eventually obtain an authorization code.<a href="#s
             <p id="appendix-A.2-2.2.1">The Client sends an Authorization Challenge Request (<a href="#challenge-request" class="auto internal xref">Section 5.1</a>) to the Authorization Challenge Endpoint (<a href="#authorization-challenge-endpoint" class="auto internal xref">Section 4.1</a>) including the username.<a href="#appendix-A.2-2.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.2-2.3">
-            <p id="appendix-A.2-2.3.1">The Authorization Server verifies the username and determines that the account is locked and returns a Redirect message.<a href="#appendix-A.2-2.3.1" class="pilcrow">¶</a></p>
+            <p id="appendix-A.2-2.3.1">The Authorization Server verifies the username and determines that the account is locked and returns a Redirect error response.<a href="#appendix-A.2-2.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.2-2.4">
             <p id="appendix-A.2-2.4.1">The Client parses the redirect message, opens a browser and redirects the user to the Authorization Server performing an OAuth 2.0 flow with PKCE.<a href="#appendix-A.2-2.4.1" class="pilcrow">¶</a></p>
@@ -2298,7 +2354,7 @@ an authorization request and eventually obtain an authorization code.<a href="#s
             <p id="appendix-A.2-2.5.1">The user resets their account by performing a multi-step authentication flow with the Authorization Server.<a href="#appendix-A.2-2.5.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.2-2.6">
-            <p id="appendix-A.2-2.6.1">The Authorization Server issues an Authorization Code, which is exchanged for an access and refresh token before returning control to the Client.<a href="#appendix-A.2-2.6.1" class="pilcrow">¶</a></p>
+            <p id="appendix-A.2-2.6.1">The Authorization Server issues an Authorization Code in a redirect back to the client, which then exchanges it for an access and refresh token.<a href="#appendix-A.2-2.6.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -2342,7 +2398,7 @@ an authorization request and eventually obtain an authorization code.<a href="#s
             <p id="appendix-A.4-2.2.1">The Client sends the e-mail address in an Authorization Challenge Request (<a href="#challenge-request" class="auto internal xref">Section 5.1</a>) to the Authorization Challenge Endpoint (<a href="#authorization-challenge-endpoint" class="auto internal xref">Section 4.1</a>).<a href="#appendix-A.4-2.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.4-2.3">
-            <p id="appendix-A.4-2.3.1">The Authorization Server sends a verification code to the e-mail address and returns an Error Response (<a href="#challenge-error-response" class="auto internal xref">Section 5.2.3</a>) including <code>"error": "insufficient_authorization"</code>, <code>"auth_session"</code> and a custom property indicating that an e-mail verification code must be entered.<a href="#appendix-A.4-2.3.1" class="pilcrow">¶</a></p>
+            <p id="appendix-A.4-2.3.1">The Authorization Server sends a verification code to the e-mail address and returns an Error Response (<a href="#challenge-error-response" class="auto internal xref">Section 5.2.2</a>) including <code>"error": "insufficient_authorization"</code>, <code>"auth_session"</code> and a custom property indicating that an e-mail verification code must be entered.<a href="#appendix-A.4-2.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.4-2.4">
             <p id="appendix-A.4-2.4.1">The Client presents a user experience guiding the user to copy the e-mail verification code to the Client. Once the e-mail verification code is entered, the Client sends an Authorization Challenge Request to the Authorization Challenge Endpoint, including the e-mail verification code as well as the <code>auth_session</code> parameter returned in the previous Error Response.<a href="#appendix-A.4-2.4.1" class="pilcrow">¶</a></p>
@@ -2373,7 +2429,7 @@ an authorization request and eventually obtain an authorization code.<a href="#s
             <p id="appendix-A.5-2.2.1">The Client sends the phone number in an Authorization Challenge Request (<a href="#challenge-request" class="auto internal xref">Section 5.1</a>) to the Authorization Challenge Endpoint (<a href="#authorization-challenge-endpoint" class="auto internal xref">Section 4.1</a>).<a href="#appendix-A.5-2.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.5-2.3">
-            <p id="appendix-A.5-2.3.1">The Authorization Server sends a confirmation code to the phone number and returns an Error Response (<a href="#challenge-error-response" class="auto internal xref">Section 5.2.3</a>) including <code>"error": "insufficient_authorization"</code>, <code>"auth_session"</code> and a custom property indicating that a SMS confirmation code must be entered.<a href="#appendix-A.5-2.3.1" class="pilcrow">¶</a></p>
+            <p id="appendix-A.5-2.3.1">The Authorization Server sends a confirmation code to the phone number and returns an Error Response (<a href="#challenge-error-response" class="auto internal xref">Section 5.2.2</a>) including <code>"error": "insufficient_authorization"</code>, <code>"auth_session"</code> and a custom property indicating that a SMS confirmation code must be entered.<a href="#appendix-A.5-2.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.5-2.4">
             <p id="appendix-A.5-2.4.1">The Client presents a user experience guiding the user to enter the SMS confirmation code. Once the SMS verification code is entered, the Client sends an Authorization Challenge Request to the Authorization Challenge Endpoint, including the confirmation code as well as the <code>auth_session</code> parameter returned in the previous Error Response.<a href="#appendix-A.5-2.4.1" class="pilcrow">¶</a></p>
@@ -2450,7 +2506,7 @@ an authorization request and eventually obtain an authorization code.<a href="#s
             <p id="appendix-A.7-2.3.1">The Client sends an Authorization Challenge Request (<a href="#challenge-request" class="auto internal xref">Section 5.1</a>) to the Authorization Challenge Endpoint (<a href="#authorization-challenge-endpoint" class="auto internal xref">Section 4.1</a>) including the <code>auth_session</code>, <code>acr_values</code> and <code>max_age</code> parameters.<a href="#appendix-A.7-2.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.7-2.4">
-            <p id="appendix-A.7-2.4.1">The Authorization Server verifies the <code>auth_session</code> and determines which authentication methods must be satisfied based on the <code>acr_values</code>, and responds with an Error Response (<a href="#challenge-error-response" class="auto internal xref">Section 5.2.3</a>) including <code>"error": "insufficient_authorization"</code> and a custom property indicating that an OTP must be entered.<a href="#appendix-A.7-2.4.1" class="pilcrow">¶</a></p>
+            <p id="appendix-A.7-2.4.1">The Authorization Server verifies the <code>auth_session</code> and determines which authentication methods must be satisfied based on the <code>acr_values</code>, and responds with an Error Response (<a href="#challenge-error-response" class="auto internal xref">Section 5.2.2</a>) including <code>"error": "insufficient_authorization"</code> and a custom property indicating that an OTP must be entered.<a href="#appendix-A.7-2.4.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.7-2.5">
             <p id="appendix-A.7-2.5.1">The Client prompts the user for an OTP, which the user obtains and enters.<a href="#appendix-A.7-2.5.1" class="pilcrow">¶</a></p>
@@ -2487,7 +2543,7 @@ an authorization request and eventually obtain an authorization code.<a href="#s
             <p id="appendix-A.8-2.2.1">The Client sends an Authorization Challenge Request (<a href="#challenge-request" class="auto internal xref">Section 5.1</a>) to the Authorization Challenge Endpoint (<a href="#authorization-challenge-endpoint" class="auto internal xref">Section 4.1</a>) including the username.<a href="#appendix-A.8-2.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.8-2.3">
-            <p id="appendix-A.8-2.3.1">The Authorization Server returns an Error Response (<a href="#challenge-error-response" class="auto internal xref">Section 5.2.3</a>) including <code>"error": "insufficient_authorization"</code>, <code>"auth_session"</code>, and a custom property indicating that an e-mail address must be collected.<a href="#appendix-A.8-2.3.1" class="pilcrow">¶</a></p>
+            <p id="appendix-A.8-2.3.1">The Authorization Server returns an Error Response (<a href="#challenge-error-response" class="auto internal xref">Section 5.2.2</a>) including <code>"error": "insufficient_authorization"</code>, <code>"auth_session"</code>, and a custom property indicating that an e-mail address must be collected.<a href="#appendix-A.8-2.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.8-2.4">
             <p id="appendix-A.8-2.4.1">The Client collects an e-mail address from the user.<a href="#appendix-A.8-2.4.1" class="pilcrow">¶</a></p>
@@ -2674,25 +2730,40 @@ Cache-Control: no-store
       <h2 id="name-document-history">
 <a href="#appendix-D" class="section-number selfRef">Appendix D. </a><a href="#name-document-history" class="section-name selfRef">Document History</a>
       </h2>
-<p id="appendix-D-1">-01<a href="#appendix-D-1" class="pilcrow">¶</a></p>
+<p id="appendix-D-1">-latest<a href="#appendix-D-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-2.1">
-          <p id="appendix-D-2.1.1">Renamed <code>authorization_required</code> to <code>insufficient_authorization</code><a href="#appendix-D-2.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-2.1.1">Added clarification on use of authorization code binding when using DPoP with the authorization challenge endpoint.<a href="#appendix-D-2.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-D-2.2">
-          <p id="appendix-D-2.2.1">Defined <code>insufficient_authorization</code> on the Authorization Challenge Endpoint<a href="#appendix-D-2.2.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-2.2.1">Removed ash claim to simplify DPoP binding with auth_session value.<a href="#appendix-D-2.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-2.3">
+          <p id="appendix-D-2.3.1">Fixed how "redirect to web" mechanism works with PKCE.<a href="#appendix-D-2.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-2.4">
+          <p id="appendix-D-2.4.1">Added "intermediate requests" section to clarify these requests are out of scope, moved "auth session" description to that section.<a href="#appendix-D-2.4.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-D-3">-00<a href="#appendix-D-3" class="pilcrow">¶</a></p>
+<p id="appendix-D-3">-01<a href="#appendix-D-3" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-D-4.1">
-          <p id="appendix-D-4.1.1">Renamed <code>device_session</code> to <code>auth_session</code><a href="#appendix-D-4.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-4.1.1">Renamed <code>authorization_required</code> to <code>insufficient_authorization</code><a href="#appendix-D-4.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-D-4.2">
-          <p id="appendix-D-4.2.1">Added explicit method to indicate the client should restart the flow in a browser<a href="#appendix-D-4.2.1" class="pilcrow">¶</a></p>
+          <p id="appendix-D-4.2.1">Defined <code>insufficient_authorization</code> on the Authorization Challenge Endpoint<a href="#appendix-D-4.2.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-D-4.3">
-          <p id="appendix-D-4.3.1">Described how to use DPoP in conjunction with this spec<a href="#appendix-D-4.3.1" class="pilcrow">¶</a></p>
+      </ul>
+<p id="appendix-D-5">-00<a href="#appendix-D-5" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-D-6.1">
+          <p id="appendix-D-6.1.1">Renamed <code>device_session</code> to <code>auth_session</code><a href="#appendix-D-6.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-6.2">
+          <p id="appendix-D-6.2.1">Added explicit method to indicate the client should restart the flow in a browser<a href="#appendix-D-6.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-6.3">
+          <p id="appendix-D-6.3.1">Described how to use DPoP in conjunction with this spec<a href="#appendix-D-6.3.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>

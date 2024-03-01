@@ -5,10 +5,10 @@
 Web Authorization Protocol                                    A. Parecki
 Internet-Draft                                                      Okta
 Intended status: Standards Track                             G. Fletcher
-Expires: 5 August 2024                             Capital One Financial
+Expires: 2 September 2024                          Capital One Financial
                                                             P. Kasselman
                                                                Microsoft
-                                                         2 February 2024
+                                                            1 March 2024
 
 
                  OAuth 2.0 for First-Party Applications
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 August 2024.
+   This Internet-Draft will expire on 2 September 2024.
 
 Copyright Notice
 
@@ -78,6 +78,7 @@ Table of Contents
    1.  Introduction
      1.1.  Usage and Applicability
      1.2.  Limitations of this specification
+     1.3.  User Experience Considerations
    2.  Conventions and Definitions
      2.1.  Terminology
    3.  Protocol Overview
@@ -91,9 +92,9 @@ Table of Contents
      5.1.  Authorization Challenge Request
      5.2.  Authorization Challenge Response
        5.2.1.  Authorization Code Response
-       5.2.2.  Redirect Response
-       5.2.3.  Error Response
-     5.3.  Auth Session
+       5.2.2.  Error Response
+     5.3.  Intermediate Requests
+       5.3.1.  Auth Session
    6.  Token Request
      6.1.  Token Endpoint Successful Response
      6.2.  Token Endpoint Error Response
@@ -173,7 +174,7 @@ Table of Contents
    allow the authorization server or resource server to indicate that
    the client should re-request authorization from the user.  This can
    include requesting step-up authentication by including parameters
-   defined in [I-D.ietf-oauth-step-up-authn-challenge] as well.
+   defined in [RFC9470] as well.
 
 1.1.  Usage and Applicability
 
@@ -217,6 +218,31 @@ Table of Contents
    acceptable in this case since we intend this specification to be
    deployed in a tightly coupled environment since it is only applicable
    to first-party applications.
+
+1.3.  User Experience Considerations
+
+   It is important to consider the user experience implications of
+   different authentication challenges as well as the device with which
+   the user is attempting to authorize.
+
+   For example, requesting a user to enter a password on a limited-input
+   device (e.g.  TV) creates a lot of user friction while also exposing
+   the user's password to anyone else in the room.  On the other hand,
+   using a challenge method that involves, for example, a fingerprint
+   reader on the TV remote allowing for a FIDO2 passkey authentication
+   would be a good experience.
+
+   The Authorization Server SHOULD consider the user's device when
+   presenting authentication challenges and developers SHOULD consider
+   whether the device implementing this specification can provide a good
+   experience for the user.  If the combination of user device and
+   authentication challenge methods creates a lot of friction or
+   security risk, consider using a specification like OAuth 2.0 Device
+   Authorization Grant [RFC8628].  If selecting OAuth 2.0 Device
+   Authorization Grant [RFC8628] which uses a cross-device authorization
+   mechanism, please incorporate the security best practices identified
+   in Cross-Device Flows: Security Best Current Practice
+   [I-D.ietf-oauth-cross-device-security].
 
 2.  Conventions and Definitions
 
@@ -318,8 +344,7 @@ Table of Contents
 
    When making a resource request to a resource server, the resource
    server MAY respond with an error according to OAuth 2.0 Step-Up
-   Authentication Challenge Protocol
-   [I-D.ietf-oauth-step-up-authn-challenge], indicating that re-
+   Authentication Challenge Protocol [RFC9470], indicating that re-
    authorization of the user is required.
 
 4.  Protocol Endpoints
@@ -406,7 +431,13 @@ Table of Contents
    "acr_values":  OPTIONAL.  The acr_values requested by the client.
 
    "auth_session":  OPTIONAL.  If the client has previously obtained an
-      auth session, described in Section 5.3.
+      auth session, described in Section 5.3.1.
+
+   "code_challenge":  OPTIONAL.  The code challenge as defined by
+      [RFC7636].  See Section 5.2.2.1 for details.
+
+   "code_challenge_method":  OPTIONAL.  The code challenge method as
+      defined by [RFC7636].  See Section 5.2.2.1 for details.
 
    Specific implementations as well as extensions to this specification
    MAY define additional parameters to be used at this endpoint.
@@ -450,28 +481,13 @@ Table of Contents
      "authorization_code": "uY29tL2F1dGhlbnRpY"
    }
 
-5.2.2.  Redirect Response
+5.2.2.  Error Response
 
-   In the case where the authorization server wishes to interact with
-   the user directly, it can return the redirect response.  The
-   authorization server may choose to interact directly with the user
-   based on a risk assesment, the introduction of a new authentication
-   method not supported in the application, or to handle an exception
-   flow like account recovery.  In this case the client is expected to
-   initiate a traditional OAuth Authorization Code flow with PKCE
-   according to [RFC6749] and [RFC7636].
-
-   "redirect":  REQUIRED.  A Pushed Authroization Request (PAR) response
-      as defined in Section 2.2 of [RFC9126].  The request_uri parameter
-      contains the URI that the client should use in the authorization
-      request.
-
-5.2.3.  Error Response
-
-   If the request contains invalid parameters or incorrect data, the
-   authorization server responds with an HTTP 400 (Bad Request) status
-   code (unless specified otherwise) and includes the following
-   parameters with the response:
+   If the request contains invalid parameters or incorrect data, or if
+   the authorization server wishes to interact with the user directly,
+   the authorization server responds with an HTTP 400 (Bad Request)
+   status code (unless specified otherwise below) and includes the
+   following parameters with the response:
 
    "error":  REQUIRED.  A single ASCII [USASCII] error code from the
       following:
@@ -505,6 +521,12 @@ Table of Contents
          insufficient, and the authorization server is requesting the
          client take additional steps to complete the authorization.
 
+      "redirect_to_web":  The request is not able to be fulfilled with
+         any further direct interaction with the user.  Instead, the
+         client should initiate a new authorization code flow so that
+         the user interacts with the authorization server in a web
+         browser.
+
       Values for the error parameter MUST NOT include characters outside
       the set %x20-21 / %x23-5B / %x5D-7E.
 
@@ -530,6 +552,12 @@ Table of Contents
       the auth_session in follow-up requests to the challenge endpoint
       if it receives one along with the error response.
 
+   "request_uri":  OPTIONAL.  A request URI as described by [RFC9126]
+      Section 2.2.
+
+   "expires_in":  OPTIONAL.  The lifetime of the request_uri in seconds,
+      as described by [RFC9126] Section 2.2.
+
    This specification requires the authorization server to define new
    error codes that relate to the actions the client must take in order
    to properly authenticate the user.  These new error codes are
@@ -547,10 +575,47 @@ Table of Contents
    The authorization server MAY define additional parameters in the
    response depending on the implmentation.  The authorization server
    MAY also define more specific content types for the error responses
-   as long as the response is JSON and conforms to application/<as-
+   as long as the response is JSON and conforms to application/<AS-
    defined>+json.
 
-5.3.  Auth Session
+5.2.2.1.  Redirect to Web Error Response
+
+   The authorization server may choose to interact directly with the
+   user based on a risk assesment, the introduction of a new
+   authentication method not supported in the application, or to handle
+   an exception flow like account recovery.  To indicate this error to
+   the client, the authorization server returns an error response as
+   defined above with the redirect_to_web error code.
+
+   In this case, the client is expected to initiate a new OAuth
+   Authorization Code flow with PKCE according to [RFC6749] and
+   [RFC7636].
+
+   If the client expects the frequency of this error response to be
+   high, the client MAY include a PKCE ([RFC7636]) code_challenge in the
+   initial authorization challenge request.  This enables the
+   authorization server to essentially treat the authorization challenge
+   request as a PAR [RFC9126] request, and return the request_uri and
+   expires_in as defined by [RFC9126] in the error response.  The client
+   then uses the request_uri value to build an authorization request as
+   defined in [RFC9126] Section 4.
+
+5.3.  Intermediate Requests
+
+   If the authorization server returns an insufficient_authorization
+   error as described above, this is an indication that there is further
+   information the client should request from the user, and continue to
+   make requests to the authorization server until the authorization
+   request is fulfilled and an authorization code returned.
+
+   These intermediate requests are out of scope of this specification,
+   and are expected to be defined by the authorization server.  The
+   format of these requests are not required to conform to the format of
+   the initial authorization challenge requests (e.g. the request format
+   may be application/json rather than application/x-www-form-
+   urlencoded).
+
+5.3.1.  Auth Session
 
    The auth_session is a value that the authorization server issues in
    order to be able to associate subsequent requests from the same
@@ -597,7 +662,7 @@ Table of Contents
 
    This specification extends the OAuth 2.0 [RFC6749] token response
    defined in Section 5.1 with the additional parameter auth_session,
-   defined in Section 5.3.
+   defined in Section 5.3.1.
 
    The response MAY include an auth_session parameter which the client
    is expected to include on a subsequent request to the authorization
@@ -659,17 +724,15 @@ Table of Contents
 
 7.  Resource Server Error Response
 
-   Step-Up Authentication [I-D.ietf-oauth-step-up-authn-challenge]
-   defines a mechanism for resource servers to tell the client to start
-   a new authorization request, including acr_values and max_age, and
-   scope from RFC6750.  Upon receiving this request, the client starts a
-   new authorization request according to this specification, and
-   includes the acr_values, max_age and scope returned in the error
-   response.
+   Step-Up Authentication [RFC9470] defines a mechanism for resource
+   servers to tell the client to start a new authorization request,
+   including acr_values and max_age, and scope from RFC6750.  Upon
+   receiving this request, the client starts a new authorization request
+   according to this specification, and includes the acr_values, max_age
+   and scope returned in the error response.
 
    This specification does not define any new parameters for the
-   resource server error response beyond those defined in
-   [I-D.ietf-oauth-step-up-authn-challenge].
+   resource server error response beyond those defined in [RFC9470].
 
 8.  Authorization Server Metadata
 
@@ -798,18 +861,24 @@ Table of Contents
    end protection that DPoP provides, so DPoP Authorization Code binding
    SHOULD be used.
 
-   To bind the authorization code using the Authorization Challenge
-   Endpoint, the JWK Thumbprint of the DPoP key MUST be communicated to
-   the Authorization Server by including the dpop_jkt parameter defined
-   in section 10 of [RFC9449] alongside other authorization request
-   parameters in the POST body of the first Authorization Challenge
-   Request.  If it is included in subsequent Authorization Challenge
-   Requests, the value of this parameter must be the same as in the
-   initial request.  If the JWK Thumbprint in the dpop_jkt differ at any
-   point, the Authorization Server MUST reject the request.  If the
-   dpop_jkt parameter is not included in the first request, but added in
-   subsequent requests, the Authorization Server MUST reject the request
-   (do we need to define a specific error code for that?).
+   The mechanism for Authorization Code binding with DPoP is similar as
+   that defined for Pushed Authorization Requests (PARs) in Section 10.1
+   of [RFC9449].  In order to bind the Authorization Code with DPoP, the
+   client MUST add the DPoP header to the Authorization Challenge
+   Request.  The authorization server MUST check the DPoP proof JWT that
+   was included in the DPoP header as defined in Section 4.3 of
+   [RFC9449].  The authorization server MUST ensure that the same key is
+   used in all subsequent Authorization Challenge Requests, or in the
+   eventual token request.  The authorization server MUST reject
+   subsequent Authorization Challenge Requests, or the eventual token
+   request, unless a DPoP proof for the same key presented in the
+   original Authorization Challenge Request is provided.
+
+   The above mechanism simplifies the implementation of the client, as
+   it can attach the DPoP header to all requests to the authorization
+   server regardless of the type of request.  This mechanism provides a
+   stronger binding than using the dpop_jkt parameter, as the DPoP
+   header contains a proof of possession of the private key.
 
 9.5.2.  Other Proof of Possession Mechanisms
 
@@ -822,20 +891,19 @@ Table of Contents
 9.6.1.  Auth Session DPoP Binding
 
    If the client and authorization server are using DPoP binding of
-   access tokens and/or authorization codes, then they SHOULD also
-   require DPoP binding of the auth_session value as well.
+   access tokens and/or authorization codes, then the auth_session value
+   SHOULD be protected by the DPoP binding as well.  The authorization
+   server SHOULD bind the auth_session value to the DPoP public key.  If
+   the authorization server is binding the auth_session value to the
+   DPoP public key, it MUST check that the same DPoP public key is being
+   used and MUST verify the DPoP proof to ensure the client controls the
+   corresponding private key whenever the client includes the
+   auth_session in an Authorization Challenge Request as described in
+   Section 5.1.
 
    DPoP binding of the auth_session value ensures that the context
    referenced by the auth_session cannot be stolen and reused by another
    device.
-
-   This specification defines an additional claim in the DPoP Proof JWT
-   Syntax defined in Section 4.2 of [RFC9449]:
-
-   "ash":  The hash of the auth_session.  The value MUST be the result
-      of a base64url encoding (as defined in Section 2 of [RFC7515]) the
-      SHA-256 [SHS] hash of the ASCII encoding of the auth_session
-      value.
 
 9.6.2.  Auth Session Lifetime
 
@@ -948,27 +1016,16 @@ Table of Contents
    IANA has (TBD) registered the following Claims in the "JSON Web Token
    Claims" registry [IANA.JWT] established by [RFC7519].
 
-   *Auth Session Hash*
-
-   *Claim Name*: ash
-
-   *Claim Description*: The base64url-encoded SHA-256 hash of the ASCII
-   encoding of the auth_session value
-
-   *Change Controller*: IETF
-
-   *Reference*: Section 9.6.1 of this specification
-
 11.  References
 
 11.1.  Normative References
 
-   [I-D.ietf-oauth-step-up-authn-challenge]
-              Bertocci, V. and B. Campbell, "OAuth 2.0 Step Up
-              Authentication Challenge Protocol", Work in Progress,
-              Internet-Draft, draft-ietf-oauth-step-up-authn-challenge-
-              17, 26 June 2023, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-oauth-step-up-authn-challenge-17>.
+   [I-D.ietf-oauth-cross-device-security]
+              Kasselman, P., Fett, D., and F. Skokan, "Cross-Device
+              Flows: Security Best Current Practice", Work in Progress,
+              Internet-Draft, draft-ietf-oauth-cross-device-security-05,
+              1 March 2024, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-oauth-cross-device-security-05>.
 
    [IANA.JWT] "*** BROKEN REFERENCE ***".
 
@@ -1030,6 +1087,11 @@ Table of Contents
               DOI 10.17487/RFC8414, June 2018,
               <https://www.rfc-editor.org/rfc/rfc8414>.
 
+   [RFC8628]  Denniss, W., Bradley, J., Jones, M., and H. Tschofenig,
+              "OAuth 2.0 Device Authorization Grant", RFC 8628,
+              DOI 10.17487/RFC8628, August 2019,
+              <https://www.rfc-editor.org/rfc/rfc8628>.
+
    [RFC8707]  Campbell, B., Bradley, J., and H. Tschofenig, "Resource
               Indicators for OAuth 2.0", RFC 8707, DOI 10.17487/RFC8707,
               February 2020, <https://www.rfc-editor.org/rfc/rfc8707>.
@@ -1044,6 +1106,11 @@ Table of Contents
               Possession (DPoP)", RFC 9449, DOI 10.17487/RFC9449,
               September 2023, <https://www.rfc-editor.org/rfc/rfc9449>.
 
+   [RFC9470]  Bertocci, V. and B. Campbell, "OAuth 2.0 Step Up
+              Authentication Challenge Protocol", RFC 9470,
+              DOI 10.17487/RFC9470, September 2023,
+              <https://www.rfc-editor.org/rfc/rfc9470>.
+
    [SHS]      Technology, N. I. of S. and., ""Secure Hash Standard
               (SHS)", FIPS PUB 180-4, DOI 10.6028/NIST.FIPS.180-4",
               August 2015, <http://dx.doi.org/10.6028/NIST.FIPS.180-4>.
@@ -1057,9 +1124,9 @@ Table of Contents
    [I-D.ietf-oauth-browser-based-apps]
               Parecki, A., Waite, D., and P. De Ryck, "OAuth 2.0 for
               Browser-Based Apps", Work in Progress, Internet-Draft,
-              draft-ietf-oauth-browser-based-apps-15, 23 October 2023,
+              draft-ietf-oauth-browser-based-apps-17, 28 February 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              browser-based-apps-15>.
+              browser-based-apps-17>.
 
    [RFC8252]  Denniss, W. and J. Bradley, "OAuth 2.0 for Native Apps",
               BCP 212, RFC 8252, DOI 10.17487/RFC8252, October 2017,
@@ -1111,7 +1178,7 @@ A.2.  Redirect to Authorization Server
       the username.
 
    *  The Authorization Server verifies the username and determines that
-      the account is locked and returns a Redirect message.
+      the account is locked and returns a Redirect error response.
 
    *  The Client parses the redirect message, opens a browser and
       redirects the user to the Authorization Server performing an OAuth
@@ -1120,9 +1187,9 @@ A.2.  Redirect to Authorization Server
    *  The user resets their account by performing a multi-step
       authentication flow with the Authorization Server.
 
-   *  The Authorization Server issues an Authorization Code, which is
-      exchanged for an access and refresh token before returning control
-      to the Client.
+   *  The Authorization Server issues an Authorization Code in a
+      redirect back to the client, which then exchanges it for an access
+      and refresh token.
 
 A.3.  Passwordless One-Time Password (OTP)
 
@@ -1165,7 +1232,7 @@ A.4.  E-Mail Confirmation Code
       (Section 4.1).
 
    *  The Authorization Server sends a verification code to the e-mail
-      address and returns an Error Response (Section 5.2.3) including
+      address and returns an Error Response (Section 5.2.2) including
       "error": "insufficient_authorization", "auth_session" and a custom
       property indicating that an e-mail verification code must be
       entered.
@@ -1203,7 +1270,7 @@ A.5.  SMS Confirmation Code
       (Section 4.1).
 
    *  The Authorization Server sends a confirmation code to the phone
-      number and returns an Error Response (Section 5.2.3) including
+      number and returns an Error Response (Section 5.2.2) including
       "error": "insufficient_authorization", "auth_session" and a custom
       property indicating that a SMS confirmation code must be entered.
 
@@ -1302,7 +1369,7 @@ A.7.  Step-up Authentication using Confirmation SMS
 
    *  The Authorization Server verifies the auth_session and determines
       which authentication methods must be satisfied based on the
-      acr_values, and responds with an Error Response (Section 5.2.3)
+      acr_values, and responds with an Error Response (Section 5.2.2)
       including "error": "insufficient_authorization" and a custom
       property indicating that an OTP must be entered.
 
@@ -1342,7 +1409,7 @@ A.8.  Registration
       to the Authorization Challenge Endpoint (Section 4.1) including
       the username.
 
-   *  The Authorization Server returns an Error Response (Section 5.2.3)
+   *  The Authorization Server returns an Error Response (Section 5.2.2)
       including "error": "insufficient_authorization", "auth_session",
       and a custom property indicating that an e-mail address must be
       collected.
@@ -1540,6 +1607,20 @@ Appendix C.  Design Goals
    support this specification.
 
 Appendix D.  Document History
+
+   -latest
+
+   *  Added clarification on use of authorization code binding when
+      using DPoP with the authorization challenge endpoint.
+
+   *  Removed ash claim to simplify DPoP binding with auth_session
+      value.
+
+   *  Fixed how "redirect to web" mechanism works with PKCE.
+
+   *  Added "intermediate requests" section to clarify these requests
+      are out of scope, moved "auth session" description to that
+      section.
 
    -01
 
