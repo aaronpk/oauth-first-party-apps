@@ -5,10 +5,10 @@
 Web Authorization Protocol                                    A. Parecki
 Internet-Draft                                                      Okta
 Intended status: Standards Track                             G. Fletcher
-Expires: 31 August 2024                            Capital One Financial
+Expires: 2 September 2024                          Capital One Financial
                                                             P. Kasselman
                                                                Microsoft
-                                                        28 February 2024
+                                                            1 March 2024
 
 
                  OAuth 2.0 for First-Party Applications
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 31 August 2024.
+   This Internet-Draft will expire on 2 September 2024.
 
 Copyright Notice
 
@@ -1023,9 +1023,9 @@ Table of Contents
    [I-D.ietf-oauth-cross-device-security]
               Kasselman, P., Fett, D., and F. Skokan, "Cross-Device
               Flows: Security Best Current Practice", Work in Progress,
-              Internet-Draft, draft-ietf-oauth-cross-device-security-04,
-              22 October 2023, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-oauth-cross-device-security-04>.
+              Internet-Draft, draft-ietf-oauth-cross-device-security-05,
+              1 March 2024, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-oauth-cross-device-security-05>.
 
    [IANA.JWT] "*** BROKEN REFERENCE ***".
 
@@ -1124,9 +1124,9 @@ Table of Contents
    [I-D.ietf-oauth-browser-based-apps]
               Parecki, A., Waite, D., and P. De Ryck, "OAuth 2.0 for
               Browser-Based Apps", Work in Progress, Internet-Draft,
-              draft-ietf-oauth-browser-based-apps-16, 16 February 2024,
+              draft-ietf-oauth-browser-based-apps-17, 28 February 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              browser-based-apps-16>.
+              browser-based-apps-17>.
 
    [RFC8252]  Denniss, W. and J. Bradley, "OAuth 2.0 for Native Apps",
               BCP 212, RFC 8252, DOI 10.17487/RFC8252, October 2017,
@@ -1610,7 +1610,7 @@ Appendix D.  Document History
 
    -latest
 
-   *  Added clarification on use of authroization code binding when
+   *  Added clarification on use of authorization code binding when
       using DPoP with the authorization challenge endpoint.
 
    *  Removed ash claim to simplify DPoP binding with auth_session
