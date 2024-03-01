@@ -1608,7 +1608,7 @@ Appendix C.  Design Goals
 
 Appendix D.  Document History
 
-   -latest
+   -02
 
    *  Added clarification on use of authorization code binding when
       using DPoP with the authorization challenge endpoint.
