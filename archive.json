@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-29T01:04:04.260955+00:00",
+  "timestamp": "2024-03-03T01:08:09.321072+00:00",
   "repo": "aaronpk/oauth-first-party-apps",
   "labels": [
     {
@@ -2302,6 +2302,34 @@
       "mergedBy": "aaronpk",
       "mergeCommit": {
         "oid": "c4bf8ad711343f7c14b95cf49d77b51bcf747a22"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 61,
+      "id": "PR_kwDOJbxyLc5obT54",
+      "title": "Typo fix",
+      "url": "https://github.com/aaronpk/oauth-first-party-apps/pull/61",
+      "state": "MERGED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-03-01T16:15:32Z",
+      "updatedAt": "2024-03-01T16:16:49Z",
+      "baseRepository": "aaronpk/oauth-first-party-apps",
+      "baseRefName": "main",
+      "baseRefOid": "d4f3c3b84cdaeafdf3d14f845925f35077de0066",
+      "headRepository": "aaronpk/oauth-first-party-apps",
+      "headRefName": "PieterKas-patch-1",
+      "headRefOid": "31d531398927ecf96bc0019b7226a14dbe6d1840",
+      "closedAt": "2024-03-01T16:16:45Z",
+      "mergedAt": "2024-03-01T16:16:45Z",
+      "mergedBy": "aaronpk",
+      "mergeCommit": {
+        "oid": "279000915750d8d6bf47976ffe2d048341ccd11a"
       },
       "comments": [],
       "reviews": []
