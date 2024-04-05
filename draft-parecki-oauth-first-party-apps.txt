@@ -5,10 +5,10 @@
 Web Authorization Protocol                                    A. Parecki
 Internet-Draft                                                      Okta
 Intended status: Standards Track                             G. Fletcher
-Expires: 2 September 2024                          Capital One Financial
+Expires: 7 October 2024                            Capital One Financial
                                                             P. Kasselman
                                                                Microsoft
-                                                            1 March 2024
+                                                            5 April 2024
 
 
                  OAuth 2.0 for First-Party Applications
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 2 September 2024.
+   This Internet-Draft will expire on 7 October 2024.
 
 Copyright Notice
 
@@ -318,8 +318,8 @@ Table of Contents
       The error may contain additional information to guide the Client
       on what information to collect next.  This pattern of collecting
       information, submitting it to the Authorization Challenge Endpoint
-      and then receing an error or authorization code may repeat several
-      times.
+      and then receving an error or authorization code may repeat
+      several times.
 
    *  (D) The client gathers additional information (e.g. signed passkey
       challenge, or one-time code from email) and makes a POST request
@@ -380,8 +380,8 @@ Table of Contents
    important to note that some extension parameters have meaning in a
    web context but don't have meaning in a native mechanism (e.g.
    response_mode=query).  It is out of scope as to what the AS does in
-   the case that an extension defines a parameter that is has no meaning
-   in this use case.
+   the case that an extension defines a parameter that has no meaning in
+   this use case.
 
    The client initiates the authorization flow with or without
    information collected from the user (e.g. a signed passkey challenge
@@ -610,7 +610,7 @@ Table of Contents
 
    These intermediate requests are out of scope of this specification,
    and are expected to be defined by the authorization server.  The
-   format of these requests are not required to conform to the format of
+   format of these requests is not required to conform to the format of
    the initial authorization challenge requests (e.g. the request format
    may be application/json rather than application/x-www-form-
    urlencoded).
@@ -759,7 +759,7 @@ Table of Contents
    authorization server also has a high degree of trust of the client.
 
    This specification is not prescriptive on how the Authorization
-   Server establishes it's trust in the first-partyness of the
+   Server establishes its trust in the first-partyness of the
    application.  For mobile platforms, most support some mechanism for
    application attestation that can be used to identify the entity that
    created/signed/uploaded the app to the app store.  App attestation
@@ -1023,9 +1023,9 @@ Table of Contents
    [I-D.ietf-oauth-cross-device-security]
               Kasselman, P., Fett, D., and F. Skokan, "Cross-Device
               Flows: Security Best Current Practice", Work in Progress,
-              Internet-Draft, draft-ietf-oauth-cross-device-security-05,
-              1 March 2024, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-oauth-cross-device-security-05>.
+              Internet-Draft, draft-ietf-oauth-cross-device-security-06,
+              4 April 2024, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-oauth-cross-device-security-06>.
 
    [IANA.JWT] "*** BROKEN REFERENCE ***".
 
@@ -1392,7 +1392,7 @@ A.7.  Step-up Authentication using Confirmation SMS
 
    *  The Client presents the Access Token to the Resources Server,
       which verifies that the acr value meets its requirements before
-      granting access to the prtoected resource.
+      granting access to the protected resource.
 
 A.8.  Registration
 
