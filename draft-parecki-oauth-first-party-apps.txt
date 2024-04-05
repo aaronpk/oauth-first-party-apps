@@ -317,7 +317,7 @@ Table of Contents
       The error may contain additional information to guide the Client
       on what information to collect next.  This pattern of collecting
       information, submitting it to the Authorization Challenge Endpoint
-      and then receving an error or authorization code may repeat
+      and then receiving an error or authorization code may repeat
       several times.
 
    *  (D) The client gathers additional information (e.g. signed passkey
