@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-04-09T01:06:57.088528+00:00",
+  "timestamp": "2024-04-11T01:07:30.369195+00:00",
   "repo": "aaronpk/oauth-first-party-apps",
   "labels": [
     {
@@ -1666,9 +1666,17 @@
       "labels": [],
       "body": "Sec. 5.3.1, \"the 'auth_session' MUST be bound to the device\" - how do we expect the Client/AS to do that? Device fingerprinting is a famously hard problem.\n\n",
       "createdAt": "2024-04-04T22:46:16Z",
-      "updatedAt": "2024-04-04T22:46:16Z",
+      "updatedAt": "2024-04-09T15:07:37Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "sjjhsjjh",
+          "authorAssociation": "NONE",
+          "body": "Yes.\r\nThe implication seems to be that AS mustn't generate an auth_session unless it is assured that it will be bound to the device by the client. That assurance could be given by app and device attestation I guess, if it had already taken place prior to the Authorization Challenge Request.",
+          "createdAt": "2024-04-09T15:07:35Z",
+          "updatedAt": "2024-04-09T15:07:35Z"
+        }
+      ]
     },
     {
       "number": 76,
@@ -1746,9 +1754,17 @@
       "labels": [],
       "body": "Sec. 9.1, I think defining \"first party applications\" through the user's perception is not useful, for two reasons. First, branding of applications is very fluid, and the user is never aware when a vendor is using \"white labeled\" applications. And second, the user is totally unaware of the exact sequence of API calls happening behind the scenes so why do we care whether they see it as a first party app or not.\n\nThe same section discusses trust between the Client and the AS, and I think that same trust can be used for a more suitable definition of \"first partyness.\"\n\n",
       "createdAt": "2024-04-04T22:46:24Z",
-      "updatedAt": "2024-04-04T22:46:24Z",
+      "updatedAt": "2024-04-09T14:51:18Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "sjjhsjjh",
+          "authorAssociation": "NONE",
+          "body": "I agree. Maybe the first party could be defined as the owner or operator of the AS? The application must then be recognised by that party. The recognition mechanism is out of band to the specification.\r\nFor example, AS could be configured with the Apple developer team identifier and bundle identifier of the client application, and could utilise the Apple app and device attestation services.\r\nThe specification says this.\r\n\r\n> App attestation can be combined with other mechanisms like Dynamic Client Registration [RFC7591]\r\n\r\nShould that be stronger, like a recommendation to pack attestation into DCR if it's going to be used?\r\nAn alternative could be to treat the auth_session as a challenge and pack attestation into this specification's Authorization Challenge Request. Section 5.1 states that the request supports additional parameters.",
+          "createdAt": "2024-04-09T14:51:16Z",
+          "updatedAt": "2024-04-09T14:51:16Z"
+        }
+      ]
     },
     {
       "number": 81,
@@ -1899,6 +1915,22 @@
       "createdAt": "2024-04-04T22:47:36Z",
       "updatedAt": "2024-04-05T15:35:07Z",
       "closedAt": "2024-04-05T15:35:07Z",
+      "comments": []
+    },
+    {
+      "number": 89,
+      "id": "I_kwDOJbxyLc6FHkQY",
+      "title": "SMS is an abbreviation for a specific service",
+      "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/89",
+      "state": "OPEN",
+      "author": "sjjhsjjh",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "The term SMS is used in the document but isn't introduced. It's an abbreviation for Short Message Service or Short Messaging Service, see for example https://en.wikipedia.org/wiki/SMS\r\nAlso maybe the document should be circumspect about whether the use case applies only to SMS or could be applied to similar services such as USSD.\r\n\r\nFor example, this part could be rewritten.\r\n\r\n> ## SMS Confirmation Code\r\n> A user may be required to provide an SMS confirmation code as part of an authentication ceremony to prove they control a\r\n> mobile phone number. The user provides a phone number and is then required to enter an SMS confirmation code sent to the\r\n> phone. If the correct confirmation code is returned to the Authorization Server, it issues Access and Refresh Tokens.\r\n\r\nEdited version could be like this.\r\n\r\n> ## Mobile Confirmation Code\r\n> A user may be required to provide a confirmation code as part of an authentication ceremony to prove they control a mobile phone number. The user provides a phone number and is then required to enter a confirmation code sent to the phone by SMS (Short Messaging Service) or a similar mobile service. If the correct confirmation code is returned to the Authorization Server, it issues Access and Refresh Tokens.\r\n",
+      "createdAt": "2024-04-09T12:41:11Z",
+      "updatedAt": "2024-04-09T12:41:11Z",
+      "closedAt": null,
       "comments": []
     }
   ],
