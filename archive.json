@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-04-11T01:07:30.369195+00:00",
+  "timestamp": "2024-04-14T01:13:04.035751+00:00",
   "repo": "aaronpk/oauth-first-party-apps",
   "labels": [
     {
@@ -1930,6 +1930,22 @@
       "body": "The term SMS is used in the document but isn't introduced. It's an abbreviation for Short Message Service or Short Messaging Service, see for example https://en.wikipedia.org/wiki/SMS\r\nAlso maybe the document should be circumspect about whether the use case applies only to SMS or could be applied to similar services such as USSD.\r\n\r\nFor example, this part could be rewritten.\r\n\r\n> ## SMS Confirmation Code\r\n> A user may be required to provide an SMS confirmation code as part of an authentication ceremony to prove they control a\r\n> mobile phone number. The user provides a phone number and is then required to enter an SMS confirmation code sent to the\r\n> phone. If the correct confirmation code is returned to the Authorization Server, it issues Access and Refresh Tokens.\r\n\r\nEdited version could be like this.\r\n\r\n> ## Mobile Confirmation Code\r\n> A user may be required to provide a confirmation code as part of an authentication ceremony to prove they control a mobile phone number. The user provides a phone number and is then required to enter a confirmation code sent to the phone by SMS (Short Messaging Service) or a similar mobile service. If the correct confirmation code is returned to the Authorization Server, it issues Access and Refresh Tokens.\r\n",
       "createdAt": "2024-04-09T12:41:11Z",
       "updatedAt": "2024-04-09T12:41:11Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 90,
+      "id": "I_kwDOJbxyLc6FZWRU",
+      "title": "Add guidance on service providers",
+      "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/90",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Suggestion by Filip Skokan to add additional guidance that this draft is for service providers, who are expected to wrap implementations of this draft in an SDK.",
+      "createdAt": "2024-04-11T15:29:28Z",
+      "updatedAt": "2024-04-11T15:29:28Z",
       "closedAt": null,
       "comments": []
     }
