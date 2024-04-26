@@ -1609,26 +1609,21 @@ authorization server and if no <code>auth_session</code> is included.<a href="#s
             <p id="section-5.1-2.4.1"><span class="bcp14">OPTIONAL</span>. The OAuth scope defined in <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span>.<a href="#section-5.1-2.4.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-5.1-2.5">"acr_values":</dt>
+<dt id="section-5.1-2.5">"auth_session":</dt>
           <dd style="margin-left: 1.5em" id="section-5.1-2.6">
-            <p id="section-5.1-2.6.1"><span class="bcp14">OPTIONAL</span>. The acr_values requested by the client.<a href="#section-5.1-2.6.1" class="pilcrow">¶</a></p>
+            <p id="section-5.1-2.6.1"><span class="bcp14">OPTIONAL</span>. If the client has previously obtained an auth session, described in <a href="#auth-session" class="auto internal xref">Section 5.3.1</a>.<a href="#section-5.1-2.6.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-5.1-2.7">"auth_session":</dt>
+<dt id="section-5.1-2.7">"code_challenge":</dt>
           <dd style="margin-left: 1.5em" id="section-5.1-2.8">
-            <p id="section-5.1-2.8.1"><span class="bcp14">OPTIONAL</span>. If the client has previously obtained an auth session, described in <a href="#auth-session" class="auto internal xref">Section 5.3.1</a>.<a href="#section-5.1-2.8.1" class="pilcrow">¶</a></p>
+            <p id="section-5.1-2.8.1"><span class="bcp14">OPTIONAL</span>. The code challenge as defined by <span>[<a href="#RFC7636" class="cite xref">RFC7636</a>]</span>.
+See <a href="#redirect-to-web" class="auto internal xref">Section 5.2.2.1</a> for details.<a href="#section-5.1-2.8.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-5.1-2.9">"code_challenge":</dt>
+<dt id="section-5.1-2.9">"code_challenge_method":</dt>
           <dd style="margin-left: 1.5em" id="section-5.1-2.10">
-            <p id="section-5.1-2.10.1"><span class="bcp14">OPTIONAL</span>. The code challenge as defined by <span>[<a href="#RFC7636" class="cite xref">RFC7636</a>]</span>.
+            <p id="section-5.1-2.10.1"><span class="bcp14">OPTIONAL</span>. The code challenge method as defined by <span>[<a href="#RFC7636" class="cite xref">RFC7636</a>]</span>.
 See <a href="#redirect-to-web" class="auto internal xref">Section 5.2.2.1</a> for details.<a href="#section-5.1-2.10.1" class="pilcrow">¶</a></p>
-</dd>
-          <dd class="break"></dd>
-<dt id="section-5.1-2.11">"code_challenge_method":</dt>
-          <dd style="margin-left: 1.5em" id="section-5.1-2.12">
-            <p id="section-5.1-2.12.1"><span class="bcp14">OPTIONAL</span>. The code challenge method as defined by <span>[<a href="#RFC7636" class="cite xref">RFC7636</a>]</span>.
-See <a href="#redirect-to-web" class="auto internal xref">Section 5.2.2.1</a> for details.<a href="#section-5.1-2.12.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>

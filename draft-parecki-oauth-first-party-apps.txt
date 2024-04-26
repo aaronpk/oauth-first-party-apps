@@ -427,8 +427,6 @@ Table of Contents
 
    "scope":  OPTIONAL.  The OAuth scope defined in [RFC6749].
 
-   "acr_values":  OPTIONAL.  The acr_values requested by the client.
-
    "auth_session":  OPTIONAL.  If the client has previously obtained an
       auth session, described in Section 5.3.1.
 
