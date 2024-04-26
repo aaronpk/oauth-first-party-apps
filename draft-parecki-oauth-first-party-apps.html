@@ -15,14 +15,14 @@ obtaining authorization from the user using a native experience.
        In many cases, this can provide an entirely browserless OAuth 2.0 experience suited for native
 applications, only delegating to the browser in unexpected, high risk, or error conditions. 
     " name="description">
-<meta content="xml2rfc 3.20.1" name="generator">
+<meta content="xml2rfc 3.21.0" name="generator">
 <meta content="native apps" name="keyword">
 <meta content="first-party" name="keyword">
 <meta content="oauth" name="keyword">
 <meta content="draft-parecki-oauth-first-party-apps-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.20.1
-    Python 3.11.8
+  xml2rfc 3.21.0
+    Python 3.11.9
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
     intervaltree 3.1.0
@@ -1037,7 +1037,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Parecki, et al.</td>
-<td class="center">Expires 7 October 2024</td>
+<td class="center">Expires 28 October 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1050,12 +1050,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-parecki-oauth-first-party-apps-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-04-05" class="published">5 April 2024</time>
+<time datetime="2024-04-26" class="published">26 April 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-10-07">7 October 2024</time></dd>
+<dd class="expires"><time datetime="2024-10-28">28 October 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1117,7 +1117,7 @@ applications, only delegating to the browser in unexpected, high risk, or error 
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 7 October 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 28 October 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1958,8 +1958,8 @@ Cache-Control: no-store
       <h2 id="name-resource-server-error-respo">
 <a href="#section-7" class="section-number selfRef">7. </a><a href="#name-resource-server-error-respo" class="section-name selfRef">Resource Server Error Response</a>
       </h2>
-<p id="section-7-1">Step-Up Authentication <span>[<a href="#RFC9470" class="cite xref">RFC9470</a>]</span> defines a mechanism for resource servers to tell the client to start a new authorization request, including <code>acr_values</code> and <code>max_age</code>, and <code>scope</code> from RFC6750. Upon receiving this request, the client starts a new authorization request according to this specification, and includes the <code>acr_values</code>, <code>max_age</code> and <code>scope</code> returned in the error response.<a href="#section-7-1" class="pilcrow">¶</a></p>
-<p id="section-7-2">This specification does not define any new parameters for the resource server error response beyond those defined in <span>[<a href="#RFC9470" class="cite xref">RFC9470</a>]</span>.<a href="#section-7-2" class="pilcrow">¶</a></p>
+<p id="section-7-1">Step-Up Authentication <span>[<a href="#RFC9470" class="cite xref">RFC9470</a>]</span> defines new error code values that a resource server can use to tell the client to start a new authorization request including <code>acr_values</code> and <code>max_age</code> from <span>[<a href="#OpenID" class="cite xref">OpenID</a>]</span>. Upon receiving this error response, the client starts a new first-party authorization request at the authorization challenge endpoint, and includes the <code>acr_values</code>, <code>max_age</code> and <code>scope</code> that were returned in the error response.<a href="#section-7-1" class="pilcrow">¶</a></p>
+<p id="section-7-2">This specification does not define any new parameters for the resource server error response beyond those defined in <span>[<a href="#RFC9470" class="cite xref">RFC9470</a>]</span> and <span>[<a href="#RFC6750" class="cite xref">RFC6750</a>]</span>.<a href="#section-7-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authorization-server-metadata">
@@ -2271,6 +2271,10 @@ an authorization request and eventually obtain an authorization code.<a href="#s
 <dt id="I-D.ietf-oauth-browser-based-apps">[I-D.ietf-oauth-browser-based-apps]</dt>
         <dd>
 <span class="refAuthor">Parecki, A.</span>, <span class="refAuthor">Waite, D.</span>, and <span class="refAuthor">P. De Ryck</span>, <span class="refTitle">"OAuth 2.0 for Browser-Based Apps"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-browser-based-apps-17</span>, <time datetime="2024-02-28" class="refDate">28 February 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-browser-based-apps-17">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-browser-based-apps-17</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6750">[RFC6750]</dt>
+        <dd>
+<span class="refAuthor">Jones, M.</span> and <span class="refAuthor">D. Hardt</span>, <span class="refTitle">"The OAuth 2.0 Authorization Framework: Bearer Token Usage"</span>, <span class="seriesInfo">RFC 6750</span>, <span class="seriesInfo">DOI 10.17487/RFC6750</span>, <time datetime="2012-10" class="refDate">October 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6750">https://www.rfc-editor.org/rfc/rfc6750</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8252">[RFC8252]</dt>
       <dd>
