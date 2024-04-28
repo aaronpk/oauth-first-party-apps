@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-04-25T01:09:54.076467+00:00",
+  "timestamp": "2024-04-28T01:12:53.112790+00:00",
   "repo": "aaronpk/oauth-first-party-apps",
   "labels": [
     {
@@ -47,6 +47,11 @@
       "name": "wontfix",
       "description": "This will not be worked on",
       "color": "ffffff"
+    },
+    {
+      "name": "discuss",
+      "description": "",
+      "color": "CC8F7C"
     }
   ],
   "issues": [
@@ -1518,13 +1523,23 @@
       "state": "OPEN",
       "author": "yaronf",
       "authorAssociation": "NONE",
-      "assignees": [],
+      "assignees": [
+        "aaronpk"
+      ],
       "labels": [],
       "body": "Sec. 3.1: why doesn't the new endpoint return an access token when successful? Yes this is possibly premature optimization, but it sounds harmless enough. Even if we don't specify it, people are still likely to do it - so shouldn't we have an opinion on whether it is allowed?\n\nMaybe this could go into the Design Goals appendix.\n\n",
       "createdAt": "2024-04-04T22:46:03Z",
-      "updatedAt": "2024-04-04T22:46:03Z",
+      "updatedAt": "2024-04-26T15:27:30Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "body": "Yes this should go into the design goals section. The idea is to enable an existing AS to more easily adopt this, by not adding a new endpoint that tokens are returned from. Instead, this new endpoint only returns an authorization code which can be exchanged for an access token at the existing token endpoint, taking advantage of all the existing logic around client authentication, token binding, rate limiting, etc.",
+          "createdAt": "2024-04-26T15:27:29Z",
+          "updatedAt": "2024-04-26T15:27:29Z"
+        }
+      ]
     },
     {
       "number": 67,
@@ -1579,15 +1594,15 @@
       "id": "I_kwDOJbxyLc6Et-nk",
       "title": "acr_values reference",
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/70",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "yaronf",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "Sec. 5.1, please include a reference that defines this claim. Is it OIDC?.\n\n",
       "createdAt": "2024-04-04T22:46:09Z",
-      "updatedAt": "2024-04-04T22:46:09Z",
-      "closedAt": null,
+      "updatedAt": "2024-04-26T15:43:57Z",
+      "closedAt": "2024-04-26T15:43:57Z",
       "comments": []
     },
     {
@@ -1627,15 +1642,15 @@
       "id": "I_kwDOJbxyLc6Et-qn",
       "title": "redirect_to_web error code",
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/73",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "yaronf",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "Add a reference to the section that discusses this code.\n\n",
       "createdAt": "2024-04-04T22:46:13Z",
-      "updatedAt": "2024-04-04T22:46:13Z",
-      "closedAt": null,
+      "updatedAt": "2024-04-26T15:38:30Z",
+      "closedAt": "2024-04-26T15:38:30Z",
       "comments": []
     },
     {
@@ -1643,16 +1658,31 @@
       "id": "I_kwDOJbxyLc6Et-ry",
       "title": "Redirect to Web",
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/74",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "yaronf",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "Is the expectation that the URI that the browser will use is hardcoded in the native app? Otherwise, shouldn't it be returned with the error response? Or do we always assume PAR is used?\n\n",
       "createdAt": "2024-04-04T22:46:15Z",
-      "updatedAt": "2024-04-04T22:46:15Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-04-26T18:57:41Z",
+      "closedAt": "2024-04-26T18:57:41Z",
+      "comments": [
+        {
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "body": "The change in this draft is that `redirect_to_web` is just an error now, indicating that the client should start a traditional OAuth flow. So there is no dynamic way for the server to return an authorization endpoint URL defined by this draft, it's just however you'd be doing it in the standard OAuth way.",
+          "createdAt": "2024-04-26T15:25:24Z",
+          "updatedAt": "2024-04-26T15:25:24Z"
+        },
+        {
+          "author": "yaronf",
+          "authorAssociation": "NONE",
+          "body": "Makes sense.",
+          "createdAt": "2024-04-26T18:57:41Z",
+          "updatedAt": "2024-04-26T18:57:41Z"
+        }
+      ]
     },
     {
       "number": 75,
@@ -1663,10 +1693,12 @@
       "author": "yaronf",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "discuss"
+      ],
       "body": "Sec. 5.3.1, \"the 'auth_session' MUST be bound to the device\" - how do we expect the Client/AS to do that? Device fingerprinting is a famously hard problem.\n\n",
       "createdAt": "2024-04-04T22:46:16Z",
-      "updatedAt": "2024-04-09T15:07:37Z",
+      "updatedAt": "2024-04-26T15:44:47Z",
       "closedAt": null,
       "comments": [
         {
@@ -1686,29 +1718,47 @@
       "state": "OPEN",
       "author": "yaronf",
       "authorAssociation": "NONE",
-      "assignees": [],
+      "assignees": [
+        "aaronpk"
+      ],
       "labels": [],
       "body": "Sec. 6.1 (in particular the example), what is the meaning of a response with an access token, a refresh token as well as an auth_session, what is the client expected to do? How should it use the auth_session?\n\n",
       "createdAt": "2024-04-04T22:46:18Z",
-      "updatedAt": "2024-04-04T22:46:18Z",
+      "updatedAt": "2024-04-26T15:56:46Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The auth_session should be cached by the client in case it is needed for the stepu-up authentication flow as described in the Appendix (section A.7).",
+          "createdAt": "2024-04-26T15:56:46Z",
+          "updatedAt": "2024-04-26T15:56:46Z"
+        }
+      ]
     },
     {
       "number": 77,
       "id": "I_kwDOJbxyLc6Et-vI",
       "title": "RFC 6750",
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/77",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "yaronf",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "... is mentioned once but witout a proper reference.\n\n",
       "createdAt": "2024-04-04T22:46:19Z",
-      "updatedAt": "2024-04-04T22:46:19Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-04-26T15:36:07Z",
+      "closedAt": "2024-04-26T15:36:06Z",
+      "comments": [
+        {
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "body": "I added the reference and also rephrased that section to be more clear",
+          "createdAt": "2024-04-26T15:36:06Z",
+          "updatedAt": "2024-04-26T15:36:06Z"
+        }
+      ]
     },
     {
       "number": 78,
@@ -1735,12 +1785,29 @@
       "author": "yaronf",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "discuss"
+      ],
       "body": "Sec. 4.2: if we're adding an error code (=behavior) to the Token endpoint, I guess the document should Update RFC6749. We're also removing a REQUIRED parameter, `redirect_uri`.\n\n",
       "createdAt": "2024-04-04T22:46:22Z",
-      "updatedAt": "2024-04-04T22:46:22Z",
+      "updatedAt": "2024-04-26T19:03:16Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "body": "It's a common misconception that `redirect_uri` is a required parameter on the token endpoint. It's actually [only required IF](https://www.rfc-editor.org/rfc/rfc6749#section-4.1.3) a `redirect_uri` was present in the authorization request, which it would not be in this specification.",
+          "createdAt": "2024-04-26T15:37:09Z",
+          "updatedAt": "2024-04-26T15:37:23Z"
+        },
+        {
+          "author": "yaronf",
+          "authorAssociation": "NONE",
+          "body": "Fair enough (and my bad). But what about the new error code?",
+          "createdAt": "2024-04-26T19:03:15Z",
+          "updatedAt": "2024-04-26T19:03:15Z"
+        }
+      ]
     },
     {
       "number": 80,
@@ -1771,16 +1838,24 @@
       "id": "I_kwDOJbxyLc6Et-zR",
       "title": "Phishing: two ways?",
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/81",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "yaronf",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "Maybe I misunderstand this section, but it sounds like only one way to do phishing is described, though the section starts by saying \"there are two ways.\"\n\n",
       "createdAt": "2024-04-04T22:46:25Z",
-      "updatedAt": "2024-04-04T22:46:25Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-04-26T20:54:39Z",
+      "closedAt": "2024-04-26T20:54:38Z",
+      "comments": [
+        {
+          "author": "yaronf",
+          "authorAssociation": "NONE",
+          "body": "@PieterKas Thank you for the new text.",
+          "createdAt": "2024-04-26T20:54:38Z",
+          "updatedAt": "2024-04-26T20:54:38Z"
+        }
+      ]
     },
     {
       "number": 82,
@@ -1945,7 +2020,7 @@
       "labels": [],
       "body": "Suggestion by Filip Skokan to add additional guidance that this draft is for service providers, who are expected to wrap implementations of this draft in an SDK.",
       "createdAt": "2024-04-11T15:29:28Z",
-      "updatedAt": "2024-04-11T15:29:28Z",
+      "updatedAt": "2024-04-26T15:23:15Z",
       "closedAt": null,
       "comments": []
     }
@@ -2834,6 +2909,58 @@
       "mergeCommit": {
         "oid": "279000915750d8d6bf47976ffe2d048341ccd11a"
       },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 91,
+      "id": "PR_kwDOJbxyLc5t21Vh",
+      "title": "Clarified two ways in which phishing may increase",
+      "url": "https://github.com/aaronpk/oauth-first-party-apps/pull/91",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Clarifying the text to make it clear that there are two ways in which phishing attacks may be facilitated by this specification. (see issue #81)\r\n\r\ncc @yaronf",
+      "createdAt": "2024-04-26T15:39:12Z",
+      "updatedAt": "2024-04-26T15:39:12Z",
+      "baseRepository": "aaronpk/oauth-first-party-apps",
+      "baseRefName": "main",
+      "baseRefOid": "00925d63778cd68ebd7913ad09fef210ec53c1af",
+      "headRepository": "aaronpk/oauth-first-party-apps",
+      "headRefName": "PieterKas-patch-1",
+      "headRefOid": "2a072e364005f7528545691d32462a24916d6c43",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 92,
+      "id": "PR_kwDOJbxyLc5t29xX",
+      "title": "clarify auth_session in token response",
+      "url": "https://github.com/aaronpk/oauth-first-party-apps/pull/92",
+      "state": "OPEN",
+      "author": "aaronpk",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "closes #76",
+      "createdAt": "2024-04-26T15:59:49Z",
+      "updatedAt": "2024-04-26T15:59:49Z",
+      "baseRepository": "aaronpk/oauth-first-party-apps",
+      "baseRefName": "main",
+      "baseRefOid": "c84cd9bea1a121caa781151233e5c473c4a43090",
+      "headRepository": "aaronpk/oauth-first-party-apps",
+      "headRefName": "issue-76",
+      "headRefOid": "d7f400051d24dc8401b2fb68c901114fadb5e90b",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
       "comments": [],
       "reviews": []
     }
