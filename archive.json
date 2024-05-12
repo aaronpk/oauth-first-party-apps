@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-05-09T01:09:08.704589+00:00",
+  "timestamp": "2024-05-12T01:15:20.807315+00:00",
   "repo": "aaronpk/oauth-first-party-apps",
   "labels": [
     {
@@ -1885,9 +1885,17 @@
       "labels": [],
       "body": "Sec. 9.4, the language around consent is hard to parse. Why not say directly that, despite the MUST in RFC 6749, the AS MAY drop the consent screen. (And this is another reason this draft should be updating RFC 6749).\n\n",
       "createdAt": "2024-04-04T22:47:29Z",
-      "updatedAt": "2024-04-04T22:47:29Z",
+      "updatedAt": "2024-05-10T14:21:39Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "corriganjeff",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "This is an good call out. My thoughts are that this consent paragraph is worthy of it's own section placed outside of the current 9.4. I also do not believe that we should override the OAuth consent MUST you refer to for this spec. \r\n\r\n1.) Since it's a first party app and IdP, then maybe we could say that the challenge/response mechanism can include the \"consent_required\" error code (borrowed from OIDC) as a challenge response to the client. The client MAY automatically respond to this in the affirmative without prompting/notifying the user. \r\n\r\n2.) An alternative could be adding an additional request parm to the challenge endpoint to trigger consent suppression. \"explicit consent of the resource owner\" per 6749 does not need to be a flow interruption. Since it's a first party app this consent can also be provided through EULA/ToS/etc. Performing the consent suppression in this manner would also reduce compute I/O and end user latency because it removes the extra consent challenge/response introduced the previous paragraph. \r\n\r\nThe problem with both is that consent is also a regulatory requirement. Either option would need to have a call out explaining that how the client and the AS manage consent updates/versioning is out of scope for this spec (e.g. multiple versions of multiple different apps still active). \r\n\r\nThere could also some form of a consent_version request parm included in both options for what that client currently supports. That would cleanly fit option 2. For option 1 & option 2 there could be a new consent_version_required challenge response to the client. How that versioning reconciliation occurs should be outside the scope of this spec. For example though, the client could update/natively obtain the ability to fulfil requested consent version. If nothing else, both options can default to a webview where existing mechanisms to handle consent can be fulfilled if there is an irreconcilable conflict. \r\n\r\nThere are very valid first party use cases where it is still appropriate to collect user consent. It's also likely that some of those same use cases in existing platforms have a way to display previously granted consents and allow the user to revoke individual apps/features. This is definitely a topic worthy of its own section no matter what the final text ends up being. \r\n\r\n@gffletch @aaronpk thoughts? ",
+          "createdAt": "2024-05-10T05:27:53Z",
+          "updatedAt": "2024-05-10T14:21:39Z"
+        }
+      ]
     },
     {
       "number": 84,
@@ -2021,6 +2029,22 @@
       "body": "Suggestion by Filip Skokan to add additional guidance that this draft is for service providers, who are expected to wrap implementations of this draft in an SDK.",
       "createdAt": "2024-04-11T15:29:28Z",
       "updatedAt": "2024-04-26T15:23:15Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 94,
+      "id": "I_kwDOJbxyLc6If3Gp",
+      "title": "Change /authorize examples to something else",
+      "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/94",
+      "state": "OPEN",
+      "author": "timcappalli",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "While an authorize endpoint does not have to be `/authorize`, it commonly is, and the examples may cause confusion.\r\n\r\nSuggest: `/authorize-challenge` for the examples.",
+      "createdAt": "2024-05-10T16:34:47Z",
+      "updatedAt": "2024-05-10T16:34:47Z",
       "closedAt": null,
       "comments": []
     }
@@ -2962,6 +2986,40 @@
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 93,
+      "id": "PR_kwDOJbxyLc5vHacd",
+      "title": "Changes to support WebAuthn Get and Create",
+      "url": "https://github.com/aaronpk/oauth-first-party-apps/pull/93",
+      "state": "OPEN",
+      "author": "timcappalli",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "WIP",
+      "createdAt": "2024-05-10T16:32:36Z",
+      "updatedAt": "2024-05-10T16:37:26Z",
+      "baseRepository": "aaronpk/oauth-first-party-apps",
+      "baseRefName": "main",
+      "baseRefOid": "c84cd9bea1a121caa781151233e5c473c4a43090",
+      "headRepository": "timcappalli/oauth-first-party-apps",
+      "headRefName": "main",
+      "headRefOid": "6033f2d0a19efe536d0ed56573465663a1a734bd",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "body": "I had to push this to a branch on my repo for the build script to build a preview of it, available here:\r\n\r\nhttps://drafts.aaronpk.com/oauth-first-party-apps/timcappalli-webauthn/draft-parecki-oauth-first-party-apps.html",
+          "createdAt": "2024-05-10T16:37:25Z",
+          "updatedAt": "2024-05-10T16:37:25Z"
+        }
+      ],
       "reviews": []
     }
   ]
