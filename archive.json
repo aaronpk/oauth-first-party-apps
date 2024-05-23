@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-05-21T01:10:35.687664+00:00",
+  "timestamp": "2024-05-23T01:10:22.292042+00:00",
   "repo": "aaronpk/oauth-first-party-apps",
   "labels": [
     {
@@ -1902,15 +1902,15 @@
       "id": "I_kwDOJbxyLc6Et_Up",
       "title": "DPoP binding of auth_session",
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/84",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "yaronf",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "Since RFC 9449 does not specify how \"additional\" parameters can be bound, please say explicitly that (presumably) this is a claim within the DPoP proof JWT named \"auth_session\".\n\n",
       "createdAt": "2024-04-04T22:47:30Z",
-      "updatedAt": "2024-04-05T16:02:31Z",
-      "closedAt": null,
+      "updatedAt": "2024-05-22T16:59:31Z",
+      "closedAt": "2024-05-22T16:59:31Z",
       "comments": [
         {
           "author": "aaronpk",
@@ -1925,6 +1925,13 @@
           "body": "So can you please fine tune the language in 9.6.1. At least this reader understands the word \"binding\" when used in this context as cryptographic binding, and this is obviously not what you want. Maybe use \"associate\" instead.",
           "createdAt": "2024-04-05T16:02:30Z",
           "updatedAt": "2024-04-05T16:02:30Z"
+        },
+        {
+          "author": "yaronf",
+          "authorAssociation": "NONE",
+          "body": "Fixed by #95.",
+          "createdAt": "2024-05-22T16:59:31Z",
+          "updatedAt": "2024-05-22T16:59:31Z"
         }
       ]
     },
@@ -2948,7 +2955,7 @@
       "labels": [],
       "body": "Clarifying the text to make it clear that there are two ways in which phishing attacks may be facilitated by this specification. (see issue #81)\r\n\r\ncc @yaronf",
       "createdAt": "2024-04-26T15:39:12Z",
-      "updatedAt": "2024-04-26T15:39:12Z",
+      "updatedAt": "2024-05-21T15:26:59Z",
       "baseRepository": "aaronpk/oauth-first-party-apps",
       "baseRefName": "main",
       "baseRefOid": "00925d63778cd68ebd7913ad09fef210ec53c1af",
@@ -3020,6 +3027,34 @@
           "updatedAt": "2024-05-10T16:37:25Z"
         }
       ],
+      "reviews": []
+    },
+    {
+      "number": 95,
+      "id": "PR_kwDOJbxyLc5wGX2a",
+      "title": "Clarify binding mechanism for DPoP",
+      "url": "https://github.com/aaronpk/oauth-first-party-apps/pull/95",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "PieterKas"
+      ],
+      "labels": [],
+      "body": "Clarify that the binding is not done through cryptographic means but rather through association by the authorization server since the binding is only between the client and the authorizations server. See issue #84 \r\n\r\ncc @yaronf , @bc-pi",
+      "createdAt": "2024-05-21T15:43:12Z",
+      "updatedAt": "2024-05-21T15:43:17Z",
+      "baseRepository": "aaronpk/oauth-first-party-apps",
+      "baseRefName": "main",
+      "baseRefOid": "c84cd9bea1a121caa781151233e5c473c4a43090",
+      "headRepository": "aaronpk/oauth-first-party-apps",
+      "headRefName": "PieterKas-patch-2",
+      "headRefOid": "271884348316856e8b26b03354be81c32af7d5be",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
       "reviews": []
     }
   ]
