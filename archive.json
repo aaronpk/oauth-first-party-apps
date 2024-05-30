@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-05-28T01:11:13.100442+00:00",
+  "timestamp": "2024-05-30T01:11:44.934794+00:00",
   "repo": "aaronpk/oauth-first-party-apps",
   "labels": [
     {
@@ -2052,6 +2052,46 @@
       "body": "While an authorize endpoint does not have to be `/authorize`, it commonly is, and the examples may cause confusion.\r\n\r\nSuggest: `/authorize-challenge` for the examples.",
       "createdAt": "2024-05-10T16:34:47Z",
       "updatedAt": "2024-05-10T16:34:47Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 96,
+      "id": "I_kwDOJbxyLc6KZfQg",
+      "title": "Interest and implementations",
+      "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/96",
+      "state": "OPEN",
+      "author": "aaronpk",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "If you're interested in implementing this, or already have an in progress implementation, please comment down below!",
+      "createdAt": "2024-05-28T21:18:13Z",
+      "updatedAt": "2024-05-28T22:28:26Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "dteleguin",
+          "authorAssociation": "NONE",
+          "body": "We (Backbase) are interested in implementing this for Keycloak, and we're currently at an early prototyping stage.",
+          "createdAt": "2024-05-28T22:28:25Z",
+          "updatedAt": "2024-05-28T22:28:25Z"
+        }
+      ]
+    },
+    {
+      "number": 97,
+      "id": "I_kwDOJbxyLc6KZf5t",
+      "title": "Add section with refresh token error response example ",
+      "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/97",
+      "state": "OPEN",
+      "author": "aaronpk",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-05-28T21:20:28Z",
+      "updatedAt": "2024-05-28T21:20:28Z",
       "closedAt": null,
       "comments": []
     }
