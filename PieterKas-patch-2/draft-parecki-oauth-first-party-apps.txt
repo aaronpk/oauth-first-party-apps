@@ -5,10 +5,10 @@
 Web Authorization Protocol                                    A. Parecki
 Internet-Draft                                                      Okta
 Intended status: Standards Track                             G. Fletcher
-Expires: 22 November 2024                          Capital One Financial
+Expires: 30 December 2024                          Capital One Financial
                                                             P. Kasselman
                                                                Microsoft
-                                                             21 May 2024
+                                                            28 June 2024
 
 
                  OAuth 2.0 for First-Party Applications
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 November 2024.
+   This Internet-Draft will expire on 30 December 2024.
 
 Copyright Notice
 
@@ -896,8 +896,8 @@ Table of Contents
    removes the need for the authorization server to include additional
    claims in the DPoP proof, while still benefitting from the assurance
    that the client presenting the proof has control over the DPoP key.
-   If the authorization server associates the auth_session value to the
-   DPoP public key, it:
+   To associate the auth_session value with the DPoP public key, the
+   authorization server:
 
    *  MUST check that the same DPoP public key is being used when the
       client presents the DPoP proof.
