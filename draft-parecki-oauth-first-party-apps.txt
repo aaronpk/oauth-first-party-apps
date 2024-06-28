@@ -5,10 +5,10 @@
 Web Authorization Protocol                                    A. Parecki
 Internet-Draft                                                      Okta
 Intended status: Standards Track                             G. Fletcher
-Expires: 28 October 2024                           Capital One Financial
+Expires: 30 December 2024                          Capital One Financial
                                                             P. Kasselman
                                                                Microsoft
-                                                           26 April 2024
+                                                            28 June 2024
 
 
                  OAuth 2.0 for First-Party Applications
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 28 October 2024.
+   This Internet-Draft will expire on 30 December 2024.
 
 Copyright Notice
 
@@ -178,7 +178,7 @@ Table of Contents
 1.1.  Usage and Applicability
 
    This specification MUST only be used by first-party applications,
-   which is when the authorization server and application are operated
+   which is when the authorization server and application are controlled
    by the same entity and the user understands them both as the same
    entity.
 
@@ -747,9 +747,14 @@ Table of Contents
 
 9.1.  First-Party Applications
 
-   First-party applications are applications that the user recognizes as
-   belonging to the same brand as the authorization server.  For
-   example, a bank publishing their own mobile application.
+   First-party applications are applications that are controlled by the
+   same entity as the authorization server used by the application, and
+   the user understands them both as the same entity.
+
+   For first-party applications, it is important that the user
+   recognizes the application and authorization server as belonging to
+   the same brand.  For example, a bank publishing their own mobile
+   application.
 
    Because this specification enables a client application to interact
    directly with the end user, and the application handles sending any
@@ -820,10 +825,6 @@ Table of Contents
    can mimick the requests the application makes to the authorization
    server, pretending to be the legitimate client.
 
-   Because this specification is intended for first-party applications,
-   it is likely that the intent is to also avoid prompting the user with
-   a consent screen as recommended by [RFC6749].
-
    Implementers SHOULD consider additional measures to limit the risk of
    client impersonation, such as using attestation APIs available from
    the operating system.
@@ -891,14 +892,21 @@ Table of Contents
 
    If the client and authorization server are using DPoP binding of
    access tokens and/or authorization codes, then the auth_session value
-   SHOULD be protected by the DPoP binding as well.  The authorization
-   server SHOULD bind the auth_session value to the DPoP public key.  If
-   the authorization server is binding the auth_session value to the
-   DPoP public key, it MUST check that the same DPoP public key is being
-   used and MUST verify the DPoP proof to ensure the client controls the
-   corresponding private key whenever the client includes the
-   auth_session in an Authorization Challenge Request as described in
-   Section 5.1.
+   SHOULD be protected as well.  The authorization server SHOULD
+   associate the auth_session value with the DPoP public key.  This
+   removes the need for the authorization server to include additional
+   claims in the DPoP proof, while still benefitting from the assurance
+   that the client presenting the proof has control over the DPoP key.
+   To associate the auth_session value with the DPoP public key, the
+   authorization server:
+
+   *  MUST check that the same DPoP public key is being used when the
+      client presents the DPoP proof.
+
+   *  MUST verify the DPoP proof to ensure the client controls the
+      corresponding private key whenever the client includes the
+      auth_session in an Authorization Challenge Request as described in
+      Section 5.1.
 
    DPoP binding of the auth_session value ensures that the context
    referenced by the auth_session cannot be stolen and reused by another
@@ -1017,9 +1025,9 @@ Table of Contents
    [I-D.ietf-oauth-cross-device-security]
               Kasselman, P., Fett, D., and F. Skokan, "Cross-Device
               Flows: Security Best Current Practice", Work in Progress,
-              Internet-Draft, draft-ietf-oauth-cross-device-security-06,
-              4 April 2024, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-oauth-cross-device-security-06>.
+              Internet-Draft, draft-ietf-oauth-cross-device-security-07,
+              13 May 2024, <https://datatracker.ietf.org/doc/html/draft-
+              ietf-oauth-cross-device-security-07>.
 
    [IANA.JWT] "*** BROKEN REFERENCE ***".
 
@@ -1117,10 +1125,10 @@ Table of Contents
 
    [I-D.ietf-oauth-browser-based-apps]
               Parecki, A., Waite, D., and P. De Ryck, "OAuth 2.0 for
-              Browser-Based Apps", Work in Progress, Internet-Draft,
-              draft-ietf-oauth-browser-based-apps-17, 28 February 2024,
+              Browser-Based Applications", Work in Progress, Internet-
+              Draft, draft-ietf-oauth-browser-based-apps-18, 1 May 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              browser-based-apps-17>.
+              browser-based-apps-18>.
 
    [RFC6750]  Jones, M. and D. Hardt, "The OAuth 2.0 Authorization
               Framework: Bearer Token Usage", RFC 6750,
