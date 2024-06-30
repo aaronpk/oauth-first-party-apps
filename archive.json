@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-06-27T01:13:55.899007+00:00",
+  "timestamp": "2024-06-30T01:19:46.408049+00:00",
   "repo": "aaronpk/oauth-first-party-apps",
   "labels": [
     {
@@ -1488,16 +1488,31 @@
       "id": "I_kwDOJbxyLc6Et-hS",
       "title": "Interaction with \"native SSO\"",
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/64",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "yaronf",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "Sec. 1.1: the paragraph that talks about Native SSO is about what you shouldn't do. It would be nice to also say what you can do, i.e. whether there's some possible integration between the two approaches.\n\nRelated to that, the text about multiple applications and an SDK does not directly contradict Sec. 9.7.3 but the two could be improved, e.g. by clarifying the cases when Native SSO is not applicable.\n\n",
       "createdAt": "2024-04-04T22:46:00Z",
-      "updatedAt": "2024-04-04T22:46:00Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-06-29T14:41:01Z",
+      "closedAt": "2024-06-29T14:41:01Z",
+      "comments": [
+        {
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "body": "I'm not sure I understand the problem. The point of section 1.1 is to describe when not to use this spec. It then also says Native SSO might be a better solution. Do you have any suggestions for how to make this clearer?",
+          "createdAt": "2024-06-28T15:57:34Z",
+          "updatedAt": "2024-06-28T15:57:34Z"
+        },
+        {
+          "author": "yaronf",
+          "authorAssociation": "NONE",
+          "body": "I re-read the two sections and I think they're fine. Closing.",
+          "createdAt": "2024-06-29T14:41:01Z",
+          "updatedAt": "2024-06-29T14:41:01Z"
+        }
+      ]
     },
     {
       "number": 65,
@@ -1885,7 +1900,7 @@
       "labels": [],
       "body": "Sec. 9.4, the language around consent is hard to parse. Why not say directly that, despite the MUST in RFC 6749, the AS MAY drop the consent screen. (And this is another reason this draft should be updating RFC 6749).\n\n",
       "createdAt": "2024-04-04T22:47:29Z",
-      "updatedAt": "2024-05-10T14:21:39Z",
+      "updatedAt": "2024-06-28T15:31:32Z",
       "closedAt": null,
       "comments": [
         {
@@ -1894,6 +1909,13 @@
           "body": "This is an good call out. My thoughts are that this consent paragraph is worthy of it's own section placed outside of the current 9.4. I also do not believe that we should override the OAuth consent MUST you refer to for this spec. \r\n\r\n1.) Since it's a first party app and IdP, then maybe we could say that the challenge/response mechanism can include the \"consent_required\" error code (borrowed from OIDC) as a challenge response to the client. The client MAY automatically respond to this in the affirmative without prompting/notifying the user. \r\n\r\n2.) An alternative could be adding an additional request parm to the challenge endpoint to trigger consent suppression. \"explicit consent of the resource owner\" per 6749 does not need to be a flow interruption. Since it's a first party app this consent can also be provided through EULA/ToS/etc. Performing the consent suppression in this manner would also reduce compute I/O and end user latency because it removes the extra consent challenge/response introduced the previous paragraph. \r\n\r\nThe problem with both is that consent is also a regulatory requirement. Either option would need to have a call out explaining that how the client and the AS manage consent updates/versioning is out of scope for this spec (e.g. multiple versions of multiple different apps still active). \r\n\r\nThere could also some form of a consent_version request parm included in both options for what that client currently supports. That would cleanly fit option 2. For option 1 & option 2 there could be a new consent_version_required challenge response to the client. How that versioning reconciliation occurs should be outside the scope of this spec. For example though, the client could update/natively obtain the ability to fulfil requested consent version. If nothing else, both options can default to a webview where existing mechanisms to handle consent can be fulfilled if there is an irreconcilable conflict. \r\n\r\nThere are very valid first party use cases where it is still appropriate to collect user consent. It's also likely that some of those same use cases in existing platforms have a way to display previously granted consents and allow the user to revoke individual apps/features. This is definitely a topic worthy of its own section no matter what the final text ends up being. \r\n\r\n@gffletch @aaronpk thoughts? ",
           "createdAt": "2024-05-10T05:27:53Z",
           "updatedAt": "2024-05-10T14:21:39Z"
+        },
+        {
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "body": "I think it makes more sense to just be silent about the consent issue in the client authentication section by just removing that sentence since it wasn't a should/must anyway.",
+          "createdAt": "2024-06-28T15:31:31Z",
+          "updatedAt": "2024-06-28T15:31:31Z"
         }
       ]
     },
@@ -1971,9 +1993,31 @@
       "labels": [],
       "body": "Sec. A.4, The more typical use case is for the user to follow a link received in the email message. Please add a bullet that describes this alternative. Should the `auth_session` be part of the URL?\n\n",
       "createdAt": "2024-04-04T22:47:33Z",
-      "updatedAt": "2024-04-04T22:47:33Z",
+      "updatedAt": "2024-06-29T15:35:45Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "body": "The `auth_session` is a secret known only to the device, so should not be sent in an email. It would be a separate code sent in the email link, and the native client would take the code from the link and include the `auth_session` and the code in the request to the AS.",
+          "createdAt": "2024-06-28T15:22:50Z",
+          "updatedAt": "2024-06-28T15:22:50Z"
+        },
+        {
+          "author": "yaronf",
+          "authorAssociation": "NONE",
+          "body": "Re: `auth_session`, understood. But this wasn't my point. The current text is:\r\n\r\n> The Client presents a user experience guiding the user to copy the e-mail verification code to the Client.\r\n\r\nI think in reality, it would not be a manual copy-paste. Instead, the email would contain a link that redirects into the Client (in a mobile app, through registration of the app to some URLs).",
+          "createdAt": "2024-06-29T14:50:17Z",
+          "updatedAt": "2024-06-29T14:50:17Z"
+        },
+        {
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "body": "Yes that should be described as well. But both flows are common. The email link tends to be more common for email verification where the user is expected to complete that task later, but email codes are more common when used as a second factor.\r\n\r\nIn any case, the protocol doesn't change for either one, since the link in the email would ultimately launch the native app passing the email verification code into the app, which the app would then send in a request along with the `auth_session` it already has.",
+          "createdAt": "2024-06-29T15:35:44Z",
+          "updatedAt": "2024-06-29T15:35:44Z"
+        }
+      ]
     },
     {
       "number": 87,
@@ -3081,7 +3125,7 @@
       "id": "PR_kwDOJbxyLc5wGX2a",
       "title": "Clarify binding mechanism for DPoP",
       "url": "https://github.com/aaronpk/oauth-first-party-apps/pull/95",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "PieterKas",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -3090,19 +3134,55 @@
       "labels": [],
       "body": "Clarify that the binding is not done through cryptographic means but rather through association by the authorization server since the binding is only between the client and the authorizations server. See issue #84 \r\n\r\ncc @yaronf , @bc-pi",
       "createdAt": "2024-05-21T15:43:12Z",
-      "updatedAt": "2024-05-21T15:43:17Z",
+      "updatedAt": "2024-06-28T15:15:26Z",
       "baseRepository": "aaronpk/oauth-first-party-apps",
       "baseRefName": "main",
       "baseRefOid": "c84cd9bea1a121caa781151233e5c473c4a43090",
       "headRepository": "aaronpk/oauth-first-party-apps",
       "headRefName": "PieterKas-patch-2",
-      "headRefOid": "271884348316856e8b26b03354be81c32af7d5be",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "184014b730a0a5263d34e4d095c025eb08066b1f",
+      "closedAt": "2024-06-28T15:15:26Z",
+      "mergedAt": "2024-06-28T15:15:26Z",
+      "mergedBy": "aaronpk",
+      "mergeCommit": {
+        "oid": "01f647cb385259ad067e9a33c6db0e4cce695ea1"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbxyLc6ADElo",
+          "commit": {
+            "abbreviatedOid": "2718843"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-06-28T15:14:12Z",
+          "updatedAt": "2024-06-28T15:14:13Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\nIf the client and authorization server are using DPoP binding of access tokens and/or authorization codes, then the `auth_session` value SHOULD be protected as well. The authorization server SHOULD associate the `auth_session` value with the DPoP public key. This removes the need for the authorization server to include additional claims in the DPoP proof, while still benefitting from the assurance that the client presenting the proof has control over the DPoP key. To associate the `auth_session` value with the DPoP public key, the authorization server:\r\n```",
+              "createdAt": "2024-06-28T15:14:12Z",
+              "updatedAt": "2024-06-28T15:14:13Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbxyLc6ADFL1",
+          "commit": {
+            "abbreviatedOid": "184014b"
+          },
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-06-28T15:15:21Z",
+          "updatedAt": "2024-06-28T15:15:21Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
