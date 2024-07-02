@@ -142,10 +142,11 @@ Table of Contents
 
 1.  Introduction
 
-   This document extends the OAuth 2.0 Authorization Framework [RFC6749]
-   with a new endpoint, authorization_challenge_endpoint, to support
-   first-party applications that want to control the process of
-   obtaining authorization from the user using a native experience.
+   This document, OAuth for First-Party Apps (FiPA), extends the OAuth
+   2.0 Authorization Framework [RFC6749] with a new endpoint,
+   authorization_challenge_endpoint, to support first-party applications
+   that want to control the process of obtaining authorization from the
+   user using a native experience.
 
    The client collects any initial information from the user and POSTs
    that information as well as information about the client's request to
@@ -388,8 +389,11 @@ Table of Contents
 
    The authorization challenge endpoint response is either an
    authorization code or an error code, and may also contain an
-   auth_session which the client uses on subsequent requests to the
-   authorization challenge endpoint.
+   auth_session which the client uses on subsequent requests.
+
+   Further communication between the client and authorization server MAY
+   happen at the Authorization Challenge Endpoint or any other
+   proprietary endpoints at the authorization server.
 
 4.2.  Token endpoint
 
@@ -443,7 +447,7 @@ Table of Contents
    flow given the user's phone number, line breaks shown for
    illustration purposes only:
 
-   POST /authorize HTTP/1.1
+   POST /authorize-challenge HTTP/1.1
    Host: server.example.com
    Content-Type: application/x-www-form-urlencoded
 
@@ -610,7 +614,9 @@ Table of Contents
    format of these requests is not required to conform to the format of
    the initial authorization challenge requests (e.g. the request format
    may be application/json rather than application/x-www-form-
-   urlencoded).
+   urlencoded).  These requests MAY also be sent to proprietary
+   endpoints at the authorization server rather than the Authorization
+   Challenge Endpoint.
 
 5.3.1.  Auth Session
 
@@ -1523,7 +1529,7 @@ B.3.  Example Sequence
    The client prompts the user to enter their username, and sends the
    username in an initial Authorization Challenge Request.
 
-   POST /authorize HTTP/1.1
+   POST /authorize-challenge HTTP/1.1
    Host: server.example.com
    Content-Type: application/x-www-form-urlencoded
 
@@ -1546,7 +1552,7 @@ B.3.  Example Sequence
    The client prompts the user for an OTP, and sends a new Authorization
    Challenge Request.
 
-   POST /authorize HTTP/1.1
+   POST /authorize-challenge HTTP/1.1
    Host: server.example.com
    Content-Type: application/x-www-form-urlencoded
 
@@ -1628,6 +1634,9 @@ Appendix D.  Document History
 
    *  Clarified resource server error response section
 
+   *  Clarified that further communication between client and AS can
+      happen at proprietary endpoints
+
    -01
 
    *  Added clarification on use of authorization code binding when
@@ -1663,8 +1672,9 @@ Acknowledgments
    following individuals who contributed ideas, feedback, and wording
    that shaped and formed the final specification:
 
-   Brian Campbell, Dick Hardt, Dmitry Telegin, John Bradley, Justin
-   Richer, Mike Jones, Orie Steele, Tobias Looker, Yaron Sheffer.
+   Alejo Fernandez, Brian Campbell, Dick Hardt, Dmitry Telegin, John
+   Bradley, Justin Richer, Mike Jones, Orie Steele, Tim Cappalli, Tobias
+   Looker, Yaron Sheffer.
 
 Authors' Addresses
 

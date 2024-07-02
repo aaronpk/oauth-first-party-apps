@@ -1379,7 +1379,8 @@ applications, only delegating to the browser in unexpected, high risk, or error 
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">This document extends the OAuth 2.0 Authorization Framework <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span> with
+<p id="section-1-1">This document, OAuth for First-Party Apps (FiPA),
+extends the OAuth 2.0 Authorization Framework <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span> with
 a new endpoint, <code>authorization_challenge_endpoint</code>, to support first-party
 applications that want to control the process of obtaining authorization from
 the user using a native experience.<a href="#section-1-1" class="pilcrow">¶</a></p>
@@ -1565,7 +1566,8 @@ important to note that some extension parameters have meaning in a web context b
 mechanism (e.g. <code>response_mode=query</code>). It is out of scope as to what the AS does in the case that an extension
 defines a parameter that has no meaning in this use case.<a href="#section-4.1-5" class="pilcrow">¶</a></p>
 <p id="section-4.1-6">The client initiates the authorization flow with or without information collected from the user (e.g. a signed passkey challenge or MFA code).<a href="#section-4.1-6" class="pilcrow">¶</a></p>
-<p id="section-4.1-7">The authorization challenge endpoint response is either an authorization code or an error code, and may also contain an <code>auth_session</code> which the client uses on subsequent requests to the authorization challenge endpoint.<a href="#section-4.1-7" class="pilcrow">¶</a></p>
+<p id="section-4.1-7">The authorization challenge endpoint response is either an authorization code or an error code, and may also contain an <code>auth_session</code> which the client uses on subsequent requests.<a href="#section-4.1-7" class="pilcrow">¶</a></p>
+<p id="section-4.1-8">Further communication between the client and authorization server <span class="bcp14">MAY</span> happen at the Authorization Challenge Endpoint or any other proprietary endpoints at the authorization server.<a href="#section-4.1-8" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="token-endpoint">
@@ -1632,7 +1634,7 @@ See <a href="#redirect-to-web" class="auto internal xref">Section 5.2.2.1</a> fo
 given the user's phone number, line breaks shown for illustration purposes only:<a href="#section-5.1-4" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-5.1-5">
 <pre>
-POST /authorize HTTP/1.1
+POST /authorize-challenge HTTP/1.1
 Host: server.example.com
 Content-Type: application/x-www-form-urlencoded
 
@@ -1850,7 +1852,9 @@ server until the authorization request is fulfilled and an authorization code re
 <p id="section-5.3-2">These intermediate requests are out of scope of this specification, and are expected
 to be defined by the authorization server. The format of these requests is not required
 to conform to the format of the initial authorization challenge requests
-(e.g. the request format may be <code>application/json</code> rather than <code>application/x-www-form-urlencoded</code>).<a href="#section-5.3-2" class="pilcrow">¶</a></p>
+(e.g. the request format may be <code>application/json</code> rather than <code>application/x-www-form-urlencoded</code>).
+These requests <span class="bcp14">MAY</span> also be sent to proprietary endpoints at the authorization server
+rather than the Authorization Challenge Endpoint.<a href="#section-5.3-2" class="pilcrow">¶</a></p>
 <div id="auth-session">
 <section id="section-5.3.1">
           <h4 id="name-auth-session">
@@ -2642,7 +2646,7 @@ response code to use with this error value is <code>401 Unauthorized</code>.<a h
 <p id="appendix-B.3-1">The client prompts the user to enter their username, and sends the username in an initial Authorization Challenge Request.<a href="#appendix-B.3-1" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="appendix-B.3-2">
 <pre>
-POST /authorize HTTP/1.1
+POST /authorize-challenge HTTP/1.1
 Host: server.example.com
 Content-Type: application/x-www-form-urlencoded
 
@@ -2667,7 +2671,7 @@ Cache-Control: no-store
 <p id="appendix-B.3-5">The client prompts the user for an OTP, and sends a new Authorization Challenge Request.<a href="#appendix-B.3-5" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="appendix-B.3-6">
 <pre>
-POST /authorize HTTP/1.1
+POST /authorize-challenge HTTP/1.1
 Host: server.example.com
 Content-Type: application/x-www-form-urlencoded
 
@@ -2742,6 +2746,9 @@ Cache-Control: no-store
         <li class="normal" id="appendix-D-2.2">
           <p id="appendix-D-2.2.1">Clarified resource server error response section<a href="#appendix-D-2.2.1" class="pilcrow">¶</a></p>
 </li>
+        <li class="normal" id="appendix-D-2.3">
+          <p id="appendix-D-2.3.1">Clarified that further communication between client and AS can happen at proprietary endpoints<a href="#appendix-D-2.3.1" class="pilcrow">¶</a></p>
+</li>
       </ul>
 <p id="appendix-D-3">-01<a href="#appendix-D-3" class="pilcrow">¶</a></p>
 <ul class="normal">
@@ -2784,7 +2791,7 @@ Cache-Control: no-store
 <a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
       </h2>
 <p id="appendix-E-1">The authors would like to thank the attendees of the OAuth Security Workshop 2023 session in which this was discussed, as well as the following individuals who contributed ideas, feedback, and wording that shaped and formed the final specification:<a href="#appendix-E-1" class="pilcrow">¶</a></p>
-<p id="appendix-E-2">Brian Campbell, Dick Hardt, Dmitry Telegin, John Bradley, Justin Richer, Mike Jones, Orie Steele, Tobias Looker, Yaron Sheffer.<a href="#appendix-E-2" class="pilcrow">¶</a></p>
+<p id="appendix-E-2">Alejo Fernandez, Brian Campbell, Dick Hardt, Dmitry Telegin, John Bradley, Justin Richer, Mike Jones, Orie Steele, Tim Cappalli, Tobias Looker, Yaron Sheffer.<a href="#appendix-E-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">
