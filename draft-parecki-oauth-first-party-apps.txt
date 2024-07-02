@@ -5,10 +5,10 @@
 Web Authorization Protocol                                    A. Parecki
 Internet-Draft                                                      Okta
 Intended status: Standards Track                             G. Fletcher
-Expires: 30 December 2024                          Capital One Financial
+Expires: 3 January 2025                            Capital One Financial
                                                             P. Kasselman
                                                                Microsoft
-                                                            28 June 2024
+                                                             2 July 2024
 
 
                  OAuth 2.0 for First-Party Applications
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 30 December 2024.
+   This Internet-Draft will expire on 3 January 2025.
 
 Copyright Notice
 
@@ -661,13 +661,6 @@ Table of Contents
    defined in Section 5.1 with the additional parameter auth_session,
    defined in Section 5.3.1.
 
-   The response MAY include an auth_session parameter which the client
-   is expected to include on a subsequent request to the authorization
-   challenge endpoint.  The auth_session parameter MAY also be included
-   even if the authorization code was obtained through a traditional
-   OAuth authorization code flow rather than the flow defined by this
-   specification.
-
    An example successful token response is below:
 
    HTTP/1.1 200 OK
@@ -681,6 +674,19 @@ Table of Contents
      "refresh_token": "tGzv3JOkF0XG5Qx2TlKWIA",
      "auth_session": "uY29tL2F1dGhlbnRpY"
    }
+
+   The response MAY include an auth_session parameter which the client
+   is expected to include on any subsequent requests to the
+   authorization challenge endpoint, as described in Section 5.3.1.  The
+   auth_session parameter MAY also be included even if the authorization
+   code was obtained through a traditional OAuth authorization code flow
+   rather than the flow defined by this specification.
+
+   Including the auth_session parameter in the token response enables
+   flows such as step-up authentication [RFC9470], so that the
+   authorization server can restore the context of a previous session
+   and prompt only for the needed step-up factors.  See Appendix A.7 for
+   an example application.
 
 6.2.  Token Endpoint Error Response
 
