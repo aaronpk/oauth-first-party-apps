@@ -1331,7 +1331,7 @@ applications, only delegating to the browser in unexpected, high risk, or error 
                 <p id="section-toc.1-1.12.2.4.1"><a href="#appendix-A.4" class="auto internal xref">A.4</a>.  <a href="#name-e-mail-confirmation-code" class="internal xref">E-Mail Confirmation Code</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.5">
-                <p id="section-toc.1-1.12.2.5.1"><a href="#appendix-A.5" class="auto internal xref">A.5</a>.  <a href="#name-sms-confirmation-code" class="internal xref">SMS Confirmation Code</a></p>
+                <p id="section-toc.1-1.12.2.5.1"><a href="#appendix-A.5" class="auto internal xref">A.5</a>.  <a href="#name-mobile-confirmation-code" class="internal xref">Mobile Confirmation Code</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.6">
                 <p id="section-toc.1-1.12.2.6.1"><a href="#appendix-A.6" class="auto internal xref">A.6</a>.  <a href="#name-re-authenticating-to-an-app" class="internal xref">Re-authenticating to an app a week later using OTP</a></p>
@@ -2423,12 +2423,12 @@ an authorization request and eventually obtain an authorization code.<a href="#s
         </ul>
 </section>
 </div>
-<div id="sms-confirmation-code">
+<div id="mobile-confirmation-code">
 <section id="appendix-A.5">
-        <h3 id="name-sms-confirmation-code">
-<a href="#appendix-A.5" class="section-number selfRef">A.5. </a><a href="#name-sms-confirmation-code" class="section-name selfRef">SMS Confirmation Code</a>
+        <h3 id="name-mobile-confirmation-code">
+<a href="#appendix-A.5" class="section-number selfRef">A.5. </a><a href="#name-mobile-confirmation-code" class="section-name selfRef">Mobile Confirmation Code</a>
         </h3>
-<p id="appendix-A.5-1">A user may be required to provide an SMS confirmation code as part of an authentication ceremony to prove they control a mobile phone number. The user provides a phone number and is then required to enter an SMS confirmation code sent to the phone. If the correct confirmation code is returned to the Authorization Server, it issues Access and Refresh Tokens.<a href="#appendix-A.5-1" class="pilcrow">¶</a></p>
+<p id="appendix-A.5-1">A user may be required to provide a confirmation code as part of an authentication ceremony to prove they control a mobile phone number. The user provides a phone number and is then required to enter a confirmation code sent to the phone. If the correct confirmation code is returned to the Authorization Server, it issues Access and Refresh Tokens.<a href="#appendix-A.5-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-A.5-2.1">
             <p id="appendix-A.5-2.1.1">The Client collects a mobile phone number from the user.<a href="#appendix-A.5-2.1.1" class="pilcrow">¶</a></p>
@@ -2437,13 +2437,13 @@ an authorization request and eventually obtain an authorization code.<a href="#s
             <p id="appendix-A.5-2.2.1">The Client sends the phone number in an Authorization Challenge Request (<a href="#challenge-request" class="auto internal xref">Section 5.1</a>) to the Authorization Challenge Endpoint (<a href="#authorization-challenge-endpoint" class="auto internal xref">Section 4.1</a>).<a href="#appendix-A.5-2.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.5-2.3">
-            <p id="appendix-A.5-2.3.1">The Authorization Server sends a confirmation code to the phone number and returns an Error Response (<a href="#challenge-error-response" class="auto internal xref">Section 5.2.2</a>) including <code>"error": "insufficient_authorization"</code>, <code>"auth_session"</code> and a custom property indicating that a SMS confirmation code must be entered.<a href="#appendix-A.5-2.3.1" class="pilcrow">¶</a></p>
+            <p id="appendix-A.5-2.3.1">The Authorization Server sends a confirmation code to the phone number and returns an Error Response (<a href="#challenge-error-response" class="auto internal xref">Section 5.2.2</a>) including <code>"error": "insufficient_authorization"</code>, <code>"auth_session"</code> and a custom property indicating that a confirmation code must be entered.<a href="#appendix-A.5-2.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.5-2.4">
-            <p id="appendix-A.5-2.4.1">The Client presents a user experience guiding the user to enter the SMS confirmation code. Once the SMS verification code is entered, the Client sends an Authorization Challenge Request to the Authorization Challenge Endpoint, including the confirmation code as well as the <code>auth_session</code> parameter returned in the previous Error Response.<a href="#appendix-A.5-2.4.1" class="pilcrow">¶</a></p>
+            <p id="appendix-A.5-2.4.1">The Client presents a user experience guiding the user to enter the confirmation code. Once the code is entered, the Client sends an Authorization Challenge Request to the Authorization Challenge Endpoint, including the confirmation code as well as the <code>auth_session</code> parameter returned in the previous Error Response.<a href="#appendix-A.5-2.4.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.5-2.5">
-            <p id="appendix-A.5-2.5.1">The Authorization Server uses the <code>auth_session</code> to maintain the session context and verifies the SMS code before issuing an Authorization Code to the Client.<a href="#appendix-A.5-2.5.1" class="pilcrow">¶</a></p>
+            <p id="appendix-A.5-2.5.1">The Authorization Server uses the <code>auth_session</code> to maintain the session context and verifies the code before issuing an Authorization Code to the Client.<a href="#appendix-A.5-2.5.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.5-2.6">
             <p id="appendix-A.5-2.6.1">The Client sends the Authorization Code in a Token Request (<a href="#token-request" class="auto internal xref">Section 6</a>) to the Token Endpoint.<a href="#appendix-A.5-2.6.1" class="pilcrow">¶</a></p>

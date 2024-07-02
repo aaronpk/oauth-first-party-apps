@@ -127,7 +127,7 @@ Table of Contents
      A.2.  Redirect to Authorization Server
      A.3.  Passwordless One-Time Password (OTP)
      A.4.  E-Mail Confirmation Code
-     A.5.  SMS Confirmation Code
+     A.5.  Mobile Confirmation Code
      A.6.  Re-authenticating to an app a week later using OTP
      A.7.  Step-up Authentication using Confirmation SMS
      A.8.  Registration
@@ -1274,14 +1274,14 @@ A.4.  E-Mail Confirmation Code
    *  The Authorization Server verifies the Authorization Code and
       issues the Access Token and Refresh Token.
 
-A.5.  SMS Confirmation Code
+A.5.  Mobile Confirmation Code
 
-   A user may be required to provide an SMS confirmation code as part of
-   an authentication ceremony to prove they control a mobile phone
-   number.  The user provides a phone number and is then required to
-   enter an SMS confirmation code sent to the phone.  If the correct
-   confirmation code is returned to the Authorization Server, it issues
-   Access and Refresh Tokens.
+   A user may be required to provide a confirmation code as part of an
+   authentication ceremony to prove they control a mobile phone number.
+   The user provides a phone number and is then required to enter a
+   confirmation code sent to the phone.  If the correct confirmation
+   code is returned to the Authorization Server, it issues Access and
+   Refresh Tokens.
 
    *  The Client collects a mobile phone number from the user.
 
@@ -1292,17 +1292,16 @@ A.5.  SMS Confirmation Code
    *  The Authorization Server sends a confirmation code to the phone
       number and returns an Error Response (Section 5.2.2) including
       "error": "insufficient_authorization", "auth_session" and a custom
-      property indicating that a SMS confirmation code must be entered.
+      property indicating that a confirmation code must be entered.
 
    *  The Client presents a user experience guiding the user to enter
-      the SMS confirmation code.  Once the SMS verification code is
-      entered, the Client sends an Authorization Challenge Request to
-      the Authorization Challenge Endpoint, including the confirmation
-      code as well as the auth_session parameter returned in the
-      previous Error Response.
+      the confirmation code.  Once the code is entered, the Client sends
+      an Authorization Challenge Request to the Authorization Challenge
+      Endpoint, including the confirmation code as well as the
+      auth_session parameter returned in the previous Error Response.
 
    *  The Authorization Server uses the auth_session to maintain the
-      session context and verifies the SMS code before issuing an
+      session context and verifies the code before issuing an
       Authorization Code to the Client.
 
    *  The Client sends the Authorization Code in a Token Request
