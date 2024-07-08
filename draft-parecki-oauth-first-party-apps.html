@@ -1252,7 +1252,7 @@ applications, only delegating to the browser in unexpected, high risk, or error 
                 <p id="section-toc.1-1.9.2.4.1"><a href="#section-9.4" class="auto internal xref">9.4</a>.  <a href="#name-client-authentication" class="internal xref">Client Authentication</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.5">
-                <p id="section-toc.1-1.9.2.5.1"><a href="#section-9.5" class="auto internal xref">9.5</a>.  <a href="#name-sender-constrained-tokens" class="internal xref">Sender Constrained Tokens</a></p>
+                <p id="section-toc.1-1.9.2.5.1"><a href="#section-9.5" class="auto internal xref">9.5</a>.  <a href="#name-sender-constrained-tokens" class="internal xref">Sender-Constrained Tokens</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.5.2.1">
                     <p id="section-toc.1-1.9.2.5.2.1.1"><a href="#section-9.5.1" class="auto internal xref">9.5.1</a>.  <a href="#name-dpop-demonstrating-proof-of" class="internal xref">DPoP: Demonstrating Proof-of-Possession</a></p>
@@ -1717,16 +1717,16 @@ include the <code>WWW-Authenticate</code> response header field
 matching the authentication scheme used by the client.<a href="#section-5.2.2-2.2.2.4.1" class="pilcrow">¶</a></p>
 </dd>
                 <dd class="break"></dd>
-<dt id="section-5.2.2-2.2.2.5">"invalid_grant":</dt>
+<dt id="section-5.2.2-2.2.2.5">"unauthorized_client":</dt>
                 <dd style="margin-left: 1.5em" id="section-5.2.2-2.2.2.6">
-                  <p id="section-5.2.2-2.2.2.6.1">The provided authorization grant or <code>auth_session</code> is
-invalid, expired, revoked, or is otherwise invalid.<a href="#section-5.2.2-2.2.2.6.1" class="pilcrow">¶</a></p>
+                  <p id="section-5.2.2-2.2.2.6.1">The authenticated client is not authorized to use this
+endpoint.<a href="#section-5.2.2-2.2.2.6.1" class="pilcrow">¶</a></p>
 </dd>
                 <dd class="break"></dd>
-<dt id="section-5.2.2-2.2.2.7">"unauthorized_client":</dt>
+<dt id="section-5.2.2-2.2.2.7">"invalid_session":</dt>
                 <dd style="margin-left: 1.5em" id="section-5.2.2-2.2.2.8">
-                  <p id="section-5.2.2-2.2.2.8.1">The authenticated client is not authorized to use this
-authorization grant type.<a href="#section-5.2.2-2.2.2.8.1" class="pilcrow">¶</a></p>
+                  <p id="section-5.2.2-2.2.2.8.1">The provided <code>auth_session</code> is
+invalid, expired, revoked, or is otherwise invalid.<a href="#section-5.2.2-2.2.2.8.1" class="pilcrow">¶</a></p>
 </dd>
                 <dd class="break"></dd>
 <dt id="section-5.2.2-2.2.2.9">"invalid_scope":</dt>
@@ -1782,7 +1782,7 @@ outside the set %x21 / %x23-5B / %x5D-7E.<a href="#section-5.2.2-2.6.1" class="p
               <p id="section-5.2.2-2.8.1"><span class="bcp14">OPTIONAL</span>.  The auth session allows the authorization server to
 associate subsequent requests by this client with an ongoing
 authorization request sequence. The client <span class="bcp14">MUST</span> include
-the <code>auth_session</code> in follow-up requests to the challenge
+the <code>auth_session</code> in follow-up requests to the authorization challenge
 endpoint if it receives one along with the error response.<a href="#section-5.2.2-2.8.1" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
@@ -1811,7 +1811,7 @@ values are included as JSON strings.  Numerical values are included
 as JSON numbers.  The order of parameters does not matter and can
 vary.<a href="#section-5.2.2-4" class="pilcrow">¶</a></p>
 <p id="section-5.2.2-5">The authorization server <span class="bcp14">MAY</span> define additional parameters in the response
-depending on the implmentation. The authorization server <span class="bcp14">MAY</span> also define
+depending on the implementation. The authorization server <span class="bcp14">MAY</span> also define
 more specific content types for the error responses as long as the response
 is JSON and conforms to <code>application/&lt;AS-defined&gt;+json</code>.<a href="#section-5.2.2-5" class="pilcrow">¶</a></p>
 <div id="redirect-to-web">
@@ -1851,9 +1851,9 @@ server until the authorization request is fulfilled and an authorization code re
 <p id="section-5.3-2">These intermediate requests are out of scope of this specification, and are expected
 to be defined by the authorization server. The format of these requests is not required
 to conform to the format of the initial authorization challenge requests
-(e.g. the request format may be <code>application/json</code> rather than <code>application/x-www-form-urlencoded</code>).
-These requests <span class="bcp14">MAY</span> also be sent to proprietary endpoints at the authorization server
-rather than the Authorization Challenge Endpoint.<a href="#section-5.3-2" class="pilcrow">¶</a></p>
+(e.g. the request format may be <code>application/json</code> rather than <code>application/x-www-form-urlencoded</code>).<a href="#section-5.3-2" class="pilcrow">¶</a></p>
+<p id="section-5.3-3">These intermediate requests <span class="bcp14">MAY</span> also be sent to proprietary endpoints at the authorization server
+rather than the Authorization Challenge Endpoint.<a href="#section-5.3-3" class="pilcrow">¶</a></p>
 <div id="auth-session">
 <section id="section-5.3.1">
           <h4 id="name-auth-session">
@@ -2032,7 +2032,7 @@ an authorization request and eventually obtain an authorization code.<a href="#s
 <div id="sender-constrained-tokens">
 <section id="section-9.5">
         <h3 id="name-sender-constrained-tokens">
-<a href="#section-9.5" class="section-number selfRef">9.5. </a><a href="#name-sender-constrained-tokens" class="section-name selfRef">Sender Constrained Tokens</a>
+<a href="#section-9.5" class="section-number selfRef">9.5. </a><a href="#name-sender-constrained-tokens" class="section-name selfRef">Sender-Constrained Tokens</a>
         </h3>
 <p id="section-9.5-1">Tokens issued in response to an authorization challenge request <span class="bcp14">SHOULD</span> be sender constrained to mitigate the risk of token theft and replay.<a href="#section-9.5-1" class="pilcrow">¶</a></p>
 <p id="section-9.5-2">Proof-of-Possession techniques constrain tokens by binding them to a cryptographic key. Whenever the token is presented, it <span class="bcp14">MUST</span> be accompanied by a proof that the client presenting the token also controls the cryptographic key bound to the token. If a proof-of-possession sender constrained token is presented without valid proof of possession of the cryptographic key, it <span class="bcp14">MUST</span> be rejected.<a href="#section-9.5-2" class="pilcrow">¶</a></p>
@@ -2752,6 +2752,9 @@ Cache-Control: no-store
 </li>
         <li class="normal" id="appendix-D-2.4">
           <p id="appendix-D-2.4.1">Clarified that further communication between client and AS can happen at proprietary endpoints<a href="#appendix-D-2.4.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-D-2.5">
+          <p id="appendix-D-2.5.1">Changed <code>invalid_grant</code> to <code>invalid_session</code><a href="#appendix-D-2.5.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-D-3">-01<a href="#appendix-D-3" class="pilcrow">¶</a></p>
