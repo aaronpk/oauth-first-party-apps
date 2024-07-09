@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-07T01:20:36.880351+00:00",
+  "timestamp": "2024-07-09T01:15:30.762970+00:00",
   "repo": "aaronpk/oauth-first-party-apps",
   "labels": [
     {
@@ -1543,7 +1543,7 @@
       "id": "I_kwDOJbxyLc6Et-jo",
       "title": "Returning a token from the endpoint",
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/66",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "yaronf",
       "authorAssociation": "NONE",
       "assignees": [
@@ -1552,8 +1552,8 @@
       "labels": [],
       "body": "Sec. 3.1: why doesn't the new endpoint return an access token when successful? Yes this is possibly premature optimization, but it sounds harmless enough. Even if we don't specify it, people are still likely to do it - so shouldn't we have an opinion on whether it is allowed?\n\nMaybe this could go into the Design Goals appendix.\n\n",
       "createdAt": "2024-04-04T22:46:03Z",
-      "updatedAt": "2024-04-26T15:27:30Z",
-      "closedAt": null,
+      "updatedAt": "2024-07-08T15:11:48Z",
+      "closedAt": "2024-07-08T15:11:48Z",
       "comments": [
         {
           "author": "aaronpk",
@@ -1649,15 +1649,15 @@
       "id": "I_kwDOJbxyLc6Et-pj",
       "title": "invalid_grant error code",
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/72",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "yaronf",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "Sec. 5.2.2, \"The provided authorization grant\" - does the protocol really allow the client to provide a grant type in this endpoint? Similarly, the wording for the `unauthorized_client` error code mentions a grant.\n\n",
       "createdAt": "2024-04-04T22:46:12Z",
-      "updatedAt": "2024-04-04T22:46:12Z",
-      "closedAt": null,
+      "updatedAt": "2024-07-08T15:17:49Z",
+      "closedAt": "2024-07-08T15:17:49Z",
       "comments": []
     },
     {
@@ -1844,7 +1844,7 @@
       "labels": [],
       "body": "Sec. 9.1, I think defining \"first party applications\" through the user's perception is not useful, for two reasons. First, branding of applications is very fluid, and the user is never aware when a vendor is using \"white labeled\" applications. And second, the user is totally unaware of the exact sequence of API calls happening behind the scenes so why do we care whether they see it as a first party app or not.\n\nThe same section discusses trust between the Client and the AS, and I think that same trust can be used for a more suitable definition of \"first partyness.\"\n\n",
       "createdAt": "2024-04-04T22:46:24Z",
-      "updatedAt": "2024-04-09T14:51:18Z",
+      "updatedAt": "2024-07-08T15:19:18Z",
       "closedAt": null,
       "comments": [
         {
@@ -1853,6 +1853,13 @@
           "body": "I agree. Maybe the first party could be defined as the owner or operator of the AS? The application must then be recognised by that party. The recognition mechanism is out of band to the specification.\r\nFor example, AS could be configured with the Apple developer team identifier and bundle identifier of the client application, and could utilise the Apple app and device attestation services.\r\nThe specification says this.\r\n\r\n> App attestation can be combined with other mechanisms like Dynamic Client Registration [RFC7591]\r\n\r\nShould that be stronger, like a recommendation to pack attestation into DCR if it's going to be used?\r\nAn alternative could be to treat the auth_session as a challenge and pack attestation into this specification's Authorization Challenge Request. Section 5.1 states that the request supports additional parameters.",
           "createdAt": "2024-04-09T14:51:16Z",
           "updatedAt": "2024-04-09T14:51:16Z"
+        },
+        {
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "body": "The definition of first-party apps has been updated in this commit: 5074218fe28f032a8fbcc457fd36d823d031dd36",
+          "createdAt": "2024-07-08T15:19:16Z",
+          "updatedAt": "2024-07-08T15:19:16Z"
         }
       ]
     },
@@ -1892,24 +1899,32 @@
       "labels": [],
       "body": "Sec. 9.3: this section is worded a bit strange, in particular the phrase \"if additional measures are not taken to ensure the authenticity of the application.\" Since we're discussing authentication attempts, the mitigating controls are those used as a standard, such as throttling and monitoring. I'm not sure the measures that ensure the application itself is authentic significantly affect the risk.\n\n",
       "createdAt": "2024-04-04T22:47:27Z",
-      "updatedAt": "2024-04-04T22:47:27Z",
+      "updatedAt": "2024-07-08T15:22:25Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "body": "Credential stuffing attacks usually require automation to be successful, so the theory is that authentic apps can't be automated, which is why that phrase is there.",
+          "createdAt": "2024-07-08T15:22:24Z",
+          "updatedAt": "2024-07-08T15:22:24Z"
+        }
+      ]
     },
     {
       "number": 83,
       "id": "I_kwDOJbxyLc6Et_UZ",
       "title": "Consent screen",
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/83",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "yaronf",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "Sec. 9.4, the language around consent is hard to parse. Why not say directly that, despite the MUST in RFC 6749, the AS MAY drop the consent screen. (And this is another reason this draft should be updating RFC 6749).\n\n",
       "createdAt": "2024-04-04T22:47:29Z",
-      "updatedAt": "2024-06-28T15:31:32Z",
-      "closedAt": null,
+      "updatedAt": "2024-07-08T15:34:21Z",
+      "closedAt": "2024-07-08T15:34:21Z",
       "comments": [
         {
           "author": "corriganjeff",
@@ -1924,6 +1939,13 @@
           "body": "I think it makes more sense to just be silent about the consent issue in the client authentication section by just removing that sentence since it wasn't a should/must anyway.",
           "createdAt": "2024-06-28T15:31:31Z",
           "updatedAt": "2024-06-28T15:31:31Z"
+        },
+        {
+          "author": "aaronpk",
+          "authorAssociation": "OWNER",
+          "body": "This sentence was removed: 5074218fe28f032a8fbcc457fd36d823d031dd36",
+          "createdAt": "2024-07-08T15:34:21Z",
+          "updatedAt": "2024-07-08T15:34:21Z"
         }
       ]
     },
@@ -1994,15 +2016,15 @@
       "id": "I_kwDOJbxyLc6Et_VT",
       "title": "E-mail confirmation code",
       "url": "https://github.com/aaronpk/oauth-first-party-apps/issues/86",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "yaronf",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "Sec. A.4, The more typical use case is for the user to follow a link received in the email message. Please add a bullet that describes this alternative. Should the `auth_session` be part of the URL?\n\n",
       "createdAt": "2024-04-04T22:47:33Z",
-      "updatedAt": "2024-06-29T15:35:45Z",
-      "closedAt": null,
+      "updatedAt": "2024-07-08T15:30:54Z",
+      "closedAt": "2024-07-08T15:30:54Z",
       "comments": [
         {
           "author": "aaronpk",
